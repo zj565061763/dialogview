@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.fanwe.lib.dialogview.FDialogView;
-import com.fanwe.lib.dialogview.animator.DefaultShowBottomCreater;
+import com.fanwe.lib.dialogview.animator.AlphaCreater;
+import com.fanwe.lib.dialogview.animator.SlideBotBotCreater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -31,12 +32,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Button button = new Button(this);
                 button.setText("I am a button");
 
-                FDialogView dialogView = new FDialogView(this);
-                dialogView.setBackgroundColor(Color.parseColor("#77000000"));
-                dialogView.setContentView(button);
-                dialogView.setAnimatorCreater(new DefaultShowBottomCreater());
-                dialogView.setGrativity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-                dialogView.show();
+                FDialogView dialog = new FDialogView(this);
+                dialog.setBackgroundColor(Color.parseColor("#77000000"));
+                dialog.setContentView(button);
+                dialog.setDialogAnimatorCreater(new AlphaCreater());
+                dialog.setContentAnimatorCreater(new SlideBotBotCreater());
+                dialog.setGrativity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+                dialog.show();
 
                 break;
         }

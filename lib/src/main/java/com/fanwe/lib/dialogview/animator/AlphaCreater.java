@@ -20,16 +20,10 @@ public class AlphaCreater implements DialogView.AnimatorCreater
     }
 
     @Override
-    public Animator createDialogViewAnimator(boolean show, View view)
+    public Animator createAnimator(boolean show, View view)
     {
         final Animator animator = show ? getObjectAnimator(0, 1.0f) : getObjectAnimator(1.0f, 0);
         animator.setTarget(view);
         return animator;
-    }
-
-    @Override
-    public Animator createContentViewAnimator(boolean show, View view)
-    {
-        return createDialogViewAnimator(show, view);
     }
 }

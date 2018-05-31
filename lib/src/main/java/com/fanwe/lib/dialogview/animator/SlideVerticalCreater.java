@@ -20,17 +20,11 @@ public abstract class SlideVerticalCreater implements DialogView.AnimatorCreater
     }
 
     @Override
-    public Animator createDialogViewAnimator(boolean show, View view)
+    public Animator createAnimator(boolean show, View view)
     {
         final Animator animator = getObjectAnimator(getValues(show, view));
         animator.setTarget(view);
         return animator;
-    }
-
-    @Override
-    public Animator createContentViewAnimator(boolean show, View view)
-    {
-        return createDialogViewAnimator(show, view);
     }
 
     protected abstract float[] getValues(boolean show, View view);

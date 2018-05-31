@@ -30,18 +30,12 @@ public class ScaleXYCreater implements DialogView.AnimatorCreater
     }
 
     @Override
-    public Animator createDialogViewAnimator(boolean show, View view)
+    public Animator createAnimator(boolean show, View view)
     {
         final ObjectAnimator[] animators = show ? getObjectAnimator(0, 1.0f) : getObjectAnimator(1.0f, 0);
         final AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(animators[0]).with(animators[1]);
         animatorSet.setTarget(view);
         return animatorSet;
-    }
-
-    @Override
-    public Animator createContentViewAnimator(boolean show, View view)
-    {
-        return createDialogViewAnimator(show, view);
     }
 }

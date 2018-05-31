@@ -27,7 +27,8 @@ public class FDialogView extends FrameLayout implements DialogView
     private boolean mAttach;
 
     private ViewAnimatorHandler mAnimatorHandler;
-    private AnimatorCreater mAnimatorCreater;
+    private AnimatorCreater mDialogAnimatorCreater;
+    private AnimatorCreater mContentAnimatorCreater;
     private boolean mStartShowAnimator;
 
     public FDialogView(Activity activity)
@@ -121,10 +122,17 @@ public class FDialogView extends FrameLayout implements DialogView
         mOnDismissListener = listener;
     }
 
+
     @Override
-    public void setAnimatorCreater(AnimatorCreater creater)
+    public void setDialogAnimatorCreater(AnimatorCreater creater)
     {
-        mAnimatorCreater = creater;
+        mDialogAnimatorCreater = creater;
+    }
+
+    @Override
+    public void setContentAnimatorCreater(AnimatorCreater creater)
+    {
+        mContentAnimatorCreater = creater;
     }
 
     @Override
@@ -237,24 +245,24 @@ public class FDialogView extends FrameLayout implements DialogView
     private Animator createAnimator(boolean show)
     {
         Animator animator = null;
-        if (mAnimatorCreater != null)
-        {
-            final Animator dialogAnimator = mAnimatorCreater.createDialogViewAnimator(show, this);
-            final Animator contentAnimator = getContentView() == null ?
-                    null : mAnimatorCreater.createContentViewAnimator(show, getContentView());
 
-            if (dialogAnimator != null && contentAnimator != null)
-            {
-                final AnimatorSet animatorSet = new AnimatorSet();
-                animatorSet.play(dialogAnimator).with(contentAnimator);
-                animator = animatorSet;
-            } else if (dialogAnimator != null)
-            {
-                animator = dialogAnimator;
-            } else if (contentAnimator != null)
-            {
-                animator = contentAnimator;
-            }
+        final Animator dialogAnimator = mDialogAnimatorCreater != null ?
+                mDialogAnimatorCreater.createAnimator(show, this) : null;
+
+        final Animator contentAnimator = (mContentAnimatorCreater != null && getContentView() != null) ?
+                mContentAnimatorCreater.createAnimator(show, getContentView()) : null;
+
+        if (dialogAnimator != null && contentAnimator != null)
+        {
+            final AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.play(dialogAnimator).with(contentAnimator);
+            animator = animatorSet;
+        } else if (dialogAnimator != null)
+        {
+            animator = dialogAnimator;
+        } else if (contentAnimator != null)
+        {
+            animator = contentAnimator;
         }
         return animator;
     }

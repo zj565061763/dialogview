@@ -15,30 +15,31 @@ public abstract class CombineCreater implements DialogView.AnimatorCreater
 
         final AnimatorSet animatorSet = new AnimatorSet();
 
-        Animator mlast = null;
+        Animator mLast = null;
         for (int i = 0; i < animators.length; i++)
         {
             final Animator animator = animators[i];
             if (animator == null)
                 continue;
 
-            if (mlast == null)
-            {
+            if (mLast == null)
                 animatorSet.play(animator);
-            } else
-            {
-                animatorSet.play(mlast).with(animator);
-            }
-            mlast = animator;
+            else
+                animatorSet.play(mLast).with(animator);
+
+            mLast = animator;
         }
+
+        if (mLast == null)
+            return null;
 
         return animatorSet;
     }
 
     @Override
-    public Animator createDialogViewAnimator(boolean show, View view)
+    public Animator createAnimator(boolean show, View view)
     {
-        final Animator animator = getAnimator(createDialogViewAnimators(show, view));
+        final Animator animator = getAnimator(createAnimators(show, view));
         if (animator == null)
             return null;
 
@@ -46,18 +47,5 @@ public abstract class CombineCreater implements DialogView.AnimatorCreater
         return animator;
     }
 
-    @Override
-    public Animator createContentViewAnimator(boolean show, View view)
-    {
-        final Animator animator = getAnimator(createContentViewAnimators(show, view));
-        if (animator == null)
-            return null;
-
-        animator.setTarget(view);
-        return animator;
-    }
-
-    protected abstract Animator[] createDialogViewAnimators(boolean show, View view);
-
-    protected abstract Animator[] createContentViewAnimators(boolean show, View view);
+    protected abstract Animator[] createAnimators(boolean show, View view);
 }
