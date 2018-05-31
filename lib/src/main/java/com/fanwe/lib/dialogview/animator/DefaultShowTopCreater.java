@@ -3,17 +3,19 @@ package com.fanwe.lib.dialogview.animator;
 import android.animation.Animator;
 import android.view.View;
 
-public class DefaultShowTopCreater extends CombineCreater
+import com.fanwe.lib.dialogview.DialogView;
+
+public class DefaultShowTopCreater implements DialogView.AnimatorCreater
 {
     @Override
-    protected Animator[] createDialogViewAnimators(boolean show, View view)
+    public Animator createDialogViewAnimator(boolean show, View view)
     {
-        return new Animator[]{new AlphaCreater().createDialogViewAnimator(show, view)};
+        return new AlphaCreater().createDialogViewAnimator(show, view);
     }
 
     @Override
-    protected Animator[] createContentViewAnimators(boolean show, View view)
+    public Animator createContentViewAnimator(boolean show, View view)
     {
-        return new Animator[]{new SlideTopTopCreater().createContentViewAnimator(show, view)};
+        return new SlideTopTopCreater().createContentViewAnimator(show, view);
     }
 }
