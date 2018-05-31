@@ -230,7 +230,6 @@ public class FDialogView extends FrameLayout implements DialogView
         {
             getAnimatorHandler().setShowAnimator(createAnimator(true));
             getAnimatorHandler().startShowAnimator(null);
-
             mStartShowAnimator = false;
         }
     }
@@ -264,6 +263,9 @@ public class FDialogView extends FrameLayout implements DialogView
     protected void onAttachedToWindow()
     {
         super.onAttachedToWindow();
+        if (getParent() != mViewGroup)
+            throw new RuntimeException("dialog view can not be add to:" + getParent());
+
         mStartShowAnimator = true;
     }
 
