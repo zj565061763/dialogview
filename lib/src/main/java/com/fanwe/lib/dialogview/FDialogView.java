@@ -18,7 +18,8 @@ import com.fanwe.lib.dialogview.utils.VisibilityAnimatorHandler;
 
 public class FDialogView extends FrameLayout implements DialogView
 {
-    private final ViewGroup mViewGroup;
+    private final Activity mActivity;
+    private final ViewGroup mDialogParent;
 
     private View mContentView;
     private int mGravity = Gravity.CENTER;
@@ -36,7 +37,8 @@ public class FDialogView extends FrameLayout implements DialogView
     public FDialogView(Activity activity)
     {
         super(activity);
-        mViewGroup = activity.findViewById(android.R.id.content);
+        mActivity = activity;
+        mDialogParent = activity.findViewById(android.R.id.content);
         setDialogAnimatorCreater(new AlphaCreater());
         setContentAnimatorCreater(new ScaleXYCreater());
     }
@@ -198,16 +200,13 @@ public class FDialogView extends FrameLayout implements DialogView
 
         if (attach)
         {
-            if (getParent() != mViewGroup)
-            {
-                mViewGroup.addView(this);
-            }
+            if (getParent() == null)
+                mDialogParent.addView(this);
         } else
         {
-            if (getParent() == mViewGroup)
+            if (getParent() != null && !mActivity.isFinishing())
             {
                 getAnimatorHandler().setHideAnimator(createAnimator(false));
-
                 if (!getAnimatorHandler().startHideAnimator(mHideAnimatorListener))
                     removeSelf();
             }
@@ -275,7 +274,7 @@ public class FDialogView extends FrameLayout implements DialogView
     protected void onAttachedToWindow()
     {
         super.onAttachedToWindow();
-        if (getParent() != mViewGroup)
+        if (getParent() != mDialogParent)
             throw new RuntimeException("dialog view can not be add to:" + getParent());
 
         mStartShowAnimator = true;
