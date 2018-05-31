@@ -22,6 +22,7 @@ public class FDialogView extends FrameLayout implements DialogView
     private boolean mCancelable = true;
     private boolean mCanceledOnTouchOutside = true;
 
+    private OnDismissListener mOnDismissListener;
     private boolean mAttach;
 
     private ViewAnimatorHandler mAnimatorHandler;
@@ -109,6 +110,12 @@ public class FDialogView extends FrameLayout implements DialogView
             mCancelable = true;
 
         mCanceledOnTouchOutside = cancel;
+    }
+
+    @Override
+    public void setOnDismissListener(OnDismissListener listener)
+    {
+        mOnDismissListener = listener;
     }
 
     @Override
@@ -227,6 +234,9 @@ public class FDialogView extends FrameLayout implements DialogView
     {
         super.onDetachedFromWindow();
         getAnimatorHandler().cancelAnimator();
+
+        if (mOnDismissListener != null)
+            mOnDismissListener.onDismiss(this);
     }
 
     private void removeSelf()

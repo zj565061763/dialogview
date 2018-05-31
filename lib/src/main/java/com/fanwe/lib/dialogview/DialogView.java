@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.view.View;
 import android.view.ViewGroup;
 
-interface DialogView
+public interface DialogView
 {
     View getContentView();
 
@@ -20,6 +20,8 @@ interface DialogView
 
     void setCanceledOnTouchOutside(boolean cancel);
 
+    void setOnDismissListener(OnDismissListener listener);
+
     void setShowAnimator(Animator animator);
 
     void setHideAnimator(Animator animator);
@@ -27,4 +29,9 @@ interface DialogView
     void show();
 
     void dismiss();
+
+    interface OnDismissListener
+    {
+        void onDismiss(DialogView dialogView);
+    }
 }
