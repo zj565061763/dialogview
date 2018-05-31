@@ -37,7 +37,7 @@ public abstract class CombineCreater implements DialogView.AnimatorCreater
     }
 
     @Override
-    public Animator createAnimator(boolean show, View view)
+    public final Animator createAnimator(boolean show, View view)
     {
         final Animator animator = getAnimator(show, view, getCreaters());
         if (animator == null)
