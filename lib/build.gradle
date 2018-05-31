@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 20180531
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+}
+
+
+publish {
+    userOrg = 'zj565061763'
+    groupId = 'com.fanwe.android'
+
+    artifactId = 'dialogview'
+    publishVersion = '1.0.0'
+    desc = 'android dialog view library'
+    website = 'https://github.com/zj565061763/dialogview'
+}
+
+tasks.withType(Javadoc) {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+    }
+}
