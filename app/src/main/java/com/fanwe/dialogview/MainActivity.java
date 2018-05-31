@@ -1,6 +1,5 @@
 package com.fanwe.dialogview;
 
-import android.animation.Animator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.fanwe.lib.dialogview.FDialogView;
-import com.fanwe.lib.dialogview.animator.AlphaCreater;
-import com.fanwe.lib.dialogview.animator.CombineCreater;
-import com.fanwe.lib.dialogview.animator.SlideBotBotCreater;
+import com.fanwe.lib.dialogview.animator.DefaultShowBottomCreater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -37,20 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FDialogView dialogView = new FDialogView(this);
                 dialogView.setBackgroundColor(Color.parseColor("#77000000"));
                 dialogView.setContentView(button);
-                dialogView.setAnimatorCreater(new CombineCreater()
-                {
-                    @Override
-                    protected Animator[] createDialogViewAnimators(boolean show, View view)
-                    {
-                        return new Animator[]{new AlphaCreater().createDialogViewAnimator(show, view)};
-                    }
-
-                    @Override
-                    protected Animator[] createContentViewAnimators(boolean show, View view)
-                    {
-                        return new Animator[]{new SlideBotBotCreater().createContentViewAnimator(show, view)};
-                    }
-                });
+                dialogView.setAnimatorCreater(new DefaultShowBottomCreater());
                 dialogView.setGrativity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
                 dialogView.show();
 
