@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 
 import com.fanwe.lib.dialogview.animator.AlphaCreater;
 import com.fanwe.lib.dialogview.animator.ScaleXYCreater;
-import com.fanwe.lib.dialogview.utils.ViewAnimatorHandler;
+import com.fanwe.lib.dialogview.utils.VisibilityAnimatorHandler;
 
 public class FDialogView extends FrameLayout implements DialogView
 {
@@ -28,7 +28,7 @@ public class FDialogView extends FrameLayout implements DialogView
     private OnDismissListener mOnDismissListener;
     private boolean mAttach;
 
-    private ViewAnimatorHandler mAnimatorHandler;
+    private VisibilityAnimatorHandler mAnimatorHandler;
     private AnimatorCreater mDialogAnimatorCreater;
     private AnimatorCreater mContentAnimatorCreater;
     private boolean mStartShowAnimator;
@@ -152,10 +152,10 @@ public class FDialogView extends FrameLayout implements DialogView
         attach(false);
     }
 
-    private ViewAnimatorHandler getAnimatorHandler()
+    private VisibilityAnimatorHandler getAnimatorHandler()
     {
         if (mAnimatorHandler == null)
-            mAnimatorHandler = new ViewAnimatorHandler();
+            mAnimatorHandler = new VisibilityAnimatorHandler();
         return mAnimatorHandler;
     }
 

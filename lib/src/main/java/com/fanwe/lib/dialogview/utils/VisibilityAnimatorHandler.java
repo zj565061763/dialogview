@@ -2,14 +2,13 @@ package com.fanwe.lib.dialogview.utils;
 
 import android.animation.Animator;
 
-public final class ViewAnimatorHandler
+public final class VisibilityAnimatorHandler
 {
     private Animator mShowAnimator;
     private Animator mHideAnimator;
 
     private final AnimatorListenerWrapper mShowAnimatorListener = new AnimatorListenerWrapper();
     private final AnimatorListenerWrapper mHideAnimatorListener = new AnimatorListenerWrapper();
-
 
     public void setShowAnimator(Animator animator)
     {
