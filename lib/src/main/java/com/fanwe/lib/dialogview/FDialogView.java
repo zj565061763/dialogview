@@ -215,20 +215,15 @@ public class FDialogView extends FrameLayout implements DialogView
         mAttach = attach;
     }
 
+    private boolean mRemoveByAnimator;
     private final Animator.AnimatorListener mHideAnimatorListener = new AnimatorListenerAdapter()
     {
         @Override
         public void onAnimationEnd(Animator animation)
         {
             super.onAnimationEnd(animation);
-            post(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    removeSelf();
-                }
-            });
+            mRemoveByAnimator = true;
+            removeSelf();
         }
     };
 
@@ -288,7 +283,8 @@ public class FDialogView extends FrameLayout implements DialogView
             throw new RuntimeException("you must call dismiss() method to remove dialog view");
 
         mStartShowAnimator = false;
-        getAnimatorHandler().cancelAnimator();
+        if (!mRemoveByAnimator)
+            getAnimatorHandler().cancelAnimator();
 
         if (mOnDismissListener != null)
             mOnDismissListener.onDismiss(this);
@@ -303,6 +299,9 @@ public class FDialogView extends FrameLayout implements DialogView
                 ((ViewGroup) parent).removeView(this);
         } catch (Exception e)
         {
+        } finally
+        {
+            mRemoveByAnimator = false;
         }
     }
 }
