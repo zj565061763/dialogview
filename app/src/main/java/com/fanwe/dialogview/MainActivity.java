@@ -3,10 +3,10 @@ package com.fanwe.dialogview;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
-import com.fanwe.lib.dialogview.FDialogView;
+import com.fanwe.lib.dialogview.DialogView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -26,12 +26,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.btn_show:
 
-                Button button = new Button(this);
-                button.setText("I am a button");
-
-                FDialogView dialog = new FDialogView(this);
+                TestDialogView dialog = new TestDialogView(this);
+                dialog.setOnDismissListener(new DialogView.OnDismissListener()
+                {
+                    @Override
+                    public void onDismiss(DialogView dialogView)
+                    {
+                        Log.i(TAG, "onDismiss:" + dialogView);
+                    }
+                });
                 dialog.setBackgroundColor(Color.parseColor("#77000000"));
-                dialog.setContentView(button);
                 dialog.show();
 
                 break;
