@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 
+import com.fanwe.lib.dialogview.animator.AlphaCreater;
+import com.fanwe.lib.dialogview.animator.ScaleXYCreater;
 import com.fanwe.lib.dialogview.utils.ViewAnimatorHandler;
 
 public class FDialogView extends FrameLayout implements DialogView
@@ -35,6 +37,8 @@ public class FDialogView extends FrameLayout implements DialogView
     {
         super(activity);
         mViewGroup = activity.findViewById(android.R.id.content);
+        setDialogAnimatorCreater(new AlphaCreater());
+        setContentAnimatorCreater(new ScaleXYCreater());
     }
 
     @Override
