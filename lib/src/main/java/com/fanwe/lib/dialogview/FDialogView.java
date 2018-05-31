@@ -2,6 +2,7 @@ package com.fanwe.lib.dialogview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -193,8 +194,7 @@ public class FDialogView extends FrameLayout implements DialogView
         {
             if (getParent() == mViewGroup)
             {
-                if (mAnimatorCreater != null)
-                    getAnimatorHandler().setHideAnimator(mAnimatorCreater.createHideAnimator(this));
+                getAnimatorHandler().setHideAnimator(createAnimator(false));
 
                 if (!getAnimatorHandler().startHideAnimator(mHideAnimatorListener))
                     removeSelf();
@@ -228,12 +228,36 @@ public class FDialogView extends FrameLayout implements DialogView
 
         if (mStartShowAnimator)
         {
-            if (mAnimatorCreater != null)
-                getAnimatorHandler().setShowAnimator(mAnimatorCreater.createShowAnimator(this));
-
+            getAnimatorHandler().setShowAnimator(createAnimator(true));
             getAnimatorHandler().startShowAnimator(null);
+
             mStartShowAnimator = false;
         }
+    }
+
+    private Animator createAnimator(boolean show)
+    {
+        Animator animator = null;
+        if (mAnimatorCreater != null)
+        {
+            final Animator dialogAnimator = mAnimatorCreater.createDialogViewAnimator(show, this);
+            final Animator contentAnimator = getContentView() == null ?
+                    null : mAnimatorCreater.createContentViewAnimator(show, getContentView());
+
+            if (dialogAnimator != null && contentAnimator != null)
+            {
+                final AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.play(dialogAnimator).with(contentAnimator);
+                animator = animatorSet;
+            } else if (dialogAnimator != null)
+            {
+                animator = dialogAnimator;
+            } else if (contentAnimator != null)
+            {
+                animator = contentAnimator;
+            }
+        }
+        return animator;
     }
 
     @Override

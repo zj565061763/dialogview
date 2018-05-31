@@ -7,22 +7,9 @@ public final class ViewAnimatorHandler
     private Animator mShowAnimator;
     private Animator mHideAnimator;
 
-    private AnimatorListenerWrapper mShowAnimatorListener;
-    private AnimatorListenerWrapper mHideAnimatorListener;
+    private final AnimatorListenerWrapper mShowAnimatorListener = new AnimatorListenerWrapper();
+    private final AnimatorListenerWrapper mHideAnimatorListener = new AnimatorListenerWrapper();
 
-    private AnimatorListenerWrapper getShowAnimatorListener()
-    {
-        if (mShowAnimatorListener == null)
-            mShowAnimatorListener = new AnimatorListenerWrapper();
-        return mShowAnimatorListener;
-    }
-
-    private AnimatorListenerWrapper getHideAnimatorListener()
-    {
-        if (mHideAnimatorListener == null)
-            mHideAnimatorListener = new AnimatorListenerWrapper();
-        return mHideAnimatorListener;
-    }
 
     public void setShowAnimator(Animator animator)
     {
@@ -34,7 +21,7 @@ public final class ViewAnimatorHandler
             mShowAnimator = animator;
 
             if (mShowAnimator != null)
-                mShowAnimator.addListener(getShowAnimatorListener());
+                mShowAnimator.addListener(mShowAnimatorListener);
         }
     }
 
@@ -61,7 +48,7 @@ public final class ViewAnimatorHandler
             mHideAnimator = animator;
 
             if (mHideAnimator != null)
-                mHideAnimator.addListener(getHideAnimatorListener());
+                mHideAnimator.addListener(mHideAnimatorListener);
         }
     }
 

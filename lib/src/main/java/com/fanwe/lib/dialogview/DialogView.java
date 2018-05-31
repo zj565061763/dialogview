@@ -35,8 +35,8 @@ public interface DialogView
 
     interface AnimatorCreater
     {
-        Animator createShowAnimator(DialogView dialogView);
+        Animator createDialogViewAnimator(boolean show, View view);
 
-        Animator createHideAnimator(DialogView dialogView);
+        Animator createContentViewAnimator(boolean show, View view);
     }
 }

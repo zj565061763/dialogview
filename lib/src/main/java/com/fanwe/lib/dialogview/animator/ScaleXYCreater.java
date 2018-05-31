@@ -7,33 +7,11 @@ import android.view.View;
 
 import com.fanwe.lib.dialogview.DialogView;
 
+/**
+ * 缩放
+ */
 public class ScaleXYCreater implements DialogView.AnimatorCreater
 {
-    private AnimatorSet mShowAnimator;
-    private AnimatorSet mHideAnimator;
-
-    public AnimatorSet getShowAnimator()
-    {
-        if (mShowAnimator == null)
-        {
-            mShowAnimator = new AnimatorSet();
-            final ObjectAnimator[] animators = getObjectAnimator(0, 1.0f);
-            mShowAnimator.play(animators[0]).with(animators[1]);
-        }
-        return mShowAnimator;
-    }
-
-    public AnimatorSet getHideAnimator()
-    {
-        if (mHideAnimator == null)
-        {
-            mHideAnimator = new AnimatorSet();
-            final ObjectAnimator[] animators = getObjectAnimator(1.0f, 0);
-            mHideAnimator.play(animators[0]).with(animators[1]);
-        }
-        return mHideAnimator;
-    }
-
     private ObjectAnimator[] getObjectAnimator(float... values)
     {
         final ObjectAnimator[] animators = new ObjectAnimator[2];
@@ -52,26 +30,18 @@ public class ScaleXYCreater implements DialogView.AnimatorCreater
     }
 
     @Override
-    public Animator createShowAnimator(DialogView dialogView)
+    public Animator createDialogViewAnimator(boolean show, View view)
     {
-        final View contentView = dialogView.getContentView();
-        if (contentView == null)
-            return null;
-
-        final AnimatorSet animatorSet = getShowAnimator();
-        animatorSet.setTarget(contentView);
+        final ObjectAnimator[] animators = show ? getObjectAnimator(0, 1.0f) : getObjectAnimator(1.0f, 0);
+        final AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.play(animators[0]).with(animators[1]);
+        animatorSet.setTarget(view);
         return animatorSet;
     }
 
     @Override
-    public Animator createHideAnimator(DialogView dialogView)
+    public Animator createContentViewAnimator(boolean show, View view)
     {
-        final View contentView = dialogView.getContentView();
-        if (contentView == null)
-            return null;
-
-        final AnimatorSet animatorSet = getHideAnimator();
-        animatorSet.setTarget(contentView);
-        return animatorSet;
+        return createDialogViewAnimator(show, view);
     }
 }
