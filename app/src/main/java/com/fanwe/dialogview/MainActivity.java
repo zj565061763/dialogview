@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.fanwe.lib.dialogview.FDialogView;
-import com.fanwe.lib.dialogview.animator.DefaultShowTopCreater;
+import com.fanwe.lib.dialogview.animator.DefaultShowBottomCreater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FDialogView dialogView = new FDialogView(this);
                 dialogView.setBackgroundColor(Color.parseColor("#77000000"));
                 dialogView.setContentView(button);
-                dialogView.setAnimatorCreater(new DefaultShowTopCreater());
+                dialogView.setAnimatorCreater(new DefaultShowBottomCreater());
                 dialogView.setGrativity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
                 dialogView.show();
 
