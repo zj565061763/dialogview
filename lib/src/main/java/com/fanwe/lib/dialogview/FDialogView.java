@@ -284,6 +284,9 @@ public class FDialogView extends FrameLayout implements DialogView
     protected void onDetachedFromWindow()
     {
         super.onDetachedFromWindow();
+        if (mAttach && !mActivity.isFinishing())
+            throw new RuntimeException("you must call dismiss() method to remove dialog view");
+
         mStartShowAnimator = false;
         getAnimatorHandler().cancelAnimator();
 
