@@ -22,9 +22,7 @@ public interface DialogView
 
     void setOnDismissListener(OnDismissListener listener);
 
-    void setShowAnimator(Animator animator);
-
-    void setHideAnimator(Animator animator);
+    void setAnimatorCreater(AnimatorCreater creater);
 
     void show();
 
@@ -33,5 +31,12 @@ public interface DialogView
     interface OnDismissListener
     {
         void onDismiss(DialogView dialogView);
+    }
+
+    interface AnimatorCreater
+    {
+        Animator createShowAnimator(DialogView dialogView);
+
+        Animator createHideAnimator(DialogView dialogView);
     }
 }

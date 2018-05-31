@@ -26,6 +26,8 @@ public class FDialogView extends FrameLayout implements DialogView
     private boolean mAttach;
 
     private ViewAnimatorHandler mAnimatorHandler;
+    private AnimatorCreater mAnimatorCreater;
+    private boolean mStartShowAnimator;
 
     public FDialogView(Activity activity)
     {
@@ -119,15 +121,9 @@ public class FDialogView extends FrameLayout implements DialogView
     }
 
     @Override
-    public void setShowAnimator(Animator animator)
+    public void setAnimatorCreater(AnimatorCreater creater)
     {
-        getAnimatorHandler().setShowAnimator(animator);
-    }
-
-    @Override
-    public void setHideAnimator(Animator animator)
-    {
-        getAnimatorHandler().setHideAnimator(animator);
+        mAnimatorCreater = creater;
     }
 
     @Override
@@ -197,6 +193,9 @@ public class FDialogView extends FrameLayout implements DialogView
         {
             if (getParent() == mViewGroup)
             {
+                if (mAnimatorCreater != null)
+                    getAnimatorHandler().setHideAnimator(mAnimatorCreater.createHideAnimator(this));
+
                 if (!getAnimatorHandler().startHideAnimator(mHideAnimatorListener))
                     removeSelf();
             }
@@ -223,16 +222,32 @@ public class FDialogView extends FrameLayout implements DialogView
     };
 
     @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom)
+    {
+        super.onLayout(changed, left, top, right, bottom);
+
+        if (mStartShowAnimator)
+        {
+            if (mAnimatorCreater != null)
+                getAnimatorHandler().setShowAnimator(mAnimatorCreater.createShowAnimator(this));
+
+            getAnimatorHandler().startShowAnimator(null);
+            mStartShowAnimator = false;
+        }
+    }
+
+    @Override
     protected void onAttachedToWindow()
     {
         super.onAttachedToWindow();
-        getAnimatorHandler().startShowAnimator(null);
+        mStartShowAnimator = true;
     }
 
     @Override
     protected void onDetachedFromWindow()
     {
         super.onDetachedFromWindow();
+        mStartShowAnimator = false;
         getAnimatorHandler().cancelAnimator();
 
         if (mOnDismissListener != null)
