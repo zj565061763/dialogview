@@ -8,17 +8,17 @@ import com.fanwe.lib.dialogview.DialogView;
 
 public abstract class CombineCreater implements DialogView.AnimatorCreater
 {
-    private Animator getAnimator(Animator[] animators)
+    private Animator getAnimator(boolean show, View view, DialogView.AnimatorCreater[] creaters)
     {
-        if (animators == null || animators.length <= 0)
+        if (creaters == null || creaters.length <= 0)
             return null;
 
         final AnimatorSet animatorSet = new AnimatorSet();
 
         Animator mLast = null;
-        for (int i = 0; i < animators.length; i++)
+        for (int i = 0; i < creaters.length; i++)
         {
-            final Animator animator = animators[i];
+            final Animator animator = creaters[i].createAnimator(show, view);
             if (animator == null)
                 continue;
 
@@ -39,7 +39,7 @@ public abstract class CombineCreater implements DialogView.AnimatorCreater
     @Override
     public Animator createAnimator(boolean show, View view)
     {
-        final Animator animator = getAnimator(createAnimators(show, view));
+        final Animator animator = getAnimator(show, view, getCreaters());
         if (animator == null)
             return null;
 
@@ -47,5 +47,5 @@ public abstract class CombineCreater implements DialogView.AnimatorCreater
         return animator;
     }
 
-    protected abstract Animator[] createAnimators(boolean show, View view);
+    protected abstract DialogView.AnimatorCreater[] getCreaters();
 }
