@@ -20,11 +20,11 @@ public interface DialogView
 
     void setCanceledOnTouchOutside(boolean cancel);
 
-    void setOnDismissListener(OnDismissListener listener);
-
     void setDialogAnimatorCreater(AnimatorCreater creater);
 
     void setContentAnimatorCreater(AnimatorCreater creater);
+
+    void setOnDismissListener(OnDismissListener listener);
 
     void show();
 

@@ -123,13 +123,6 @@ public class FDialogView extends FrameLayout implements DialogView
     }
 
     @Override
-    public void setOnDismissListener(OnDismissListener listener)
-    {
-        mOnDismissListener = listener;
-    }
-
-
-    @Override
     public void setDialogAnimatorCreater(AnimatorCreater creater)
     {
         mDialogAnimatorCreater = creater;
@@ -139,6 +132,12 @@ public class FDialogView extends FrameLayout implements DialogView
     public void setContentAnimatorCreater(AnimatorCreater creater)
     {
         mContentAnimatorCreater = creater;
+    }
+
+    @Override
+    public void setOnDismissListener(OnDismissListener listener)
+    {
+        mOnDismissListener = listener;
     }
 
     @Override
