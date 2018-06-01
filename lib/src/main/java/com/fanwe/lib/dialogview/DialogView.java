@@ -2,7 +2,6 @@ package com.fanwe.lib.dialogview;
 
 import android.animation.Animator;
 import android.view.View;
-import android.view.ViewGroup;
 
 public interface DialogView
 {
@@ -11,8 +10,6 @@ public interface DialogView
     void setContentView(int layoutId);
 
     void setContentView(View view);
-
-    void setContentView(View view, ViewGroup.LayoutParams params);
 
     void setGrativity(int gravity);
 

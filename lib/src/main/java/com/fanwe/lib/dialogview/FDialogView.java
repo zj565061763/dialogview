@@ -62,13 +62,6 @@ public class FDialogView extends FrameLayout implements DialogView
         setDialogView(view);
     }
 
-    @Override
-    public void setContentView(View view, ViewGroup.LayoutParams params)
-    {
-        view.setLayoutParams(params);
-        setDialogView(view);
-    }
-
     private void setDialogView(View view)
     {
         mContentView = view;
