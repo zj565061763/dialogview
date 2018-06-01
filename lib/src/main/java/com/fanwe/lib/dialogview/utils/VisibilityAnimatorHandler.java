@@ -26,10 +26,14 @@ public final class VisibilityAnimatorHandler
 
     public boolean startShowAnimator(Animator.AnimatorListener listener)
     {
-        cancelAnimator();
-
         if (mShowAnimator != null)
         {
+            if (mShowAnimator.isStarted())
+                return true;
+
+            if (mHideAnimator != null)
+                mHideAnimator.cancel();
+
             mShowAnimatorListener.setOriginal(listener);
             mShowAnimator.start();
             return true;
@@ -53,10 +57,14 @@ public final class VisibilityAnimatorHandler
 
     public boolean startHideAnimator(Animator.AnimatorListener listener)
     {
-        cancelAnimator();
-
         if (mHideAnimator != null)
         {
+            if (mHideAnimator.isStarted())
+                return true;
+
+            if (mShowAnimator != null)
+                mShowAnimator.cancel();
+
             mHideAnimatorListener.setOriginal(listener);
             mHideAnimator.start();
             return true;
@@ -64,7 +72,7 @@ public final class VisibilityAnimatorHandler
         return false;
     }
 
-    public void cancelAnimator()
+    public void cancelAnimators()
     {
         if (mShowAnimator != null)
             mShowAnimator.cancel();

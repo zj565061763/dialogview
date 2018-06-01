@@ -282,7 +282,7 @@ public class FDialogView extends FrameLayout implements DialogView
         mStartShowAnimator = false;
 
         if (!mRemoveByAnimator)
-            getAnimatorHandler().cancelAnimator();
+            getAnimatorHandler().cancelAnimators();
 
         if (mOnDismissListener != null)
             mOnDismissListener.onDismiss(this);
