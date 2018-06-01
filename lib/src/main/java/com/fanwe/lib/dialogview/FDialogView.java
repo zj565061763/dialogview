@@ -153,13 +153,6 @@ public class FDialogView extends FrameLayout implements DialogView
         attach(false);
     }
 
-    private VisibilityAnimatorHandler getAnimatorHandler()
-    {
-        if (mAnimatorHandler == null)
-            mAnimatorHandler = new VisibilityAnimatorHandler();
-        return mAnimatorHandler;
-    }
-
     @Override
     public void setLayoutParams(ViewGroup.LayoutParams params)
     {
@@ -206,7 +199,7 @@ public class FDialogView extends FrameLayout implements DialogView
             if (getParent() != null && !mActivity.isFinishing())
             {
                 getAnimatorHandler().setHideAnimator(createAnimator(false));
-                if (!getAnimatorHandler().startHideAnimator(mHideAnimatorListener))
+                if (!getAnimatorHandler().startHideAnimator())
                     removeSelf();
             }
         }
@@ -215,16 +208,25 @@ public class FDialogView extends FrameLayout implements DialogView
     }
 
     private boolean mRemoveByAnimator;
-    private final Animator.AnimatorListener mHideAnimatorListener = new AnimatorListenerAdapter()
+
+    private VisibilityAnimatorHandler getAnimatorHandler()
     {
-        @Override
-        public void onAnimationEnd(Animator animation)
+        if (mAnimatorHandler == null)
         {
-            super.onAnimationEnd(animation);
-            mRemoveByAnimator = true;
-            removeSelf();
+            mAnimatorHandler = new VisibilityAnimatorHandler();
+            mAnimatorHandler.setHideAnimatorListener(new AnimatorListenerAdapter()
+            {
+                @Override
+                public void onAnimationEnd(Animator animation)
+                {
+                    super.onAnimationEnd(animation);
+                    mRemoveByAnimator = true;
+                    removeSelf();
+                }
+            });
         }
-    };
+        return mAnimatorHandler;
+    }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom)
@@ -234,7 +236,7 @@ public class FDialogView extends FrameLayout implements DialogView
         if (mStartShowAnimator)
         {
             getAnimatorHandler().setShowAnimator(createAnimator(true));
-            getAnimatorHandler().startShowAnimator(null);
+            getAnimatorHandler().startShowAnimator();
             mStartShowAnimator = false;
         }
     }

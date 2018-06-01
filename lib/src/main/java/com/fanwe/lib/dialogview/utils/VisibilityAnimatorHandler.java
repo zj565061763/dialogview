@@ -10,6 +10,11 @@ public final class VisibilityAnimatorHandler
     private final AnimatorListenerWrapper mShowAnimatorListener = new AnimatorListenerWrapper();
     private final AnimatorListenerWrapper mHideAnimatorListener = new AnimatorListenerWrapper();
 
+    /**
+     * 设置显示动画
+     *
+     * @param animator
+     */
     public void setShowAnimator(Animator animator)
     {
         if (mShowAnimator != animator)
@@ -24,7 +29,22 @@ public final class VisibilityAnimatorHandler
         }
     }
 
-    public boolean startShowAnimator(Animator.AnimatorListener listener)
+    /**
+     * 设置显示动画监听
+     *
+     * @param listener
+     */
+    public void setShowAnimatorListener(Animator.AnimatorListener listener)
+    {
+        mShowAnimatorListener.setOriginal(listener);
+    }
+
+    /**
+     * 开始显示动画
+     *
+     * @return true-动画被执行
+     */
+    public boolean startShowAnimator()
     {
         if (mShowAnimator != null)
         {
@@ -34,13 +54,17 @@ public final class VisibilityAnimatorHandler
             if (mHideAnimator != null)
                 mHideAnimator.cancel();
 
-            mShowAnimatorListener.setOriginal(listener);
             mShowAnimator.start();
             return true;
         }
         return false;
     }
 
+    /**
+     * 设置隐藏动画
+     *
+     * @param animator
+     */
     public void setHideAnimator(Animator animator)
     {
         if (mHideAnimator != animator)
@@ -55,7 +79,22 @@ public final class VisibilityAnimatorHandler
         }
     }
 
-    public boolean startHideAnimator(Animator.AnimatorListener listener)
+    /**
+     * 设置隐藏动画监听
+     *
+     * @param listener
+     */
+    public void setHideAnimatorListener(Animator.AnimatorListener listener)
+    {
+        mHideAnimatorListener.setOriginal(listener);
+    }
+
+    /**
+     * 开始隐藏动画
+     *
+     * @return true-动画被执行
+     */
+    public boolean startHideAnimator()
     {
         if (mHideAnimator != null)
         {
@@ -65,7 +104,6 @@ public final class VisibilityAnimatorHandler
             if (mShowAnimator != null)
                 mShowAnimator.cancel();
 
-            mHideAnimatorListener.setOriginal(listener);
             mHideAnimator.start();
             return true;
         }
