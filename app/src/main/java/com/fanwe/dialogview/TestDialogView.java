@@ -2,9 +2,9 @@ package com.fanwe.dialogview;
 
 import android.app.Activity;
 
-import com.fanwe.lib.dialogview.FDialogView;
+import com.fanwe.lib.dialoger.impl.FDialoger;
 
-public class TestDialogView extends FDialogView
+public class TestDialogView extends FDialoger
 {
     public TestDialogView(Activity activity)
     {
