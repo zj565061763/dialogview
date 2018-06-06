@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 public class BaseDialogView extends FrameLayout implements View.OnClickListener
@@ -12,16 +13,26 @@ public class BaseDialogView extends FrameLayout implements View.OnClickListener
     public BaseDialogView(Context context)
     {
         super(context);
+        init();
     }
 
     public BaseDialogView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
+        init();
     }
 
     public BaseDialogView(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init()
+    {
+        final int width = ViewGroup.LayoutParams.MATCH_PARENT;
+        final int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        setLayoutParams(new ViewGroup.LayoutParams(width, height));
     }
 
     public void setContentView(int layoutId)
