@@ -20,4 +20,12 @@
         android:text="menu"
         android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/btn_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="progress"
+        android:textAllCaps="false" />
+
 </LinearLayout>

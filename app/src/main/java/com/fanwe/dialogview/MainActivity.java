@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
                 menuDialoger.show();
                 break;
+            case R.id.btn_progress:
+                final ProgressDialoger progressDialoger = new ProgressDialoger(this);
+                progressDialoger.show();
+                break;
         }
     }
 }
