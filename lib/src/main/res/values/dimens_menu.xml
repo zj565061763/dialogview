@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- MenuView 标题字体大小 -->
+    <dimen name="lib_dialogview_view_menu_text_title">12sp</dimen>
+    <!-- MenuView 取消字体大小 -->
+    <dimen name="lib_dialogview_view_menu_text_cancel">14sp</dimen>
+    <!-- MenuView item字体大小 -->
+    <dimen name="lib_dialogview_view_menu_text_item">14sp</dimen>
+
+    <!-- MenuView 标题高度 -->
+    <dimen name="lib_dialogview_view_menu_height_title">40dp</dimen>
+    <!-- MenuView 取消高度 -->
+    <dimen name="lib_dialogview_view_menu_height_cancel">40dp</dimen>
+    <!-- MenuView item高度 -->
+    <dimen name="lib_dialogview_view_menu_height_item">40dp</dimen>
+
+    <!-- MenuView 取消顶部间距-->
+    <dimen name="lib_dialogview_view_menu_margin_top_cancel">10dp</dimen>
+
+</resources>
