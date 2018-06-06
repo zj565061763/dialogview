@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.fanwe.lib.dialogview.ConfirmView;
+import com.fanwe.lib.dialogview.MenuView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -22,23 +23,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         switch (v.getId())
         {
-            case R.id.btn_show:
-                final ConfirmDialoger dialoger = new ConfirmDialoger(this);
-                dialoger.getConfirmView().setCallback(new ConfirmView.Callback()
+            case R.id.btn_confirm:
+                final ConfirmDialoger confirmDialoger = new ConfirmDialoger(this);
+                confirmDialoger.getConfirmView().setCallback(new ConfirmView.Callback()
                 {
                     @Override
                     public void onClickCancel(View v, ConfirmView confirmView)
                     {
-                        dialoger.dismiss();
+                        confirmDialoger.dismiss();
                     }
 
                     @Override
                     public void onClickConfirm(View v, ConfirmView confirmView)
                     {
-                        dialoger.dismiss();
+                        confirmDialoger.dismiss();
                     }
                 });
-                dialoger.show();
+                confirmDialoger.show();
+                break;
+            case R.id.btn_menu:
+                final MenuDialoger menuDialoger = new MenuDialoger(this);
+                menuDialoger.getMenuView().setCallback(new MenuView.Callback()
+                {
+                    @Override
+                    public void onClickItem(View v, int index, MenuView menuView)
+                    {
+                        menuDialoger.dismiss();
+                    }
+
+                    @Override
+                    public void onClickCancel(View v, MenuView menuView)
+                    {
+                        menuDialoger.dismiss();
+                    }
+                });
+                menuDialoger.show();
                 break;
         }
     }

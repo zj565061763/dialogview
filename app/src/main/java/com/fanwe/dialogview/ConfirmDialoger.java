@@ -14,7 +14,6 @@ public class ConfirmDialoger extends FDialoger
     {
         super(activity);
         setContentView(getConfirmView());
-        setPadding(0, 0, 0, 0);
         setAnimatorCreater(new ScaleXYCreater());
     }
 
