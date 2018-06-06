@@ -30,12 +30,8 @@ public class BaseDialogView extends FrameLayout implements View.OnClickListener
 
     private void init()
     {
-        final int widthScreenPercent = (int) (getContext().getResources().getDisplayMetrics().widthPixels * 0.8f);
-        final int widthFix = (int) (getContext().getResources().getDisplayMetrics().density * 300);
-
-        final int width = Math.min(widthScreenPercent, widthFix);
-        final int height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        setLayoutParams(new ViewGroup.LayoutParams(width, height));
+        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
     public void setContentView(int layoutId)
