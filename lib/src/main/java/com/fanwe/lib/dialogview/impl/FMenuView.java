@@ -34,7 +34,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 带取消按钮的菜单选择窗口
+ * 带取消按钮的菜单
  */
 public class FMenuView extends BaseDialogView implements MenuView
 {
@@ -61,7 +61,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     public ListView lv_content;
 
     private List<Object> mListModel;
-
+    
     private Callback mCallback;
 
     private void init()
