@@ -61,7 +61,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     public ListView lv_content;
 
     private List<Object> mListModel;
-    
+
     private Callback mCallback;
 
     private void init()
@@ -210,6 +210,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     @Override
     public void onClick(View v)
     {
+        super.onClick(v);
         if (v == tv_cancel)
         {
             if (mCallback != null)
