@@ -23,7 +23,6 @@ public class ProgressDialoger extends FDialoger
                 @Override
                 public void dismiss()
                 {
-                    super.dismiss();
                     ProgressDialoger.this.dismiss();
                 }
             };

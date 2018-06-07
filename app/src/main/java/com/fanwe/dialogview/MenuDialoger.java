@@ -30,7 +30,6 @@ public class MenuDialoger extends FDialoger
                 @Override
                 public void dismiss()
                 {
-                    super.dismiss();
                     MenuDialoger.this.dismiss();
                 }
             };

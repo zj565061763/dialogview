@@ -25,7 +25,6 @@ public class ConfirmDialoger extends FDialoger
                 @Override
                 public void dismiss()
                 {
-                    super.dismiss();
                     ConfirmDialoger.this.dismiss();
                 }
             };

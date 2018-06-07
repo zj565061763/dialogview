@@ -29,7 +29,7 @@ import com.fanwe.lib.dialogview.R;
 /**
  * 带标题，内容，确定按钮和取消按钮
  */
-public class FConfirmView extends BaseDialogView implements ConfirmView
+public abstract class FConfirmView extends BaseDialogView implements ConfirmView
 {
     public FConfirmView(Context context)
     {

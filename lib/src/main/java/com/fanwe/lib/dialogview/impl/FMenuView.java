@@ -36,7 +36,7 @@ import java.util.List;
 /**
  * 带取消按钮的菜单
  */
-public class FMenuView extends BaseDialogView implements MenuView
+public abstract class FMenuView extends BaseDialogView implements MenuView
 {
     public FMenuView(Context context)
     {
