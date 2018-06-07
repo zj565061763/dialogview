@@ -73,7 +73,7 @@ public class FConfirmView extends BaseDialogView implements ConfirmView
     }
 
     @Override
-    public ConfirmView setCustomView(int layoutId)
+    public FConfirmView setCustomView(int layoutId)
     {
         fl_content.removeAllViews();
         LayoutInflater.from(getContext()).inflate(layoutId, fl_content, true);
@@ -81,7 +81,7 @@ public class FConfirmView extends BaseDialogView implements ConfirmView
     }
 
     @Override
-    public ConfirmView setCustomView(View view)
+    public FConfirmView setCustomView(View view)
     {
         fl_content.removeAllViews();
         fl_content.addView(view);
@@ -89,14 +89,14 @@ public class FConfirmView extends BaseDialogView implements ConfirmView
     }
 
     @Override
-    public ConfirmView setCallback(Callback callback)
+    public FConfirmView setCallback(Callback callback)
     {
         mCallback = callback;
         return this;
     }
 
     @Override
-    public ConfirmView setTextTitle(String text)
+    public FConfirmView setTextTitle(String text)
     {
         if (TextUtils.isEmpty(text))
         {
@@ -110,7 +110,7 @@ public class FConfirmView extends BaseDialogView implements ConfirmView
     }
 
     @Override
-    public ConfirmView setTextContent(String text)
+    public FConfirmView setTextContent(String text)
     {
         if (TextUtils.isEmpty(text))
         {
@@ -124,7 +124,7 @@ public class FConfirmView extends BaseDialogView implements ConfirmView
     }
 
     @Override
-    public ConfirmView setTextConfirm(String text)
+    public FConfirmView setTextConfirm(String text)
     {
         if (TextUtils.isEmpty(text))
         {
@@ -139,7 +139,7 @@ public class FConfirmView extends BaseDialogView implements ConfirmView
     }
 
     @Override
-    public ConfirmView setTextCancel(String text)
+    public FConfirmView setTextCancel(String text)
     {
         if (TextUtils.isEmpty(text))
         {
@@ -154,28 +154,28 @@ public class FConfirmView extends BaseDialogView implements ConfirmView
     }
 
     @Override
-    public ConfirmView setTextColorTitle(int color)
+    public FConfirmView setTextColorTitle(int color)
     {
         tv_title.setTextColor(color);
         return this;
     }
 
     @Override
-    public ConfirmView setTextColorContent(int color)
+    public FConfirmView setTextColorContent(int color)
     {
         tv_content.setTextColor(color);
         return this;
     }
 
     @Override
-    public ConfirmView setTextColorConfirm(int color)
+    public FConfirmView setTextColorConfirm(int color)
     {
         tv_confirm.setTextColor(color);
         return this;
     }
 
     @Override
-    public ConfirmView setTextColorCancel(int color)
+    public FConfirmView setTextColorCancel(int color)
     {
         tv_cancel.setTextColor(color);
         return this;

@@ -78,7 +78,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     //---------- FIDialogMenu implements start ----------
 
     @Override
-    public MenuView setTextTitle(String text)
+    public FMenuView setTextTitle(String text)
     {
         if (TextUtils.isEmpty(text))
         {
@@ -92,7 +92,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     }
 
     @Override
-    public MenuView setTextCancel(String text)
+    public FMenuView setTextCancel(String text)
     {
         if (TextUtils.isEmpty(text))
         {
@@ -106,14 +106,14 @@ public class FMenuView extends BaseDialogView implements MenuView
     }
 
     @Override
-    public MenuView setCallback(Callback callback)
+    public FMenuView setCallback(Callback callback)
     {
         mCallback = callback;
         return this;
     }
 
     @Override
-    public MenuView setItems(Object... objects)
+    public FMenuView setItems(Object... objects)
     {
         List<Object> listObject = null;
         if (objects != null)
@@ -125,7 +125,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     }
 
     @Override
-    public MenuView setItems(List<Object> listObject)
+    public FMenuView setItems(List<Object> listObject)
     {
         mListModel = listObject;
         setAdapter(getAdapter());
@@ -133,7 +133,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     }
 
     @Override
-    public MenuView setAdapter(BaseAdapter adapter)
+    public FMenuView setAdapter(BaseAdapter adapter)
     {
         lv_content.setAdapter(adapter);
         lv_content.setOnItemClickListener(new OnItemClickListener()

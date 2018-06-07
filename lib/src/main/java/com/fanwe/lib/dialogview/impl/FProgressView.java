@@ -63,7 +63,7 @@ public class FProgressView extends BaseDialogView implements ProgressView
     }
 
     @Override
-    public ProgressView setTextMsg(String text)
+    public FProgressView setTextMsg(String text)
     {
         if (TextUtils.isEmpty(text))
         {
