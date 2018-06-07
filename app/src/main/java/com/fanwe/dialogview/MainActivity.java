@@ -3,6 +3,7 @@ package com.fanwe.dialogview;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.fanwe.lib.dialogview.ConfirmView;
 import com.fanwe.lib.dialogview.MenuView;
@@ -30,13 +31,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClickCancel(View v, ConfirmView confirmView)
                     {
-                        confirmDialoger.dismiss();
+                        Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
+                        super.onClickCancel(v, confirmView);
                     }
 
                     @Override
                     public void onClickConfirm(View v, ConfirmView confirmView)
                     {
-                        confirmDialoger.dismiss();
+                        Toast.makeText(MainActivity.this, "confirm", Toast.LENGTH_SHORT).show();
+                        super.onClickConfirm(v, confirmView);
                     }
                 });
                 confirmDialoger.show();
@@ -48,13 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClickItem(View v, int index, MenuView menuView)
                     {
-                        menuDialoger.dismiss();
+                        Toast.makeText(MainActivity.this, String.valueOf(index), Toast.LENGTH_SHORT).show();
+                        super.onClickItem(v, index, menuView);
                     }
 
                     @Override
                     public void onClickCancel(View v, MenuView menuView)
                     {
-                        menuDialoger.dismiss();
+                        Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
+                        super.onClickCancel(v, menuView);
                     }
                 });
                 menuDialoger.show();

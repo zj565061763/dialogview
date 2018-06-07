@@ -18,7 +18,15 @@ public class ProgressDialoger extends FDialoger
     public FProgressView getProgressView()
     {
         if (mProgressView == null)
-            mProgressView = new FProgressView(getContext());
+            mProgressView = new FProgressView(getContext())
+            {
+                @Override
+                public void dismiss()
+                {
+                    super.dismiss();
+                    ProgressDialoger.this.dismiss();
+                }
+            };
         return mProgressView;
     }
 }

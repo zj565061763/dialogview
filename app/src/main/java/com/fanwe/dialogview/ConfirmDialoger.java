@@ -20,7 +20,15 @@ public class ConfirmDialoger extends FDialoger
     public FConfirmView getConfirmView()
     {
         if (mConfirmView == null)
-            mConfirmView = new FConfirmView(getContext());
+            mConfirmView = new FConfirmView(getContext())
+            {
+                @Override
+                public void dismiss()
+                {
+                    super.dismiss();
+                    ConfirmDialoger.this.dismiss();
+                }
+            };
         return mConfirmView;
     }
 }

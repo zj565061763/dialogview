@@ -70,11 +70,16 @@ public interface MenuView extends DialogView
      */
     MenuView setAdapter(BaseAdapter adapter);
 
-
-    interface Callback
+    abstract class Callback
     {
-        void onClickItem(View v, int index, MenuView menuView);
+        public void onClickItem(View v, int index, MenuView menuView)
+        {
+            menuView.dismiss();
+        }
 
-        void onClickCancel(View v, MenuView menuView);
+        public void onClickCancel(View v, MenuView menuView)
+        {
+            menuView.dismiss();
+        }
     }
 }

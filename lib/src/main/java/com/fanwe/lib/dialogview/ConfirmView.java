@@ -107,10 +107,16 @@ public interface ConfirmView extends DialogView
      */
     ConfirmView setTextColorConfirm(int color);
 
-    interface Callback
+    abstract class Callback
     {
-        void onClickCancel(View v, ConfirmView confirmView);
+        public void onClickCancel(View v, ConfirmView confirmView)
+        {
+            confirmView.dismiss();
+        }
 
-        void onClickConfirm(View v, ConfirmView confirmView);
+        public void onClickConfirm(View v, ConfirmView confirmView)
+        {
+            confirmView.dismiss();
+        }
     }
 }

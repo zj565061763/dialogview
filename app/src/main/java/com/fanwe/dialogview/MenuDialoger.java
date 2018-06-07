@@ -25,7 +25,15 @@ public class MenuDialoger extends FDialoger
     public FMenuView getMenuView()
     {
         if (mMenuView == null)
-            mMenuView = new FMenuView(getContext());
+            mMenuView = new FMenuView(getContext())
+            {
+                @Override
+                public void dismiss()
+                {
+                    super.dismiss();
+                    MenuDialoger.this.dismiss();
+                }
+            };
         return mMenuView;
     }
 }
