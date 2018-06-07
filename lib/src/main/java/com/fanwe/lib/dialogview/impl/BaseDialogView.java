@@ -21,11 +21,12 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.FrameLayout;
 
 import com.fanwe.lib.dialogview.DialogView;
 
-public abstract class BaseDialogView extends FrameLayout implements DialogView, View.OnClickListener
+public class BaseDialogView extends FrameLayout implements DialogView, View.OnClickListener
 {
     public BaseDialogView(Context context)
     {
@@ -81,5 +82,13 @@ public abstract class BaseDialogView extends FrameLayout implements DialogView, 
         int paddingBottom = view.getPaddingBottom();
         view.setBackgroundDrawable(drawable);
         view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+    }
+
+    @Override
+    public void dismiss()
+    {
+        final ViewParent parent = getParent();
+        if (parent instanceof ViewParent)
+            ((ViewGroup) parent).removeView(this);
     }
 }

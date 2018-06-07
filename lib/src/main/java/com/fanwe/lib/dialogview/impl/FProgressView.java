@@ -29,7 +29,7 @@ import com.fanwe.lib.dialogview.R;
 /**
  * 带环形进度条，和信息提示
  */
-public abstract class FProgressView extends BaseDialogView implements ProgressView
+public class FProgressView extends BaseDialogView implements ProgressView
 {
     public FProgressView(Context context)
     {
