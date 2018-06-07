@@ -20,7 +20,7 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-public interface MenuView
+public interface MenuView extends DialogView
 {
     /**
      * 设置标题文字

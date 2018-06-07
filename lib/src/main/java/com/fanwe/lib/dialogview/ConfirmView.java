@@ -17,7 +17,7 @@ package com.fanwe.lib.dialogview;
 
 import android.view.View;
 
-public interface ConfirmView
+public interface ConfirmView extends DialogView
 {
     /**
      * 设置自定义View，替换掉中间内容部分的布局

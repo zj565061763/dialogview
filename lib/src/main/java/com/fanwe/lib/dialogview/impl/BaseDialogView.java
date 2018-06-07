@@ -23,7 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-public class BaseDialogView extends FrameLayout implements View.OnClickListener
+import com.fanwe.lib.dialogview.DialogView;
+
+public class BaseDialogView extends FrameLayout implements DialogView, View.OnClickListener
 {
     public BaseDialogView(Context context)
     {
@@ -79,5 +81,11 @@ public class BaseDialogView extends FrameLayout implements View.OnClickListener
         int paddingBottom = view.getPaddingBottom();
         view.setBackgroundDrawable(drawable);
         view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+    }
+
+    @Override
+    public void dismiss()
+    {
+
     }
 }
