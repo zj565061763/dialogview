@@ -109,11 +109,23 @@ public interface ConfirmView extends DialogView
 
     abstract class Callback
     {
+        /**
+         * 取消按钮被点击
+         *
+         * @param v
+         * @param confirmView
+         */
         public void onClickCancel(View v, ConfirmView confirmView)
         {
             confirmView.dismiss();
         }
 
+        /**
+         * 确定按钮被点击
+         *
+         * @param v
+         * @param confirmView
+         */
         public void onClickConfirm(View v, ConfirmView confirmView)
         {
             confirmView.dismiss();

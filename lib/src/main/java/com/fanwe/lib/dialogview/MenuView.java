@@ -72,11 +72,24 @@ public interface MenuView extends DialogView
 
     abstract class Callback
     {
+        /**
+         * item项被点击
+         *
+         * @param v
+         * @param index
+         * @param menuView
+         */
         public void onClickItem(View v, int index, MenuView menuView)
         {
             menuView.dismiss();
         }
 
+        /**
+         * 取消按钮被点击
+         *
+         * @param v
+         * @param menuView
+         */
         public void onClickCancel(View v, MenuView menuView)
         {
             menuView.dismiss();
