@@ -189,10 +189,14 @@ public class FConfirmView extends BaseDialogView implements ConfirmView
         {
             if (mCallback != null)
                 mCallback.onClickConfirm(v, this);
+            else
+                dismiss();
         } else if (v == tv_cancel)
         {
             if (mCallback != null)
                 mCallback.onClickCancel(v, this);
+            else
+                dismiss();
         }
     }
 
