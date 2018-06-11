@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.fanwe.lib.dialoger.animator.ScaleXYCreater;
 import com.fanwe.lib.dialogview.ConfirmView;
 import com.fanwe.lib.dialogview.MenuView;
 import com.fanwe.lib.dialogview.impl.FConfirmView;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         super.onClickConfirm(v, confirmView);
                     }
                 });
+
+                confirmView.getDialoger().setAnimatorCreater(new ScaleXYCreater());
                 confirmView.getDialoger().show();
 
                 break;
