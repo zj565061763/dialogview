@@ -95,6 +95,7 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
         {
             mDialoger = new FDialoger((Activity) getContext());
             mDialoger.setContentView(this);
+            mDialoger.setCanceledOnTouchOutside(false);
         }
         return mDialoger;
     }
