@@ -81,7 +81,7 @@ public interface MenuView extends DialogView
          */
         public void onClickItem(View v, int index, MenuView menuView)
         {
-            menuView.dismiss();
+            menuView.getDialoger().dismiss();
         }
 
         /**
@@ -92,7 +92,7 @@ public interface MenuView extends DialogView
          */
         public void onClickCancel(View v, MenuView menuView)
         {
-            menuView.dismiss();
+            menuView.getDialoger().dismiss();
         }
     }
 }

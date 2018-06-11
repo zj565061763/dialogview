@@ -15,15 +15,17 @@
  */
 package com.fanwe.lib.dialogview.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.FrameLayout;
 
+import com.fanwe.lib.dialoger.Dialoger;
+import com.fanwe.lib.dialoger.impl.FDialoger;
 import com.fanwe.lib.dialogview.DialogView;
 
 public class BaseDialogView extends FrameLayout implements DialogView, View.OnClickListener
@@ -45,6 +47,8 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
         super(context, attrs, defStyleAttr);
         init();
     }
+
+    private Dialoger mDialoger;
 
     private void init()
     {
@@ -85,10 +89,13 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
     }
 
     @Override
-    public void dismiss()
+    public Dialoger getDialoger()
     {
-        final ViewParent parent = getParent();
-        if (parent instanceof ViewParent)
-            ((ViewGroup) parent).removeView(this);
+        if (mDialoger == null)
+        {
+            mDialoger = new FDialoger((Activity) getContext());
+            mDialoger.setContentView(this);
+        }
+        return mDialoger;
     }
 }

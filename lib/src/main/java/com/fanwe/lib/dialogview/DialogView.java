@@ -1,9 +1,8 @@
 package com.fanwe.lib.dialogview;
 
+import com.fanwe.lib.dialoger.Dialoger;
+
 public interface DialogView
 {
-    /**
-     * 关闭
-     */
-    void dismiss();
+    Dialoger getDialoger();
 }

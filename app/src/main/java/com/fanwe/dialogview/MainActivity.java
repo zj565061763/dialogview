@@ -6,8 +6,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.fanwe.lib.dialoger.Dialoger;
-import com.fanwe.lib.dialoger.impl.FDialoger;
 import com.fanwe.lib.dialogview.ConfirmView;
 import com.fanwe.lib.dialogview.MenuView;
 import com.fanwe.lib.dialogview.impl.FConfirmView;
@@ -28,13 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v)
     {
-        final Dialoger dialoger = new FDialoger(this);
-
         switch (v.getId())
         {
             case R.id.btn_confirm:
 
-                final FConfirmView confirmView = new FConfirmView(this).setCallback(new ConfirmView.Callback()
+                final FConfirmView confirmView = new FConfirmView(this);
+                confirmView.setCallback(new ConfirmView.Callback()
                 {
                     @Override
                     public void onClickCancel(View v, ConfirmView confirmView)
@@ -50,8 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         super.onClickConfirm(v, confirmView);
                     }
                 });
-                dialoger.setContentView(confirmView);
-                dialoger.show();
+                confirmView.getDialoger().show();
 
                 break;
             case R.id.btn_menu:
@@ -74,17 +70,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 super.onClickCancel(v, menuView);
                             }
                         });
-                dialoger.setContentView(menuView);
-                dialoger.setPadding(0, 0, 0, 0);
-                dialoger.setGravity(Gravity.BOTTOM);
-                dialoger.show();
+
+                menuView.getDialoger().setPadding(0, 0, 0, 0);
+                menuView.getDialoger().setGravity(Gravity.BOTTOM);
+                menuView.getDialoger().show();
 
                 break;
             case R.id.btn_progress:
 
                 final FProgressView progressView = new FProgressView(this).setTextMsg("加载中...");
-                dialoger.setContentView(progressView);
-                dialoger.show();
+                progressView.getDialoger().show();
 
                 break;
         }
