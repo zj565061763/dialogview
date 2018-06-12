@@ -60,6 +60,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
 
         getDialoger().setPadding(0, 0, 0, 0);
         getDialoger().setGravity(Gravity.BOTTOM);
+        getDialoger().setCanceledOnTouchOutside(true);
     }
 
     @Override
