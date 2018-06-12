@@ -15,45 +15,28 @@
  */
 package com.fanwe.lib.dialogview.impl;
 
-import android.content.Context;
+import android.app.Activity;
 import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.fanwe.lib.dialogview.ProgressView;
+import com.fanwe.lib.dialogview.DialogProgressView;
 import com.fanwe.lib.dialogview.R;
 
 /**
  * 带环形进度条，和信息提示
  */
-public class FProgressView extends BaseDialogView implements ProgressView
+public class FDialogProgressView extends BaseDialogView implements DialogProgressView
 {
-    public FProgressView(Context context)
-    {
-        super(context);
-        init();
-    }
-
-    public FProgressView(Context context, AttributeSet attrs)
-    {
-        super(context, attrs);
-        init();
-    }
-
-    public FProgressView(Context context, AttributeSet attrs, int defStyleAttr)
-    {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
     public TextView tv_msg;
     public ProgressBar pb_progress;
 
-    private void init()
+    public FDialogProgressView(Activity activity)
     {
+        super(activity);
+
         setContentView(R.layout.lib_dialogview_view_progress);
         tv_msg = findViewById(R.id.tv_msg);
         pb_progress = findViewById(R.id.pb_progress);
@@ -63,7 +46,7 @@ public class FProgressView extends BaseDialogView implements ProgressView
     }
 
     @Override
-    public FProgressView setTextMsg(String text)
+    public DialogProgressView setTextMsg(String text)
     {
         if (TextUtils.isEmpty(text))
         {

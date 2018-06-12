@@ -20,7 +20,7 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-public interface MenuView extends DialogView
+public interface DialogMenuView extends DialogView
 {
     /**
      * 设置标题文字
@@ -28,7 +28,7 @@ public interface MenuView extends DialogView
      * @param text
      * @return
      */
-    MenuView setTextTitle(String text);
+    DialogMenuView setTextTitle(String text);
 
     /**
      * 设置取消文字
@@ -36,7 +36,7 @@ public interface MenuView extends DialogView
      * @param text
      * @return
      */
-    MenuView setTextCancel(String text);
+    DialogMenuView setTextCancel(String text);
 
     /**
      * 设置回调
@@ -44,7 +44,7 @@ public interface MenuView extends DialogView
      * @param callback
      * @return
      */
-    MenuView setCallback(Callback callback);
+    DialogMenuView setCallback(Callback callback);
 
     /**
      * 设置列表数据
@@ -52,7 +52,7 @@ public interface MenuView extends DialogView
      * @param objects
      * @return
      */
-    MenuView setItems(Object... objects);
+    DialogMenuView setItems(Object... objects);
 
     /**
      * 设置列表数据
@@ -60,7 +60,7 @@ public interface MenuView extends DialogView
      * @param listObject
      * @return
      */
-    MenuView setItems(List<Object> listObject);
+    DialogMenuView setItems(List<Object> listObject);
 
     /**
      * 设置适配器
@@ -68,7 +68,7 @@ public interface MenuView extends DialogView
      * @param adapter
      * @return
      */
-    MenuView setAdapter(BaseAdapter adapter);
+    DialogMenuView setAdapter(BaseAdapter adapter);
 
     abstract class Callback
     {
@@ -77,22 +77,22 @@ public interface MenuView extends DialogView
          *
          * @param v
          * @param index
-         * @param menuView
+         * @param view
          */
-        public void onClickItem(View v, int index, MenuView menuView)
+        public void onClickItem(View v, int index, DialogMenuView view)
         {
-            menuView.getDialoger().dismiss();
+            view.getDialoger().dismiss();
         }
 
         /**
          * 取消按钮被点击
          *
          * @param v
-         * @param menuView
+         * @param view
          */
-        public void onClickCancel(View v, MenuView menuView)
+        public void onClickCancel(View v, DialogMenuView view)
         {
-            menuView.getDialoger().dismiss();
+            view.getDialoger().dismiss();
         }
     }
 }

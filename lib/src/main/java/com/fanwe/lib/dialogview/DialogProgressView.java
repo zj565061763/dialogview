@@ -15,7 +15,7 @@
  */
 package com.fanwe.lib.dialogview;
 
-public interface ProgressView extends DialogView
+public interface DialogProgressView extends DialogView
 {
-    ProgressView setTextMsg(String text);
+    DialogProgressView setTextMsg(String text);
 }

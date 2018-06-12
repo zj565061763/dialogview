@@ -2,14 +2,14 @@
 封装了一些常用的窗口中用到的view
 
 # Gradle
-`implementation 'com.fanwe.android:dialogview:1.0.0-beta4'`
+`implementation 'com.fanwe.android:dialogview:1.0.0-beta5'`
 
 # 效果
 ![](http://thumbsnap.com/i/cjtGSvkp.gif?0606)
 
-# ConfirmView
+# DialogConfirmView
 ```java
-public interface ConfirmView extends DialogView
+public interface DialogConfirmView extends DialogView
 {
     /**
      * 设置自定义View，替换掉中间内容部分的布局
@@ -17,7 +17,7 @@ public interface ConfirmView extends DialogView
      * @param layoutId
      * @return
      */
-    ConfirmView setCustomView(int layoutId);
+    DialogConfirmView setCustomView(int layoutId);
 
     /**
      * 设置自定义View，替换掉中间内容部分的布局
@@ -25,7 +25,7 @@ public interface ConfirmView extends DialogView
      * @param view
      * @return
      */
-    ConfirmView setCustomView(View view);
+    DialogConfirmView setCustomView(View view);
 
     /**
      * 设置回调
@@ -33,7 +33,7 @@ public interface ConfirmView extends DialogView
      * @param callback
      * @return
      */
-    ConfirmView setCallback(Callback callback);
+    DialogConfirmView setCallback(Callback callback);
 
     /**
      * 设置标题文字
@@ -41,7 +41,7 @@ public interface ConfirmView extends DialogView
      * @param text
      * @return
      */
-    ConfirmView setTextTitle(String text);
+    DialogConfirmView setTextTitle(String text);
 
     /**
      * 设置内容文字
@@ -49,7 +49,7 @@ public interface ConfirmView extends DialogView
      * @param text
      * @return
      */
-    ConfirmView setTextContent(String text);
+    DialogConfirmView setTextContent(String text);
 
     /**
      * 设置取消按钮文字
@@ -57,7 +57,7 @@ public interface ConfirmView extends DialogView
      * @param text
      * @return
      */
-    ConfirmView setTextCancel(String text);
+    DialogConfirmView setTextCancel(String text);
 
     /**
      * 设置确定按钮文字
@@ -65,7 +65,7 @@ public interface ConfirmView extends DialogView
      * @param text
      * @return
      */
-    ConfirmView setTextConfirm(String text);
+    DialogConfirmView setTextConfirm(String text);
 
     /**
      * 设置标题文字颜色
@@ -73,7 +73,7 @@ public interface ConfirmView extends DialogView
      * @param color
      * @return
      */
-    ConfirmView setTextColorTitle(int color);
+    DialogConfirmView setTextColorTitle(int color);
 
     /**
      * 设置内容文字颜色
@@ -81,7 +81,7 @@ public interface ConfirmView extends DialogView
      * @param color
      * @return
      */
-    ConfirmView setTextColorContent(int color);
+    DialogConfirmView setTextColorContent(int color);
 
     /**
      * 设置取消文字颜色
@@ -89,7 +89,7 @@ public interface ConfirmView extends DialogView
      * @param color
      * @return
      */
-    ConfirmView setTextColorCancel(int color);
+    DialogConfirmView setTextColorCancel(int color);
 
     /**
      * 设置确认文字颜色
@@ -97,7 +97,7 @@ public interface ConfirmView extends DialogView
      * @param color
      * @return
      */
-    ConfirmView setTextColorConfirm(int color);
+    DialogConfirmView setTextColorConfirm(int color);
 
     abstract class Callback
     {
@@ -105,30 +105,30 @@ public interface ConfirmView extends DialogView
          * 取消按钮被点击
          *
          * @param v
-         * @param confirmView
+         * @param view
          */
-        public void onClickCancel(View v, ConfirmView confirmView)
+        public void onClickCancel(View v, DialogConfirmView view)
         {
-            confirmView.dismiss();
+            view.getDialoger().dismiss();
         }
 
         /**
          * 确定按钮被点击
          *
          * @param v
-         * @param confirmView
+         * @param view
          */
-        public void onClickConfirm(View v, ConfirmView confirmView)
+        public void onClickConfirm(View v, DialogConfirmView view)
         {
-            confirmView.dismiss();
+            view.getDialoger().dismiss();
         }
     }
 }
 ```
 
-# MenuView
+# DialogMenuView
 ```java
-public interface MenuView extends DialogView
+public interface DialogMenuView extends DialogView
 {
     /**
      * 设置标题文字
@@ -136,7 +136,7 @@ public interface MenuView extends DialogView
      * @param text
      * @return
      */
-    MenuView setTextTitle(String text);
+    DialogMenuView setTextTitle(String text);
 
     /**
      * 设置取消文字
@@ -144,7 +144,7 @@ public interface MenuView extends DialogView
      * @param text
      * @return
      */
-    MenuView setTextCancel(String text);
+    DialogMenuView setTextCancel(String text);
 
     /**
      * 设置回调
@@ -152,7 +152,7 @@ public interface MenuView extends DialogView
      * @param callback
      * @return
      */
-    MenuView setCallback(Callback callback);
+    DialogMenuView setCallback(Callback callback);
 
     /**
      * 设置列表数据
@@ -160,7 +160,7 @@ public interface MenuView extends DialogView
      * @param objects
      * @return
      */
-    MenuView setItems(Object... objects);
+    DialogMenuView setItems(Object... objects);
 
     /**
      * 设置列表数据
@@ -168,7 +168,7 @@ public interface MenuView extends DialogView
      * @param listObject
      * @return
      */
-    MenuView setItems(List<Object> listObject);
+    DialogMenuView setItems(List<Object> listObject);
 
     /**
      * 设置适配器
@@ -176,7 +176,7 @@ public interface MenuView extends DialogView
      * @param adapter
      * @return
      */
-    MenuView setAdapter(BaseAdapter adapter);
+    DialogMenuView setAdapter(BaseAdapter adapter);
 
     abstract class Callback
     {
@@ -185,22 +185,22 @@ public interface MenuView extends DialogView
          *
          * @param v
          * @param index
-         * @param menuView
+         * @param view
          */
-        public void onClickItem(View v, int index, MenuView menuView)
+        public void onClickItem(View v, int index, DialogMenuView view)
         {
-            menuView.dismiss();
+            view.getDialoger().dismiss();
         }
 
         /**
          * 取消按钮被点击
          *
          * @param v
-         * @param menuView
+         * @param view
          */
-        public void onClickCancel(View v, MenuView menuView)
+        public void onClickCancel(View v, DialogMenuView view)
         {
-            menuView.dismiss();
+            view.getDialoger().dismiss();
         }
     }
 }

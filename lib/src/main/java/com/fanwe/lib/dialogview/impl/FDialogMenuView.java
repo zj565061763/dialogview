@@ -15,9 +15,9 @@
  */
 package com.fanwe.lib.dialogview.impl;
 
-import android.content.Context;
+import android.app.Activity;
 import android.text.TextUtils;
-import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +27,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.fanwe.lib.dialogview.MenuView;
+import com.fanwe.lib.dialogview.DialogMenuView;
 import com.fanwe.lib.dialogview.R;
 
 import java.util.Arrays;
@@ -36,26 +36,8 @@ import java.util.List;
 /**
  * 带取消按钮的菜单
  */
-public class FMenuView extends BaseDialogView implements MenuView
+public class FDialogMenuView extends BaseDialogView implements DialogMenuView
 {
-    public FMenuView(Context context)
-    {
-        super(context);
-        init();
-    }
-
-    public FMenuView(Context context, AttributeSet attrs)
-    {
-        super(context, attrs);
-        init();
-    }
-
-    public FMenuView(Context context, AttributeSet attrs, int defStyleAttr)
-    {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
     public TextView tv_title;
     public TextView tv_cancel;
     public ListView lv_content;
@@ -64,8 +46,10 @@ public class FMenuView extends BaseDialogView implements MenuView
 
     private Callback mCallback;
 
-    private void init()
+    public FDialogMenuView(Activity activity)
     {
+        super(activity);
+
         setContentView(R.layout.lib_dialogview_view_menu);
         tv_title = findViewById(R.id.tv_title);
         tv_cancel = findViewById(R.id.tv_cancel);
@@ -73,12 +57,13 @@ public class FMenuView extends BaseDialogView implements MenuView
 
         tv_cancel.setOnClickListener(this);
         setTextTitle(null);
+
+        getDialoger().setPadding(0, 0, 0, 0);
+        getDialoger().setGravity(Gravity.BOTTOM);
     }
 
-    //---------- FIDialogMenu implements start ----------
-
     @Override
-    public FMenuView setTextTitle(String text)
+    public DialogMenuView setTextTitle(String text)
     {
         if (TextUtils.isEmpty(text))
         {
@@ -92,7 +77,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     }
 
     @Override
-    public FMenuView setTextCancel(String text)
+    public DialogMenuView setTextCancel(String text)
     {
         if (TextUtils.isEmpty(text))
         {
@@ -106,14 +91,14 @@ public class FMenuView extends BaseDialogView implements MenuView
     }
 
     @Override
-    public FMenuView setCallback(Callback callback)
+    public DialogMenuView setCallback(Callback callback)
     {
         mCallback = callback;
         return this;
     }
 
     @Override
-    public FMenuView setItems(Object... objects)
+    public DialogMenuView setItems(Object... objects)
     {
         List<Object> listObject = null;
         if (objects != null)
@@ -125,7 +110,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     }
 
     @Override
-    public FMenuView setItems(List<Object> listObject)
+    public DialogMenuView setItems(List<Object> listObject)
     {
         mListModel = listObject;
         setAdapter(getAdapter());
@@ -133,7 +118,7 @@ public class FMenuView extends BaseDialogView implements MenuView
     }
 
     @Override
-    public FMenuView setAdapter(BaseAdapter adapter)
+    public DialogMenuView setAdapter(BaseAdapter adapter)
     {
         lv_content.setAdapter(adapter);
         lv_content.setOnItemClickListener(new OnItemClickListener()
@@ -142,15 +127,13 @@ public class FMenuView extends BaseDialogView implements MenuView
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 if (mCallback != null)
-                    mCallback.onClickItem(view, (int) id, FMenuView.this);
+                    mCallback.onClickItem(view, (int) id, FDialogMenuView.this);
                 else
                     getDialoger().dismiss();
             }
         });
         return this;
     }
-
-    //---------- FIDialogMenu implements end ----------
 
     protected BaseAdapter getAdapter()
     {

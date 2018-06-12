@@ -7,11 +7,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.fanwe.lib.dialoger.animator.ScaleXYCreater;
-import com.fanwe.lib.dialogview.ConfirmView;
-import com.fanwe.lib.dialogview.MenuView;
-import com.fanwe.lib.dialogview.impl.FConfirmView;
-import com.fanwe.lib.dialogview.impl.FMenuView;
-import com.fanwe.lib.dialogview.impl.FProgressView;
+import com.fanwe.lib.dialogview.DialogConfirmView;
+import com.fanwe.lib.dialogview.DialogMenuView;
+import com.fanwe.lib.dialogview.DialogProgressView;
+import com.fanwe.lib.dialogview.impl.FDialogConfirmView;
+import com.fanwe.lib.dialogview.impl.FDialogMenuView;
+import com.fanwe.lib.dialogview.impl.FDialogProgressView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -31,21 +32,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.btn_confirm:
 
-                final FConfirmView confirmView = new FConfirmView(this);
-                confirmView.setCallback(new ConfirmView.Callback()
+                final DialogConfirmView confirmView = new FDialogConfirmView(this);
+                confirmView.setCallback(new DialogConfirmView.Callback()
                 {
                     @Override
-                    public void onClickCancel(View v, ConfirmView confirmView)
+                    public void onClickCancel(View v, DialogConfirmView view)
                     {
                         Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
-                        super.onClickCancel(v, confirmView);
+                        super.onClickCancel(v, view);
                     }
 
                     @Override
-                    public void onClickConfirm(View v, ConfirmView confirmView)
+                    public void onClickConfirm(View v, DialogConfirmView view)
                     {
                         Toast.makeText(MainActivity.this, "confirm", Toast.LENGTH_SHORT).show();
-                        super.onClickConfirm(v, confirmView);
+                        super.onClickConfirm(v, view);
                     }
                 });
 
@@ -55,24 +56,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_menu:
 
-                final FMenuView menuView = new FMenuView(this)
-                        .setItems("0", "1", "2")
-                        .setCallback(new MenuView.Callback()
-                        {
-                            @Override
-                            public void onClickItem(View v, int index, MenuView menuView)
-                            {
-                                Toast.makeText(MainActivity.this, String.valueOf(index), Toast.LENGTH_SHORT).show();
-                                super.onClickItem(v, index, menuView);
-                            }
+                final DialogMenuView menuView = new FDialogMenuView(this);
+                menuView.setItems("0", "1", "2").setCallback(new DialogMenuView.Callback()
+                {
+                    @Override
+                    public void onClickItem(View v, int index, DialogMenuView view)
+                    {
+                        Toast.makeText(MainActivity.this, String.valueOf(index), Toast.LENGTH_SHORT).show();
+                        super.onClickItem(v, index, view);
+                    }
 
-                            @Override
-                            public void onClickCancel(View v, MenuView menuView)
-                            {
-                                Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
-                                super.onClickCancel(v, menuView);
-                            }
-                        });
+                    @Override
+                    public void onClickCancel(View v, DialogMenuView view)
+                    {
+                        Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
+                        super.onClickCancel(v, view);
+                    }
+                });
 
                 menuView.getDialoger().setPadding(0, 0, 0, 0);
                 menuView.getDialoger().setGravity(Gravity.BOTTOM);
@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_progress:
 
-                final FProgressView progressView = new FProgressView(this).setTextMsg("加载中...");
+                final DialogProgressView progressView = new FDialogProgressView(this);
+                progressView.setTextMsg("加载中...");
                 progressView.getDialoger().show();
 
                 break;

@@ -16,9 +16,7 @@
 package com.fanwe.lib.dialogview.impl;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,28 +28,12 @@ import com.fanwe.lib.dialogview.DialogView;
 
 public class BaseDialogView extends FrameLayout implements DialogView, View.OnClickListener
 {
-    public BaseDialogView(Context context)
-    {
-        super(context);
-        init();
-    }
-
-    public BaseDialogView(Context context, AttributeSet attrs)
-    {
-        super(context, attrs);
-        init();
-    }
-
-    public BaseDialogView(Context context, AttributeSet attrs, int defStyleAttr)
-    {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
     private Dialoger mDialoger;
 
-    private void init()
+    public BaseDialogView(Activity activity)
     {
+        super(activity);
+
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
     }
