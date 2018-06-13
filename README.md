@@ -2,7 +2,10 @@
 封装了一些常用的窗口中用到的view
 
 # Gradle
-`implementation 'com.fanwe.android:dialogview:1.0.0-beta9'`
+```
+implementation 'com.fanwe.android:dialogview:1.0.0-beta9'
+implementation 'com.fanwe.android:dialoger:+'
+```
 
 # 效果
 ![](http://thumbsnap.com/i/cjtGSvkp.gif?0606)
