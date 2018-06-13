@@ -11,7 +11,7 @@
         style="@style/lib_dialogview_view_menu_text_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/lib_dialogview_view_menu_height_title"
-        android:background="@drawable/lib_dialog_bg_menu_title"
+        android:background="@drawable/lib_dialogview_bg_menu_title"
         android:gravity="center"
         android:text="标题" />
 
@@ -21,7 +21,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#FFFFFF"
-        android:divider="@drawable/lib_dialog_stroke"
+        android:divider="@drawable/lib_dialogview_stroke"
         android:dividerHeight="@dimen/lib_dialogview_stroke"></ListView>
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/lib_dialogview_view_menu_height_cancel"
         android:layout_marginTop="@dimen/lib_dialogview_view_menu_margin_top_cancel"
-        android:background="@drawable/lib_dialog_sel_bg_menu_item"
+        android:background="@drawable/lib_dialogview_sel_bg_menu_item"
         android:gravity="center" />
 
 </LinearLayout>

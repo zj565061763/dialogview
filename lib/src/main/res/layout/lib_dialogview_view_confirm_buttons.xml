@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:divider="@drawable/lib_dialog_stroke"
+    android:divider="@drawable/lib_dialogview_stroke"
     android:orientation="horizontal"
     android:showDividers="middle">
 
@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/lib_dialogview_height_button"
         android:layout_weight="1"
-        android:background="@drawable/lib_dialog_sel_bg_button_bottom_left" />
+        android:background="@drawable/lib_dialogview_sel_bg_button_bottom_left" />
 
     <TextView
         android:id="@+id/tv_confirm"
@@ -20,5 +20,5 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/lib_dialogview_height_button"
         android:layout_weight="1"
-        android:background="@drawable/lib_dialog_sel_bg_button_bottom_right" />
+        android:background="@drawable/lib_dialogview_sel_bg_button_bottom_right" />
 </LinearLayout>

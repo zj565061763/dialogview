@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/lib_dialog_bg_dialog"
+    android:background="@drawable/lib_dialogview_bg_dialog"
     android:orientation="vertical">
 
     <TextView
@@ -37,7 +37,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/lib_dialogview_stroke"
-        android:background="@drawable/lib_dialog_stroke" />
+        android:background="@drawable/lib_dialogview_stroke" />
 
     <include layout="@layout/lib_dialogview_view_confirm_buttons" />
 

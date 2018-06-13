@@ -187,14 +187,14 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
     {
         if (tv_cancel.getVisibility() == View.VISIBLE && tv_confirm.getVisibility() == View.VISIBLE)
         {
-            setBackgroundDrawable(tv_cancel, getContext().getResources().getDrawable(R.drawable.lib_dialog_sel_bg_button_bottom_left));
-            setBackgroundDrawable(tv_confirm, getContext().getResources().getDrawable(R.drawable.lib_dialog_sel_bg_button_bottom_right));
+            setBackgroundDrawable(tv_cancel, getContext().getResources().getDrawable(R.drawable.lib_dialogview_sel_bg_button_bottom_left));
+            setBackgroundDrawable(tv_confirm, getContext().getResources().getDrawable(R.drawable.lib_dialogview_sel_bg_button_bottom_right));
         } else if (tv_cancel.getVisibility() == View.VISIBLE)
         {
-            setBackgroundDrawable(tv_cancel, getContext().getResources().getDrawable(R.drawable.lib_dialog_sel_bg_button_bottom_single));
+            setBackgroundDrawable(tv_cancel, getContext().getResources().getDrawable(R.drawable.lib_dialogview_sel_bg_button_bottom_single));
         } else if (tv_confirm.getVisibility() == View.VISIBLE)
         {
-            setBackgroundDrawable(tv_confirm, getContext().getResources().getDrawable(R.drawable.lib_dialog_sel_bg_button_bottom_single));
+            setBackgroundDrawable(tv_confirm, getContext().getResources().getDrawable(R.drawable.lib_dialogview_sel_bg_button_bottom_single));
         }
     }
 }
