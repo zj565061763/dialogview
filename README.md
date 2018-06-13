@@ -8,6 +8,7 @@ implementation 'com.fanwe.android:dialogview:1.0.0'
 // 依赖以下库
 implementation 'com.fanwe.android:dialoger:+'
 ```
+[dialoger](https://github.com/zj565061763/dialoger)
 
 # 效果
 ![](http://thumbsnap.com/i/cjtGSvkp.gif?0606)
