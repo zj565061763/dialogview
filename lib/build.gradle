@@ -8,7 +8,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 20180613
-        versionName "1.0.0-beta8"
+        versionName "1.0.0-beta9"
     }
 
     buildTypes {
@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    api 'com.fanwe.android:dialoger:1.0.1-rc2'
+    compileOnly 'com.fanwe.android:dialoger:+'
 }
 
 
@@ -29,7 +29,7 @@ publish {
     groupId = 'com.fanwe.android'
 
     artifactId = 'dialogview'
-    publishVersion = '1.0.0-beta8'
+    publishVersion = '1.0.0-beta9'
     desc = 'android dialog view library'
     website = 'https://github.com/zj565061763/dialogview'
 }
