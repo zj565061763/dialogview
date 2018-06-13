@@ -3,7 +3,9 @@
 
 # Gradle
 ```
-implementation 'com.fanwe.android:dialogview:1.0.0-beta9'
+implementation 'com.fanwe.android:dialogview:1.0.0'
+
+// 依赖以下库
 implementation 'com.fanwe.android:dialoger:+'
 ```
 
