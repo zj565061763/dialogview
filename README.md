@@ -2,7 +2,6 @@
 封装了一些常用的窗口中用到的view
 
 # Gradle
-[![](https://jitpack.io/v/zj565061763/dialogview.svg)](https://jitpack.io/#zj565061763/dialogview)
 ```
 implementation 'com.fanwe.android:dialogview:1.0.2'
 
