@@ -4,8 +4,10 @@
 # Gradle
 [![](https://jitpack.io/v/zj565061763/dialogview.svg)](https://jitpack.io/#zj565061763/dialogview)
 ```
+implementation 'com.fanwe.android:dialogview:1.0.2'
+
 // 依赖以下库
-implementation 'com.github.zj565061763:dialoger:+'
+implementation 'com.fanwe.android:dialoger:+'
 ```
 [dialoger](https://github.com/zj565061763/dialoger)
 
