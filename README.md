@@ -2,11 +2,10 @@
 封装了一些常用的窗口中用到的view
 
 # Gradle
+[![](https://jitpack.io/v/zj565061763/dialogview.svg)](https://jitpack.io/#zj565061763/dialogview)
 ```
-implementation 'com.fanwe.android:dialogview:1.0.2'
-
 // 依赖以下库
-implementation 'com.fanwe.android:dialoger:+'
+implementation 'com.github.zj565061763:dialoger:+'
 ```
 [dialoger](https://github.com/zj565061763/dialoger)
 
