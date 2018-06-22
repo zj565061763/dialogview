@@ -3,10 +3,8 @@
 
 # Gradle
 [![](https://jitpack.io/v/zj565061763/dialogview.svg)](https://jitpack.io/#zj565061763/dialogview)
-```
-// 依赖以下库
-implementation 'com.github.zj565061763:dialoger:+'
-```
+本库依赖以下库，需要一起引入：
+<br>
 [dialoger](https://github.com/zj565061763/dialoger)
 
 # 效果
