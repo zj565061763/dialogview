@@ -6,13 +6,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.fanwe.lib.dialoger.animator.ScaleXYCreater;
 import com.fanwe.lib.dialogview.DialogConfirmView;
 import com.fanwe.lib.dialogview.DialogMenuView;
 import com.fanwe.lib.dialogview.DialogProgressView;
 import com.fanwe.lib.dialogview.impl.FDialogConfirmView;
 import com.fanwe.lib.dialogview.impl.FDialogMenuView;
 import com.fanwe.lib.dialogview.impl.FDialogProgressView;
+import com.sd.lib.dialoger.animator.ScaleXYCreater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {

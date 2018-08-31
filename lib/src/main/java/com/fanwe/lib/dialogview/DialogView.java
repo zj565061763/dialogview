@@ -15,7 +15,7 @@
  */
 package com.fanwe.lib.dialogview;
 
-import com.fanwe.lib.dialoger.Dialoger;
+import com.sd.lib.dialoger.Dialoger;
 
 public interface DialogView
 {

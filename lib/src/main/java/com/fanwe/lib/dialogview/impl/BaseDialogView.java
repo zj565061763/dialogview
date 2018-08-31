@@ -22,9 +22,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.fanwe.lib.dialoger.Dialoger;
-import com.fanwe.lib.dialoger.impl.FDialoger;
 import com.fanwe.lib.dialogview.DialogView;
+import com.sd.lib.dialoger.Dialoger;
+import com.sd.lib.dialoger.impl.FDialoger;
 
 public class BaseDialogView extends FrameLayout implements DialogView, View.OnClickListener
 {

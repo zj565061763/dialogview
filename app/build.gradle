@@ -20,6 +20,6 @@ android {
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.fanwe.android:dialoger:1.0.1-rc7'
+    implementation 'com.github.zj565061763:dialoger:1.1.0'
     implementation project(':lib')
 }
