@@ -1,0 +1,53 @@
+<resources>
+
+    <!--          string          -->
+
+    <string name="lib_dialogview_view_menu_text_cancel">取消</string>
+
+    <!--          color          -->
+
+    <color name="lib_dialogview_view_menu_text_title">#999999</color>
+    <color name="lib_dialogview_view_menu_text_cancel">#666666</color>
+    <color name="lib_dialogview_view_menu_text_item">#333333</color>
+
+    <!--          dimen          -->
+
+    <!-- 标题字体大小 -->
+    <dimen name="lib_dialogview_view_menu_text_title">12sp</dimen>
+    <!-- 取消字体大小 -->
+    <dimen name="lib_dialogview_view_menu_text_cancel">14sp</dimen>
+    <!-- item字体大小 -->
+    <dimen name="lib_dialogview_view_menu_text_item">14sp</dimen>
+
+    <!-- 标题高度 -->
+    <dimen name="lib_dialogview_view_menu_height_title">40dp</dimen>
+    <!-- 取消高度 -->
+    <dimen name="lib_dialogview_view_menu_height_cancel">40dp</dimen>
+    <!-- item高度 -->
+    <dimen name="lib_dialogview_view_menu_height_item">40dp</dimen>
+
+    <!-- 取消顶部间距-->
+    <dimen name="lib_dialogview_view_menu_margin_top_cancel">10dp</dimen>
+
+    <!--          style          -->
+
+    <style name="lib_dialogview_view_menu_text_title">
+        <item name="android:textColor">@color/lib_dialogview_view_menu_text_title</item>
+        <item name="android:textSize">@dimen/lib_dialogview_view_menu_text_title</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="lib_dialogview_view_menu_text_cancel">
+        <item name="android:text">@string/lib_dialogview_view_menu_text_cancel</item>
+        <item name="android:textColor">@color/lib_dialogview_view_menu_text_cancel</item>
+        <item name="android:textSize">@dimen/lib_dialogview_view_menu_text_cancel</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="lib_dialogview_view_menu_text_item">
+        <item name="android:textColor">@color/lib_dialogview_view_menu_text_item</item>
+        <item name="android:textSize">@dimen/lib_dialogview_view_menu_text_item</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+</resources>

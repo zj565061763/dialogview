@@ -36,7 +36,6 @@
     <!-- 内容底部间距 -->
     <dimen name="lib_dialogview_view_confirm_margin_bottom_content">15dp</dimen>
 
-
     <!--          style          -->
 
     <style name="lib_dialogview_view_confirm_text_title">

@@ -1,3 +1,7 @@
 <resources>
+
+    <!--          string          -->
+
     <string name="lib_dialogview_view_progress_text_loading">加载中...</string>
+
 </resources>
