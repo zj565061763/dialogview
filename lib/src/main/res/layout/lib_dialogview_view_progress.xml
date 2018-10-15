@@ -22,7 +22,6 @@
         android:layout_marginLeft="10dp"
         android:text="@string/lib_dialogview_view_progress_text_loading"
         android:textColor="@android:color/white"
-        android:textSize="12sp"
-        android:visibility="gone" />
+        android:textSize="12sp" />
 
 </LinearLayout>

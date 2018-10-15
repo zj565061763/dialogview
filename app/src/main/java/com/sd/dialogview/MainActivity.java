@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_progress:
 
                 final DialogProgressView progressView = new FDialogProgressView(this);
-                progressView.setTextMsg("加载中...");
                 progressView.getDialoger().show();
 
                 break;
