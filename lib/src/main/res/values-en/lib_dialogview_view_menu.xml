@@ -1,0 +1,7 @@
+<resources>
+
+    <!--          string          -->
+
+    <string name="lib_dialogview_view_menu_text_cancel">cancel</string>
+
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+
+    <!--          string          -->
+
+    <string name="lib_dialogview_view_confirm_text_title">tip</string>
+    <string name="lib_dialogview_view_confirm_text_cancel">cancel</string>
+    <string name="lib_dialogview_view_confirm_text_confirm">confirm</string>
+
+</resources>
