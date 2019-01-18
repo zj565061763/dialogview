@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.sd.lib.dialoger.Dialoger;
 import com.sd.lib.dialogview.DialogMenuView;
 import com.sd.lib.dialogview.R;
 
@@ -52,10 +53,15 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
 
         tv_cancel.setOnClickListener(this);
         setTextTitle(null);
+    }
 
-        getDialoger().setPadding(0, 0, 0, 0);
-        getDialoger().setGravity(Gravity.BOTTOM);
-        getDialoger().setCanceledOnTouchOutside(true);
+    @Override
+    protected void initDialog(Dialoger dialog)
+    {
+        super.initDialog(dialog);
+        dialog.setPadding(0, 0, 0, 0);
+        dialog.setGravity(Gravity.BOTTOM);
+        dialog.setCanceledOnTouchOutside(true);
     }
 
     @Override
