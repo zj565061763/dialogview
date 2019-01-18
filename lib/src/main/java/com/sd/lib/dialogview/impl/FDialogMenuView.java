@@ -1,7 +1,8 @@
 package com.sd.lib.dialogview.impl;
 
-import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +32,19 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
 
     private Callback mCallback;
 
-    public FDialogMenuView(Activity activity)
+    public FDialogMenuView(Context context)
     {
-        super(activity);
+        this(context, null);
+    }
 
+    public FDialogMenuView(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+        init();
+    }
+
+    private void init()
+    {
         setContentView(R.layout.lib_dialogview_view_menu);
         tv_title = findViewById(R.id.tv_title);
         tv_cancel = findViewById(R.id.tv_cancel);

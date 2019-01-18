@@ -1,7 +1,9 @@
 package com.sd.lib.dialogview.impl;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +18,24 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
 {
     private Dialoger mDialoger;
 
-    public BaseDialogView(Activity activity)
+    public BaseDialogView(Context context)
     {
-        super(activity);
+        this(context, null);
+    }
 
-        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+    public BaseDialogView(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+        init();
+    }
+
+    private void init()
+    {
+        if (getLayoutParams() == null)
+        {
+            setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
     }
 
     public void setContentView(int layoutId)

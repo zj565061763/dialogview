@@ -1,7 +1,8 @@
 package com.sd.lib.dialogview.impl;
 
-import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -25,10 +26,19 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
 
     private Callback mCallback;
 
-    public FDialogConfirmView(Activity activity)
+    public FDialogConfirmView(Context context)
     {
-        super(activity);
+        this(context, null);
+    }
 
+    public FDialogConfirmView(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+        init();
+    }
+
+    private void init()
+    {
         setContentView(R.layout.lib_dialogview_view_confirm);
         tv_title = findViewById(R.id.tv_title);
         fl_content = findViewById(R.id.fl_content);
