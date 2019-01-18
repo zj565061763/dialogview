@@ -5,11 +5,12 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.FrameLayout;
 
-import com.sd.lib.dialogview.DialogView;
 import com.sd.lib.dialoger.Dialoger;
 import com.sd.lib.dialoger.impl.FDialoger;
+import com.sd.lib.dialogview.DialogView;
 
 public class BaseDialogView extends FrameLayout implements DialogView, View.OnClickListener
 {
@@ -41,20 +42,6 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
 
     }
 
-    protected static void setBackgroundDrawable(View view, Drawable drawable)
-    {
-        if (view == null)
-        {
-            return;
-        }
-        int paddingLeft = view.getPaddingLeft();
-        int paddingTop = view.getPaddingTop();
-        int paddingRight = view.getPaddingRight();
-        int paddingBottom = view.getPaddingBottom();
-        view.setBackgroundDrawable(drawable);
-        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
-    }
-
     @Override
     public Dialoger getDialoger()
     {
@@ -65,5 +52,40 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
             mDialoger.setCanceledOnTouchOutside(false);
         }
         return mDialoger;
+    }
+
+    @Override
+    public void dismiss()
+    {
+        if (mDialoger != null)
+        {
+            mDialoger.dismiss();
+        } else
+        {
+            final ViewParent parent = getParent();
+            if (parent instanceof ViewGroup)
+            {
+                try
+                {
+                    ((ViewGroup) parent).removeView(this);
+                } catch (Exception e)
+                {
+                }
+            }
+        }
+    }
+
+    protected static void setBackgroundDrawable(View view, Drawable drawable)
+    {
+        if (view == null)
+            return;
+
+        final int paddingLeft = view.getPaddingLeft();
+        final int paddingTop = view.getPaddingTop();
+        final int paddingRight = view.getPaddingRight();
+        final int paddingBottom = view.getPaddingBottom();
+
+        view.setBackgroundDrawable(drawable);
+        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
     }
 }

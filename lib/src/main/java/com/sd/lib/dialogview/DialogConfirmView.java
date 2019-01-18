@@ -102,7 +102,7 @@ public interface DialogConfirmView extends DialogView
          */
         public void onClickCancel(View v, DialogConfirmView view)
         {
-            view.getDialoger().dismiss();
+            view.dismiss();
         }
 
         /**
@@ -113,7 +113,7 @@ public interface DialogConfirmView extends DialogView
          */
         public void onClickConfirm(View v, DialogConfirmView view)
         {
-            view.getDialoger().dismiss();
+            view.dismiss();
         }
     }
 }

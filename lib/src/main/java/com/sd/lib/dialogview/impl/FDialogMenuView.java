@@ -115,7 +115,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
                 if (mCallback != null)
                     mCallback.onClickItem(view, (int) id, FDialogMenuView.this);
                 else
-                    getDialoger().dismiss();
+                    dismiss();
             }
         });
         return this;
@@ -187,7 +187,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
             if (mCallback != null)
                 mCallback.onClickCancel(v, this);
             else
-                getDialoger().dismiss();
+                dismiss();
         }
     }
 }

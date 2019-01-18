@@ -158,13 +158,13 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
             if (mCallback != null)
                 mCallback.onClickConfirm(v, this);
             else
-                getDialoger().dismiss();
+                dismiss();
         } else if (v == tv_cancel)
         {
             if (mCallback != null)
                 mCallback.onClickCancel(v, this);
             else
-                getDialoger().dismiss();
+                dismiss();
         }
     }
 

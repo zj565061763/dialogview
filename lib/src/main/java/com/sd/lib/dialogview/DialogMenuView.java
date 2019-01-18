@@ -66,7 +66,7 @@ public interface DialogMenuView extends DialogView
          */
         public void onClickItem(View v, int index, DialogMenuView view)
         {
-            view.getDialoger().dismiss();
+            view.dismiss();
         }
 
         /**
@@ -77,7 +77,7 @@ public interface DialogMenuView extends DialogView
          */
         public void onClickCancel(View v, DialogMenuView view)
         {
-            view.getDialoger().dismiss();
+            view.dismiss();
         }
     }
 }
