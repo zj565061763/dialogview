@@ -3,6 +3,7 @@ package com.sd.lib.dialogview.impl;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -18,6 +19,7 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
 {
     public TextView tv_msg;
     public ProgressBar pb_progress;
+    private boolean mConsumeTouchEvent;
 
     public FDialogProgressView(Context context)
     {
@@ -44,6 +46,13 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
     }
 
     @Override
+    public DialogProgressView setConsumeTouchEvent(boolean consume)
+    {
+        mConsumeTouchEvent = consume;
+        return this;
+    }
+
+    @Override
     public DialogProgressView setTextMsg(String text)
     {
         if (TextUtils.isEmpty(text))
@@ -55,5 +64,16 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
             tv_msg.setText(text);
         }
         return this;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        if (mConsumeTouchEvent)
+        {
+            super.onTouchEvent(event);
+            return true;
+        }
+        return super.onTouchEvent(event);
     }
 }
