@@ -36,8 +36,11 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
         tv_msg = findViewById(R.id.tv_msg);
         pb_progress = findViewById(R.id.pb_progress);
 
-        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+        if (getLayoutParams() == null)
+        {
+            setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
     }
 
     @Override
