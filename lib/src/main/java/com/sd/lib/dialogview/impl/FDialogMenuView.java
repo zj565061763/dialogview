@@ -53,6 +53,12 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
 
         tv_cancel.setOnClickListener(this);
         setTextTitle(null);
+
+        if (getLayoutParams() == null)
+        {
+            setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
     }
 
     @Override

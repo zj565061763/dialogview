@@ -26,16 +26,6 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
     public BaseDialogView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        init();
-    }
-
-    private void init()
-    {
-        if (getLayoutParams() == null)
-        {
-            setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-        }
     }
 
     public void setContentView(int layoutId)
