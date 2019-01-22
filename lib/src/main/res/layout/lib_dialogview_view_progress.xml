@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-        android:text="@string/lib_dialogview_view_progress_text_loading"
         android:textColor="@android:color/white"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:visibility="gone" />
 
 </LinearLayout>
