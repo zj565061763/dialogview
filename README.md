@@ -7,9 +7,6 @@
 本库依赖以下库，需要一起引入：
 <br>
 [dialoger](https://github.com/zj565061763/dialoger)
-```
-implementation 'com.github.zj565061763:dialoger:[1.1.0,)'
-```
 
 # 效果
 ![](http://thumbsnap.com/i/cjtGSvkp.gif?0606)
