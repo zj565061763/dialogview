@@ -4,6 +4,11 @@
 # Gradle
 [![](https://jitpack.io/v/zj565061763/dialogview.svg)](https://jitpack.io/#zj565061763/dialogview)
 
+<br>
+本库依赖以下库，需要一起引入：
+<br>
+[dialoger](https://github.com/zj565061763/dialoger)
+
 # 效果
 ![](http://thumbsnap.com/i/cjtGSvkp.gif?0606)
 
