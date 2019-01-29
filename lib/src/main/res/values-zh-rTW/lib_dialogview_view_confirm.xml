@@ -1,0 +1,9 @@
+<resources>
+
+    <!--          string          -->
+
+    <string name="lib_dialogview_view_confirm_text_title">提示</string>
+    <string name="lib_dialogview_view_confirm_text_cancel">取消</string>
+    <string name="lib_dialogview_view_confirm_text_confirm">確定</string>
+
+</resources>
