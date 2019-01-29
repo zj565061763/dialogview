@@ -16,7 +16,7 @@ import com.sd.lib.dialogview.DialogView;
 
 public class BaseDialogView extends FrameLayout implements DialogView, View.OnClickListener
 {
-    private Dialoger mDialoger;
+    private Dialoger mDialog;
 
     public BaseDialogView(Context context)
     {
@@ -49,13 +49,13 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
     @Override
     public Dialoger getDialoger()
     {
-        if (mDialoger == null)
+        if (mDialog == null)
         {
-            mDialoger = new FDialoger((Activity) getContext());
-            mDialoger.setContentView(this);
-            initDialog(mDialoger);
+            mDialog = new FDialoger((Activity) getContext());
+            mDialog.setContentView(this);
+            initDialog(mDialog);
         }
-        return mDialoger;
+        return mDialog;
     }
 
     protected void initDialog(Dialoger dialog)
@@ -66,9 +66,9 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
     @Override
     public void dismiss()
     {
-        if (mDialoger != null)
+        if (mDialog != null)
         {
-            mDialoger.dismiss();
+            mDialog.dismiss();
         } else
         {
             final ViewParent parent = getParent();
