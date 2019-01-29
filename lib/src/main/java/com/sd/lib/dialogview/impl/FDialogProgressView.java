@@ -3,12 +3,14 @@ package com.sd.lib.dialogview.impl;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.sd.lib.dialoger.Dialoger;
 import com.sd.lib.dialogview.DialogProgressView;
 import com.sd.lib.dialogview.R;
 
@@ -43,6 +45,14 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
             setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
         }
+    }
+
+    @Override
+    protected void initDialog(Dialoger dialog)
+    {
+        super.initDialog(dialog);
+        dialog.setPadding(0, 0, 0, 0);
+        dialog.setGravity(Gravity.CENTER);
     }
 
     @Override
