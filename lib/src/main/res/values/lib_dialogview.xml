@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--          color          -->
+
     <!-- 分割线 -->
     <color name="lib_dialogview_stroke">#e7e7f1</color>
 
@@ -8,5 +10,16 @@
     <color name="lib_dialogview_bg_button_normal">#FFFFFF</color>
     <!-- 按钮按下颜色 -->
     <color name="lib_dialogview_bg_button_pressed">#e5e5e5</color>
+
+
+    <!--          dimen          -->
+
+    <!-- 按钮高度 -->
+    <dimen name="lib_dialogview_height_button">40dp</dimen>
+
+    <!-- 分割线大小 -->
+    <dimen name="lib_dialogview_stroke">1px</dimen>
+    <!-- 圆角 -->
+    <dimen name="lib_dialogview_corner_button">5dp</dimen>
 
 </resources>
