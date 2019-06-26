@@ -6,13 +6,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.sd.lib.dialoger.animator.ScaleXYCreator;
 import com.sd.lib.dialogview.DialogConfirmView;
 import com.sd.lib.dialogview.DialogMenuView;
 import com.sd.lib.dialogview.DialogProgressView;
 import com.sd.lib.dialogview.impl.FDialogConfirmView;
 import com.sd.lib.dialogview.impl.FDialogMenuView;
 import com.sd.lib.dialogview.impl.FDialogProgressView;
-import com.sd.lib.dialoger.animator.ScaleXYCreater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
 
-                confirmView.getDialoger().setAnimatorCreater(new ScaleXYCreater());
+                confirmView.getDialoger().setAnimatorCreator(new ScaleXYCreator());
                 confirmView.getDialoger().show();
 
                 break;
