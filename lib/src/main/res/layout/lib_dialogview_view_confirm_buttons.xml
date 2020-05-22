@@ -19,5 +19,6 @@
         style="@style/lib_dialogview_view_confirm_text_confirm"
         android:layout_width="0dp"
         android:layout_height="@dimen/lib_dialogview_height_button"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="@drawable/lib_dialogview_sel_confirm_bg_confirm_item" />
 </LinearLayout>
