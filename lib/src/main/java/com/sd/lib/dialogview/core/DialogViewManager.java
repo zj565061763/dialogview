@@ -1,5 +1,6 @@
 package com.sd.lib.dialogview.core;
 
+import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler;
 import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler;
 
 public class DialogViewManager
@@ -20,6 +21,7 @@ public class DialogViewManager
     }
 
     private IDialogProgressViewHandler mProgressViewHandler;
+    private IDialogMenuViewHandler mMenuViewHandler;
 
     private DialogViewManager()
     {
@@ -33,5 +35,15 @@ public class DialogViewManager
     public void setProgressViewHandler(IDialogProgressViewHandler progressViewHandler)
     {
         mProgressViewHandler = progressViewHandler;
+    }
+
+    public IDialogMenuViewHandler getMenuViewHandler()
+    {
+        return mMenuViewHandler;
+    }
+
+    public void setMenuViewHandler(IDialogMenuViewHandler menuViewHandler)
+    {
+        mMenuViewHandler = menuViewHandler;
     }
 }

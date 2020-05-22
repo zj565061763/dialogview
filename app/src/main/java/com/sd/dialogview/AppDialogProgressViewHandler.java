@@ -3,7 +3,7 @@ package com.sd.dialogview;
 import com.sd.lib.dialogview.DialogProgressView;
 import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler;
 
-public class AppProgressViewHandler implements IDialogProgressViewHandler
+public class AppDialogProgressViewHandler implements IDialogProgressViewHandler
 {
     @Override
     public void setTextMsg(DialogProgressView dialogView, String text)
@@ -26,7 +26,7 @@ public class AppProgressViewHandler implements IDialogProgressViewHandler
     @Override
     public void onAttachedToWindow(DialogProgressView dialogView)
     {
-        dialogView.setTextMsg("hook");
+        dialogView.setTextMsg("hook msg");
     }
 
     @Override

@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.sd.lib.dialoger.Dialoger;
 import com.sd.lib.dialogview.DialogMenuView;
 import com.sd.lib.dialogview.R;
+import com.sd.lib.dialogview.core.DialogViewManager;
+import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,24 +43,39 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     public FDialogMenuView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        init();
-    }
 
-    private void init()
-    {
-        setContentView(R.layout.lib_dialogview_view_menu);
-        tv_title = findViewById(R.id.tv_title);
-        tv_cancel = findViewById(R.id.tv_cancel);
-        lv_content = findViewById(R.id.lv_content);
+        int layoutId = R.layout.lib_dialogview_view_menu;
+        final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
+        if (handler != null)
+        {
+            final int id = handler.getContentView(this);
+            if (id != 0)
+                layoutId = id;
+        }
 
-        tv_cancel.setOnClickListener(this);
+        setContentView(layoutId);
+
         setTextTitle(null);
-
         if (getLayoutParams() == null)
         {
             setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
         }
+    }
+
+    @Override
+    protected void onContentViewChanged()
+    {
+        super.onContentViewChanged();
+        tv_title = findViewById(R.id.tv_title);
+        tv_cancel = findViewById(R.id.tv_cancel);
+        lv_content = findViewById(R.id.lv_content);
+
+        tv_cancel.setOnClickListener(this);
+
+        final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
+        if (handler != null)
+            handler.onContentViewChanged(this);
     }
 
     @Override
@@ -211,5 +228,23 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
             else
                 dismiss();
         }
+    }
+
+    @Override
+    protected void onAttachedToWindow()
+    {
+        super.onAttachedToWindow();
+        final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
+        if (handler != null)
+            handler.onAttachedToWindow(this);
+    }
+
+    @Override
+    protected void onDetachedFromWindow()
+    {
+        super.onDetachedFromWindow();
+        final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
+        if (handler != null)
+            handler.onDetachedFromWindow(this);
     }
 }

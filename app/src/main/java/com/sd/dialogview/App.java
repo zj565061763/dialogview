@@ -10,6 +10,7 @@ public class App extends Application
     public void onCreate()
     {
         super.onCreate();
-        DialogViewManager.getInstance().setProgressViewHandler(new AppProgressViewHandler());
+        DialogViewManager.getInstance().setProgressViewHandler(new AppDialogProgressViewHandler());
+        DialogViewManager.getInstance().setMenuViewHandler(new AppDialogMenuViewHandler());
     }
 }
