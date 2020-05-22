@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.sd.lib.dialoger.Dialoger;
 import com.sd.lib.dialogview.DialogProgressView;
 import com.sd.lib.dialogview.R;
+import com.sd.lib.dialogview.core.DialogViewManager;
+import com.sd.lib.dialogview.core.handler.IProgressViewHandler;
 
 /**
  * 带环形进度条，和信息提示
@@ -31,20 +33,35 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
     public FDialogProgressView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        init();
-    }
 
-    private void init()
-    {
-        setContentView(R.layout.lib_dialogview_view_progress);
-        tv_msg = findViewById(R.id.tv_msg);
-        pb_progress = findViewById(R.id.pb_progress);
+        int layoutId = R.layout.lib_dialogview_view_progress;
 
+        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        if (handler != null)
+        {
+            final int id = handler.getContentView(this);
+            if (id != 0)
+                layoutId = id;
+        }
+
+        setContentView(layoutId);
         if (getLayoutParams() == null)
         {
             setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
         }
+    }
+
+    @Override
+    protected void onContentViewChanged()
+    {
+        super.onContentViewChanged();
+        tv_msg = findViewById(R.id.tv_msg);
+        pb_progress = findViewById(R.id.pb_progress);
+
+        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        if (handler != null)
+            handler.onContentViewChanged(this);
     }
 
     @Override
@@ -73,6 +90,11 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
             tv_msg.setVisibility(View.VISIBLE);
             tv_msg.setText(text);
         }
+
+        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        if (handler != null)
+            handler.setTextMsg(this, text);
+
         return this;
     }
 
@@ -85,5 +107,23 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
             return true;
         }
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    protected void onAttachedToWindow()
+    {
+        super.onAttachedToWindow();
+        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        if (handler != null)
+            handler.onAttachedToWindow(this);
+    }
+
+    @Override
+    protected void onDetachedFromWindow()
+    {
+        super.onDetachedFromWindow();
+        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        if (handler != null)
+            handler.onDetachedFromWindow(this);
     }
 }

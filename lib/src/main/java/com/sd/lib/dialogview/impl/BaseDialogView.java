@@ -32,12 +32,19 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
     {
         removeAllViews();
         LayoutInflater.from(getContext()).inflate(layoutId, this, true);
+        onContentViewChanged();
     }
 
     public void setContentView(View view)
     {
         removeAllViews();
         addView(view);
+        onContentViewChanged();
+    }
+
+    protected void onContentViewChanged()
+    {
+
     }
 
     @Override
