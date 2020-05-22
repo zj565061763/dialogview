@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/lib_dialogview_bg_menu_item_normal"
+    <item android:drawable="@drawable/lib_dialogview_menu_bg_item_normal"
           android:state_pressed="false"/>
 
-    <item android:drawable="@drawable/lib_dialogview_bg_menu_item_pressed"
+    <item android:drawable="@drawable/lib_dialogview_menu_bg_item_pressed"
           android:state_pressed="true"/>
 
 </selector>

@@ -27,6 +27,7 @@ android {
 
 dependencies {
     api 'com.github.zj565061763:dialoger:latest.release'
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
 
 // 指定编码
