@@ -1,6 +1,6 @@
 package com.sd.lib.dialogview.core;
 
-import com.sd.lib.dialogview.core.handler.IProgressViewHandler;
+import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler;
 
 public class DialogViewManager
 {
@@ -19,18 +19,18 @@ public class DialogViewManager
         return sInstance;
     }
 
-    private IProgressViewHandler mProgressViewHandler;
+    private IDialogProgressViewHandler mProgressViewHandler;
 
     private DialogViewManager()
     {
     }
 
-    public IProgressViewHandler getProgressViewHandler()
+    public IDialogProgressViewHandler getProgressViewHandler()
     {
         return mProgressViewHandler;
     }
 
-    public void setProgressViewHandler(IProgressViewHandler progressViewHandler)
+    public void setProgressViewHandler(IDialogProgressViewHandler progressViewHandler)
     {
         mProgressViewHandler = progressViewHandler;
     }

@@ -1,10 +1,9 @@
 package com.sd.dialogview;
 
 import com.sd.lib.dialogview.DialogProgressView;
-import com.sd.lib.dialogview.core.handler.IProgressViewHandler;
-import com.sd.lib.dialogview.impl.FDialogProgressView;
+import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler;
 
-public class AppProgressViewHandler implements IProgressViewHandler
+public class AppProgressViewHandler implements IDialogProgressViewHandler
 {
     @Override
     public void setTextMsg(DialogProgressView dialogView, String text)

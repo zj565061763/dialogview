@@ -14,7 +14,7 @@ import com.sd.lib.dialoger.Dialoger;
 import com.sd.lib.dialogview.DialogProgressView;
 import com.sd.lib.dialogview.R;
 import com.sd.lib.dialogview.core.DialogViewManager;
-import com.sd.lib.dialogview.core.handler.IProgressViewHandler;
+import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler;
 
 /**
  * 带环形进度条，和信息提示
@@ -36,7 +36,7 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
 
         int layoutId = R.layout.lib_dialogview_view_progress;
 
-        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        final IDialogProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
         if (handler != null)
         {
             final int id = handler.getContentView(this);
@@ -59,7 +59,7 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
         tv_msg = findViewById(R.id.tv_msg);
         pb_progress = findViewById(R.id.pb_progress);
 
-        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        final IDialogProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
         if (handler != null)
             handler.onContentViewChanged(this);
     }
@@ -91,7 +91,7 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
             tv_msg.setText(text);
         }
 
-        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        final IDialogProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
         if (handler != null)
             handler.setTextMsg(this, text);
 
@@ -113,7 +113,7 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
     protected void onAttachedToWindow()
     {
         super.onAttachedToWindow();
-        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        final IDialogProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
         if (handler != null)
             handler.onAttachedToWindow(this);
     }
@@ -122,7 +122,7 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
     protected void onDetachedFromWindow()
     {
         super.onDetachedFromWindow();
-        final IProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
+        final IDialogProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
         if (handler != null)
             handler.onDetachedFromWindow(this);
     }
