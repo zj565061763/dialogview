@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.sd.lib.dialoger.Dialoger;
 import com.sd.lib.dialogview.DialogConfirmView;
 import com.sd.lib.dialogview.R;
+import com.sd.lib.dialogview.core.DialogViewManager;
+import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler;
 
 /**
  * 带标题，内容，确定按钮和取消按钮
@@ -37,12 +39,29 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
     public FDialogConfirmView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        init();
+
+        int layoutId = R.layout.lib_dialogview_view_confirm;
+        final IDialogConfirmViewHandler handler = DialogViewManager.getInstance().getConfirmViewHandler();
+        if (handler != null)
+        {
+            final int id = handler.getContentView(this);
+            if (id != 0)
+                layoutId = id;
+        }
+
+        setContentView(layoutId);
+
+        if (getLayoutParams() == null)
+        {
+            setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
     }
 
-    private void init()
+    @Override
+    protected void onContentViewChanged()
     {
-        setContentView(R.layout.lib_dialogview_view_confirm);
+        super.onContentViewChanged();
         tv_title = findViewById(R.id.tv_title);
         fl_content = findViewById(R.id.fl_content);
         tv_content = findViewById(R.id.tv_content);
@@ -52,11 +71,9 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
         tv_confirm.setOnClickListener(this);
         tv_cancel.setOnClickListener(this);
 
-        if (getLayoutParams() == null)
-        {
-            setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-        }
+        final IDialogConfirmViewHandler handler = DialogViewManager.getInstance().getConfirmViewHandler();
+        if (handler != null)
+            handler.onContentViewChanged(this);
     }
 
     @Override
@@ -209,5 +226,23 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
         {
             setBackgroundDrawable(tv_confirm, getContext().getResources().getDrawable(R.drawable.lib_dialogview_sel_bg_button_bottom_single));
         }
+    }
+
+    @Override
+    protected void onAttachedToWindow()
+    {
+        super.onAttachedToWindow();
+        final IDialogConfirmViewHandler handler = DialogViewManager.getInstance().getConfirmViewHandler();
+        if (handler != null)
+            handler.onAttachedToWindow(this);
+    }
+
+    @Override
+    protected void onDetachedFromWindow()
+    {
+        super.onDetachedFromWindow();
+        final IDialogConfirmViewHandler handler = DialogViewManager.getInstance().getConfirmViewHandler();
+        if (handler != null)
+            handler.onDetachedFromWindow(this);
     }
 }
