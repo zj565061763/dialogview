@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/lib_dialogview_stroke"
+    android:background="#FFFFFF"
     android:gravity="bottom|center_horizontal"
     android:orientation="vertical">
 
@@ -11,25 +11,32 @@
         style="@style/lib_dialogview_view_menu_text_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/lib_dialogview_view_menu_height_title"
-        android:background="@drawable/lib_dialogview_menu_bg_title"
         android:gravity="center"
         android:text="标题" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_dialogview_stroke"
+        android:background="@color/lib_dialogview_stroke" />
 
     <ListView
         android:id="@+id/lv_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#FFFFFF"
         android:divider="@drawable/lib_dialogview_stroke"
-        android:dividerHeight="@dimen/lib_dialogview_stroke"></ListView>
+        android:dividerHeight="@dimen/lib_dialogview_stroke" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_dialogview_view_menu_margin_top_cancel"
+        android:background="@color/lib_dialogview_stroke" />
 
     <TextView
         android:id="@+id/tv_cancel"
         style="@style/lib_dialogview_view_menu_text_cancel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/lib_dialogview_view_menu_height_cancel"
-        android:layout_marginTop="@dimen/lib_dialogview_view_menu_margin_top_cancel"
         android:background="@drawable/lib_dialogview_sel_menu_bg_cancel"
         android:gravity="center" />
 

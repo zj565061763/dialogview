@@ -2,7 +2,6 @@ package com.sd.lib.dialogview.impl;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,19 +88,5 @@ public class BaseDialogView extends FrameLayout implements DialogView, View.OnCl
                 }
             }
         }
-    }
-
-    protected static void setBackgroundDrawable(View view, Drawable drawable)
-    {
-        if (view == null)
-            return;
-
-        final int paddingLeft = view.getPaddingLeft();
-        final int paddingTop = view.getPaddingTop();
-        final int paddingRight = view.getPaddingRight();
-        final int paddingBottom = view.getPaddingBottom();
-
-        view.setBackgroundDrawable(drawable);
-        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
     }
 }
