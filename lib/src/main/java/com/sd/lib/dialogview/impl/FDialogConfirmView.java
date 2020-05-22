@@ -25,6 +25,7 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
 
     public FrameLayout fl_content;
     public TextView tv_content;
+    public TextView tv_content_sub;
 
     public TextView tv_confirm;
     public TextView tv_cancel;
@@ -65,6 +66,7 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
         tv_title = findViewById(R.id.tv_title);
         fl_content = findViewById(R.id.fl_content);
         tv_content = findViewById(R.id.tv_content);
+        tv_content_sub = findViewById(R.id.tv_content_sub);
         tv_confirm = findViewById(R.id.tv_confirm);
         tv_cancel = findViewById(R.id.tv_cancel);
 
@@ -137,6 +139,20 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
     }
 
     @Override
+    public DialogConfirmView setTextContentSub(String text)
+    {
+        if (TextUtils.isEmpty(text))
+        {
+            tv_content_sub.setVisibility(View.GONE);
+        } else
+        {
+            tv_content_sub.setVisibility(View.VISIBLE);
+            tv_content_sub.setText(text);
+        }
+        return this;
+    }
+
+    @Override
     public DialogConfirmView setTextConfirm(String text)
     {
         if (TextUtils.isEmpty(text))
@@ -175,6 +191,13 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
     public DialogConfirmView setTextColorContent(int color)
     {
         tv_content.setTextColor(color);
+        return this;
+    }
+
+    @Override
+    public DialogConfirmView setTextColorContentSub(int color)
+    {
+        tv_content_sub.setTextColor(color);
         return this;
     }
 

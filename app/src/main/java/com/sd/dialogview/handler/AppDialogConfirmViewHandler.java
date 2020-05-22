@@ -21,6 +21,7 @@ public class AppDialogConfirmViewHandler implements IDialogConfirmViewHandler
     public void onAttachedToWindow(DialogConfirmView dialogView)
     {
         dialogView.setTextContent("hook content");
+        dialogView.setTextContentSub("hook content sub");
     }
 
     @Override

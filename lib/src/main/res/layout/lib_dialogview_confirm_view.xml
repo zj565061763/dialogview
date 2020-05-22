@@ -43,6 +43,16 @@
                     android:layout_gravity="center"
                     android:text="内容" />
 
+                <TextView
+                    android:id="@+id/tv_content_sub"
+                    style="@style/lib_dialogview_view_confirm_text_content_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="子内容"
+                    android:visibility="gone" />
+
             </LinearLayout>
 
         </FrameLayout>

@@ -45,6 +45,14 @@ public interface DialogConfirmView extends DialogView
     DialogConfirmView setTextContent(String text);
 
     /**
+     * 设置副内容文字
+     *
+     * @param text
+     * @return
+     */
+    DialogConfirmView setTextContentSub(String text);
+
+    /**
      * 设置取消按钮文字
      *
      * @param text
@@ -75,6 +83,14 @@ public interface DialogConfirmView extends DialogView
      * @return
      */
     DialogConfirmView setTextColorContent(int color);
+
+    /**
+     * 设置副内容文字颜色
+     *
+     * @param color
+     * @return
+     */
+    DialogConfirmView setTextColorContentSub(int color);
 
     /**
      * 设置取消文字颜色

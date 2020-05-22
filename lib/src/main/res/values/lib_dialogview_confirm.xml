@@ -10,6 +10,7 @@
 
     <color name="lib_dialogview_view_confirm_text_title">#333333</color>
     <color name="lib_dialogview_view_confirm_text_content">#999999</color>
+    <color name="lib_dialogview_view_confirm_text_content_sub">#cccccc</color>
     <color name="lib_dialogview_view_confirm_text_cancel">#999999</color>
     <color name="lib_dialogview_view_confirm_text_confirm">#666666</color>
 
@@ -23,6 +24,7 @@
     <dimen name="lib_dialogview_view_confirm_text_title">16sp</dimen>
     <!-- 内容字体大小 -->
     <dimen name="lib_dialogview_view_confirm_text_content">12sp</dimen>
+    <dimen name="lib_dialogview_view_confirm_text_content_sub">10sp</dimen>
     <!-- 取消字体大小 -->
     <dimen name="lib_dialogview_view_confirm_text_cancel">13sp</dimen>
     <!-- 确认字体大小 -->
@@ -52,6 +54,12 @@
     <style name="lib_dialogview_view_confirm_text_content">
         <item name="android:textColor">@color/lib_dialogview_view_confirm_text_content</item>
         <item name="android:textSize">@dimen/lib_dialogview_view_confirm_text_content</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="lib_dialogview_view_confirm_text_content_sub">
+        <item name="android:textColor">@color/lib_dialogview_view_confirm_text_content_sub</item>
+        <item name="android:textSize">@dimen/lib_dialogview_view_confirm_text_content_sub</item>
         <item name="android:ellipsize">end</item>
     </style>
 
