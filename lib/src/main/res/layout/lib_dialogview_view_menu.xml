@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/lib_dialogview_view_menu_height_cancel"
         android:layout_marginTop="@dimen/lib_dialogview_view_menu_margin_top_cancel"
-        android:background="@drawable/lib_dialogview_sel_menu_bg_item"
+        android:background="@drawable/lib_dialogview_sel_menu_bg_cancel"
         android:gravity="center" />
 
 </LinearLayout>

@@ -10,6 +10,14 @@
     <color name="lib_dialogview_view_menu_text_cancel">#666666</color>
     <color name="lib_dialogview_view_menu_text_item">#333333</color>
 
+    <!-- 菜单item背景色 -->
+    <color name="lib_dialogview_view_menu_bg_item_normal">#FFFFFF</color>
+    <color name="lib_dialogview_view_menu_bg_item_pressed">#e5e5e5</color>
+
+    <!-- 取消item背景色 -->
+    <color name="lib_dialogview_view_menu_bg_cancel_normal">#FFFFFF</color>
+    <color name="lib_dialogview_view_menu_bg_cancel_pressed">#e5e5e5</color>
+
     <!--          dimen          -->
 
     <!-- 标题字体大小 -->

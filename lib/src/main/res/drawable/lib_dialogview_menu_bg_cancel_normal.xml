@@ -3,7 +3,7 @@
 
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/lib_dialogview_view_menu_bg_item_normal" />
+            <solid android:color="@color/lib_dialogview_view_menu_bg_cancel_normal" />
         </shape>
     </item>
 
