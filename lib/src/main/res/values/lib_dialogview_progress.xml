@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--          color          -->
+
+    <!--          dimen          -->
+    <!-- 进度框圆角 -->
+    <dimen name="lib_dialogview_view_progress_corner">5dp</dimen>
+
+</resources>

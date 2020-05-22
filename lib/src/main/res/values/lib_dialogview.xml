@@ -20,9 +20,4 @@
     <!-- 分割线大小 -->
     <dimen name="lib_dialogview_stroke">1px</dimen>
 
-    <!-- 进度框圆角 -->
-    <dimen name="lib_dialogview_progress_corner">5dp</dimen>
-    <!-- 确认框圆角 -->
-    <dimen name="lib_dialogview_confirm_corner">5dp</dimen>
-
 </resources>

@@ -15,6 +15,8 @@
 
     <!--          dimen          -->
 
+    <dimen name="lib_dialogview_view_confirm_corner">5dp</dimen>
+
     <!-- 标题字体大小 -->
     <dimen name="lib_dialogview_view_confirm_text_title">16sp</dimen>
     <!-- 内容字体大小 -->
