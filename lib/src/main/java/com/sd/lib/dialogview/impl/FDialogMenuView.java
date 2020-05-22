@@ -44,7 +44,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     {
         super(context, attrs);
 
-        int layoutId = R.layout.lib_dialogview_view_menu;
+        int layoutId = R.layout.lib_dialogview_menu_view;
         final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
         if (handler != null)
         {
@@ -194,7 +194,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
         {
             if (convertView == null)
             {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.lib_dialogview_item_view_menu, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.lib_dialogview_menu_item_view, parent, false);
             }
             TextView textView = convertView.findViewById(R.id.tv_content);
             Object object = getItem(position);
