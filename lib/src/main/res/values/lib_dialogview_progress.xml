@@ -2,9 +2,11 @@
 <resources>
 
     <!--          color          -->
+    <!-- 背景颜色 -->
+    <color name="lib_dialogview_view_progress_bg">#55000000</color>
 
     <!--          dimen          -->
-    <!-- 进度框圆角 -->
+    <!-- 圆角 -->
     <dimen name="lib_dialogview_view_progress_corner">5dp</dimen>
 
 </resources>
