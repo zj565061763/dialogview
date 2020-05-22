@@ -45,7 +45,7 @@
             android:layout_height="@dimen/lib_dialogview_stroke"
             android:background="@drawable/lib_dialogview_stroke" />
 
-        <include layout="@layout/lib_dialogview_view_confirm_buttons" />
+        <include layout="@layout/lib_dialogview_confirm_view_buttons" />
 
     </LinearLayout>
 
