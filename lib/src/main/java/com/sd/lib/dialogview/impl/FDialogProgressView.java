@@ -35,7 +35,6 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
         super(context, attrs);
 
         int layoutId = R.layout.lib_dialogview_view_progress;
-
         final IDialogProgressViewHandler handler = DialogViewManager.getInstance().getProgressViewHandler();
         if (handler != null)
         {
@@ -45,6 +44,7 @@ public class FDialogProgressView extends BaseDialogView implements DialogProgres
         }
 
         setContentView(layoutId);
+
         if (getLayoutParams() == null)
         {
             setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
