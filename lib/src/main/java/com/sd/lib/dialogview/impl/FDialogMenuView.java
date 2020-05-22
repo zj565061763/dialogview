@@ -34,6 +34,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     private List<Object> mListModel;
 
     private Callback mCallback;
+    private final IDialogMenuViewHandler mHandler;
 
     public FDialogMenuView(Context context)
     {
@@ -43,12 +44,12 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     public FDialogMenuView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
+        mHandler = DialogViewManager.getInstance().getDialogViewHandlerFactory().newMenuViewHandler(this);
 
         int layoutId = R.layout.lib_dialogview_menu_view;
-        final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
-        if (handler != null)
+        if (mHandler != null)
         {
-            final int id = handler.getContentView(this);
+            final int id = mHandler.getContentView(this);
             if (id != 0)
                 layoutId = id;
         }
@@ -73,9 +74,8 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
 
         tv_cancel.setOnClickListener(this);
 
-        final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
-        if (handler != null)
-            handler.onContentViewChanged(this);
+        if (mHandler != null)
+            mHandler.onContentViewChanged(this);
     }
 
     @Override
@@ -234,17 +234,15 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     protected void onAttachedToWindow()
     {
         super.onAttachedToWindow();
-        final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
-        if (handler != null)
-            handler.onAttachedToWindow(this);
+        if (mHandler != null)
+            mHandler.onAttachedToWindow(this);
     }
 
     @Override
     protected void onDetachedFromWindow()
     {
         super.onDetachedFromWindow();
-        final IDialogMenuViewHandler handler = DialogViewManager.getInstance().getMenuViewHandler();
-        if (handler != null)
-            handler.onDetachedFromWindow(this);
+        if (mHandler != null)
+            mHandler.onDetachedFromWindow(this);
     }
 }

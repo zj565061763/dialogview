@@ -1,5 +1,8 @@
 package com.sd.lib.dialogview.core;
 
+import com.sd.lib.dialogview.DialogConfirmView;
+import com.sd.lib.dialogview.DialogMenuView;
+import com.sd.lib.dialogview.DialogProgressView;
 import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler;
 import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler;
 import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler;
@@ -21,41 +24,42 @@ public class DialogViewManager
         return sInstance;
     }
 
-    private IDialogProgressViewHandler mProgressViewHandler;
-    private IDialogConfirmViewHandler mConfirmViewHandler;
-    private IDialogMenuViewHandler mMenuViewHandler;
+    private IDialogViewHandlerFactory mDialogViewHandlerFactory;
 
     private DialogViewManager()
     {
     }
 
-    public IDialogProgressViewHandler getProgressViewHandler()
+    public void setDialogViewHandlerFactory(IDialogViewHandlerFactory factory)
     {
-        return mProgressViewHandler;
+        mDialogViewHandlerFactory = factory;
     }
 
-    public void setProgressViewHandler(IDialogProgressViewHandler progressViewHandler)
+    public IDialogViewHandlerFactory getDialogViewHandlerFactory()
     {
-        mProgressViewHandler = progressViewHandler;
-    }
+        if (mDialogViewHandlerFactory == null)
+        {
+            mDialogViewHandlerFactory = new IDialogViewHandlerFactory()
+            {
+                @Override
+                public IDialogProgressViewHandler newProgressViewHandler(DialogProgressView dialogView)
+                {
+                    return null;
+                }
 
-    public IDialogConfirmViewHandler getConfirmViewHandler()
-    {
-        return mConfirmViewHandler;
-    }
+                @Override
+                public IDialogConfirmViewHandler newConfirmViewHandler(DialogConfirmView dialogView)
+                {
+                    return null;
+                }
 
-    public void setConfirmViewHandler(IDialogConfirmViewHandler confirmViewHandler)
-    {
-        mConfirmViewHandler = confirmViewHandler;
-    }
-
-    public IDialogMenuViewHandler getMenuViewHandler()
-    {
-        return mMenuViewHandler;
-    }
-
-    public void setMenuViewHandler(IDialogMenuViewHandler menuViewHandler)
-    {
-        mMenuViewHandler = menuViewHandler;
+                @Override
+                public IDialogMenuViewHandler newMenuViewHandler(DialogMenuView dialogView)
+                {
+                    return null;
+                }
+            };
+        }
+        return mDialogViewHandlerFactory;
     }
 }

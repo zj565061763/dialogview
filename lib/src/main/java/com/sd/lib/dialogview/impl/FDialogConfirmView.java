@@ -32,6 +32,8 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
 
     private Callback mCallback;
 
+    private final IDialogConfirmViewHandler mHandler;
+
     public FDialogConfirmView(Context context)
     {
         this(context, null);
@@ -40,12 +42,12 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
     public FDialogConfirmView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
+        mHandler = DialogViewManager.getInstance().getDialogViewHandlerFactory().newConfirmViewHandler(this);
 
         int layoutId = R.layout.lib_dialogview_confirm_view;
-        final IDialogConfirmViewHandler handler = DialogViewManager.getInstance().getConfirmViewHandler();
-        if (handler != null)
+        if (mHandler != null)
         {
-            final int id = handler.getContentView(this);
+            final int id = mHandler.getContentView(this);
             if (id != 0)
                 layoutId = id;
         }
@@ -73,9 +75,8 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
         tv_confirm.setOnClickListener(this);
         tv_cancel.setOnClickListener(this);
 
-        final IDialogConfirmViewHandler handler = DialogViewManager.getInstance().getConfirmViewHandler();
-        if (handler != null)
-            handler.onContentViewChanged(this);
+        if (mHandler != null)
+            mHandler.onContentViewChanged(this);
     }
 
     @Override
@@ -238,17 +239,15 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
     protected void onAttachedToWindow()
     {
         super.onAttachedToWindow();
-        final IDialogConfirmViewHandler handler = DialogViewManager.getInstance().getConfirmViewHandler();
-        if (handler != null)
-            handler.onAttachedToWindow(this);
+        if (mHandler != null)
+            mHandler.onAttachedToWindow(this);
     }
 
     @Override
     protected void onDetachedFromWindow()
     {
         super.onDetachedFromWindow();
-        final IDialogConfirmViewHandler handler = DialogViewManager.getInstance().getConfirmViewHandler();
-        if (handler != null)
-            handler.onDetachedFromWindow(this);
+        if (mHandler != null)
+            mHandler.onDetachedFromWindow(this);
     }
 }
