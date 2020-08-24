@@ -49,7 +49,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
         int layoutId = R.layout.lib_dialogview_menu_view;
         if (mHandler != null)
         {
-            final int id = mHandler.getContentView(this);
+            final int id = mHandler.getContentViewResId(this);
             if (id != 0)
                 layoutId = id;
         }

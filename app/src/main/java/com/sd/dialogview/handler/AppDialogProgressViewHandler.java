@@ -12,7 +12,7 @@ public class AppDialogProgressViewHandler implements IDialogProgressViewHandler
     }
 
     @Override
-    public int getContentView(DialogProgressView dialogView)
+    public int getContentViewResId(DialogProgressView dialogView)
     {
         return 0;
     }

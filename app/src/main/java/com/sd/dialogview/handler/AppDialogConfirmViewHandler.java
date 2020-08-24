@@ -6,7 +6,7 @@ import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler;
 public class AppDialogConfirmViewHandler implements IDialogConfirmViewHandler
 {
     @Override
-    public int getContentView(DialogConfirmView dialogView)
+    public int getContentViewResId(DialogConfirmView dialogView)
     {
         return 0;
     }

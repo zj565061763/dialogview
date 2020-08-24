@@ -6,7 +6,7 @@ import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler;
 public class AppDialogMenuViewHandler implements IDialogMenuViewHandler
 {
     @Override
-    public int getContentView(DialogMenuView dialogView)
+    public int getContentViewResId(DialogMenuView dialogView)
     {
         return 0;
     }
