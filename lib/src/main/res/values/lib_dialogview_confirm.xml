@@ -16,7 +16,9 @@
 
     <!--          dimen          -->
 
+    <!-- 圆角 -->
     <dimen name="lib_dialogview_view_confirm_corner">5dp</dimen>
+    <!-- 按钮高度 -->
     <dimen name="lib_dialogview_view_confirm_height_button">40dp</dimen>
 
     <!-- 标题字体大小 -->
