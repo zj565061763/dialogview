@@ -17,8 +17,7 @@
     <!--          dimen          -->
 
     <dimen name="lib_dialogview_view_confirm_corner">5dp</dimen>
-    <dimen name="lib_dialogview_view_confirm_height_button">@dimen/lib_dialogview_height_button
-    </dimen>
+    <dimen name="lib_dialogview_view_confirm_height_button">40dp</dimen>
 
     <!-- 标题字体大小 -->
     <dimen name="lib_dialogview_view_confirm_text_title">16sp</dimen>

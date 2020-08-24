@@ -14,7 +14,4 @@
     <!-- 分割线大小 -->
     <dimen name="lib_dialogview_stroke">1px</dimen>
 
-    <!-- 按钮高度 -->
-    <dimen name="lib_dialogview_height_button">40dp</dimen>
-
 </resources>
