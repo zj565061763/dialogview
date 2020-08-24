@@ -17,7 +17,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/lib_dialogview_stroke"
-        android:background="@color/lib_dialogview_stroke" />
+        android:background="@drawable/lib_dialogview_stroke" />
 
     <ListView
         android:id="@+id/lv_content"
@@ -30,7 +30,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/lib_dialogview_view_menu_margin_top_cancel"
-        android:background="@color/lib_dialogview_stroke" />
+        android:background="@drawable/lib_dialogview_stroke" />
 
     <TextView
         android:id="@+id/tv_cancel"
