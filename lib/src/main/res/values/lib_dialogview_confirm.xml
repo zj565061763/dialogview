@@ -67,17 +67,17 @@
     <style name="lib_dialogview_view_confirm_text_cancel">
         <item name="android:text">@string/lib_dialogview_view_confirm_text_cancel</item>
         <item name="android:textColor">@color/lib_dialogview_view_confirm_text_cancel</item>
-        <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/lib_dialogview_view_confirm_text_cancel</item>
         <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="lib_dialogview_view_confirm_text_confirm">
-        <item name="android:textColor">@color/lib_dialogview_view_confirm_text_confirm</item>
         <item name="android:text">@string/lib_dialogview_view_confirm_text_confirm</item>
-        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/lib_dialogview_view_confirm_text_confirm</item>
         <item name="android:textSize">@dimen/lib_dialogview_view_confirm_text_confirm</item>
         <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>
