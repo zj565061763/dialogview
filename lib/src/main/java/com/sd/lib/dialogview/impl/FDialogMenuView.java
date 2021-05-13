@@ -25,30 +25,26 @@ import java.util.List;
 /**
  * 带取消按钮的菜单
  */
-public class FDialogMenuView extends BaseDialogView implements DialogMenuView
-{
+public class FDialogMenuView extends BaseDialogView implements DialogMenuView {
     public TextView tv_title;
     public TextView tv_cancel;
     public ListView lv_content;
 
-    private List<Object> mListModel;
+    private List<? extends Object> mListModel;
 
     private Callback mCallback;
     private final IDialogMenuViewHandler mHandler;
 
-    public FDialogMenuView(Context context)
-    {
+    public FDialogMenuView(Context context) {
         this(context, null);
     }
 
-    public FDialogMenuView(Context context, AttributeSet attrs)
-    {
+    public FDialogMenuView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mHandler = DialogViewManager.INSTANCE.getDialogViewHandlerFactory().newMenuViewHandler(this);
 
         int layoutId = R.layout.lib_dialogview_menu_view;
-        if (mHandler != null)
-        {
+        if (mHandler != null) {
             final int id = mHandler.getContentViewResId(this);
             if (id != 0)
                 layoutId = id;
@@ -57,16 +53,14 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
         setContentView(layoutId);
 
         setTextTitle(null);
-        if (getLayoutParams() == null)
-        {
+        if (getLayoutParams() == null) {
             setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
         }
     }
 
     @Override
-    protected void onContentViewChanged()
-    {
+    protected void onContentViewChanged() {
         super.onContentViewChanged();
         tv_title = findViewById(R.id.tv_title);
         tv_cancel = findViewById(R.id.tv_cancel);
@@ -79,8 +73,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     }
 
     @Override
-    protected void initDialog(Dialoger dialog)
-    {
+    protected void initDialog(Dialoger dialog) {
         super.initDialog(dialog);
         dialog.setPadding(0, 0, 0, 0);
         dialog.setGravity(Gravity.BOTTOM);
@@ -88,13 +81,10 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     }
 
     @Override
-    public DialogMenuView setTextTitle(String text)
-    {
-        if (TextUtils.isEmpty(text))
-        {
+    public DialogMenuView setTextTitle(String text) {
+        if (TextUtils.isEmpty(text)) {
             tv_title.setVisibility(View.GONE);
-        } else
-        {
+        } else {
             tv_title.setVisibility(View.VISIBLE);
             tv_title.setText(text);
         }
@@ -102,13 +92,10 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     }
 
     @Override
-    public DialogMenuView setTextCancel(String text)
-    {
-        if (TextUtils.isEmpty(text))
-        {
+    public DialogMenuView setTextCancel(String text) {
+        if (TextUtils.isEmpty(text)) {
             tv_cancel.setVisibility(View.GONE);
-        } else
-        {
+        } else {
             tv_cancel.setVisibility(View.VISIBLE);
             tv_cancel.setText(text);
         }
@@ -116,18 +103,15 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     }
 
     @Override
-    public DialogMenuView setCallback(Callback callback)
-    {
+    public DialogMenuView setCallback(Callback callback) {
         mCallback = callback;
         return this;
     }
 
     @Override
-    public DialogMenuView setItems(Object... objects)
-    {
+    public DialogMenuView setItems(Object... objects) {
         List<Object> listObject = null;
-        if (objects != null)
-        {
+        if (objects != null) {
             listObject = Arrays.asList(objects);
         }
         setItems(listObject);
@@ -135,22 +119,18 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     }
 
     @Override
-    public DialogMenuView setItems(List<Object> listObject)
-    {
+    public DialogMenuView setItems(List<? extends Object> listObject) {
         mListModel = listObject;
         setAdapter(getAdapter());
         return this;
     }
 
     @Override
-    public DialogMenuView setAdapter(BaseAdapter adapter)
-    {
+    public DialogMenuView setAdapter(BaseAdapter adapter) {
         lv_content.setAdapter(adapter);
-        lv_content.setOnItemClickListener(new OnItemClickListener()
-        {
+        lv_content.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mCallback != null)
                     mCallback.onClickItem(view, (int) id, FDialogMenuView.this);
                 else
@@ -160,69 +140,56 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
         return this;
     }
 
-    protected BaseAdapter getAdapter()
-    {
+    protected BaseAdapter getAdapter() {
         return mInternalAdapter;
     }
 
-    private BaseAdapter mInternalAdapter = new BaseAdapter()
-    {
+    private BaseAdapter mInternalAdapter = new BaseAdapter() {
         @Override
-        public int getCount()
-        {
-            if (mListModel != null && !mListModel.isEmpty())
-            {
+        public int getCount() {
+            if (mListModel != null && !mListModel.isEmpty()) {
                 return mListModel.size();
             }
             return 0;
         }
 
         @Override
-        public Object getItem(int position)
-        {
+        public Object getItem(int position) {
             return getModel(position);
         }
 
         @Override
-        public long getItemId(int position)
-        {
+        public long getItemId(int position) {
             return position;
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
-            if (convertView == null)
-            {
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.lib_dialogview_menu_item_view, parent, false);
             }
             TextView textView = convertView.findViewById(R.id.tv_content);
             Object object = getItem(position);
-            if (object != null)
-            {
+            if (object != null) {
                 textView.setText(String.valueOf(object));
             }
             return convertView;
         }
     };
 
-    private Object getModel(int position)
-    {
+    private Object getModel(int position) {
         if (mListModel != null && !mListModel.isEmpty()
                 && position >= 0
-                && position < mListModel.size())
-        {
+                && position < mListModel.size()) {
             return mListModel.get(position);
         }
         return null;
     }
 
     @Override
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
         super.onClick(v);
-        if (v == tv_cancel)
-        {
+        if (v == tv_cancel) {
             if (mCallback != null)
                 mCallback.onClickCancel(v, this);
             else
@@ -231,16 +198,14 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     }
 
     @Override
-    protected void onAttachedToWindow()
-    {
+    protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         if (mHandler != null)
             mHandler.onAttachedToWindow(this);
     }
 
     @Override
-    protected void onDetachedFromWindow()
-    {
+    protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         if (mHandler != null)
             mHandler.onDetachedFromWindow(this);

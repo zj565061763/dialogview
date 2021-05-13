@@ -1,83 +1,52 @@
-package com.sd.lib.dialogview;
+package com.sd.lib.dialogview
 
-import android.view.View;
-import android.widget.BaseAdapter;
+import android.view.View
+import android.widget.BaseAdapter
 
-import java.util.List;
-
-public interface DialogMenuView extends DialogView
-{
+interface DialogMenuView : DialogView {
     /**
      * 设置标题文字
-     *
-     * @param text
-     * @return
      */
-    DialogMenuView setTextTitle(String text);
+    fun setTextTitle(text: String?): DialogMenuView
 
     /**
      * 设置取消文字
-     *
-     * @param text
-     * @return
      */
-    DialogMenuView setTextCancel(String text);
+    fun setTextCancel(text: String?): DialogMenuView
 
     /**
      * 设置回调
-     *
-     * @param callback
-     * @return
      */
-    DialogMenuView setCallback(Callback callback);
+    fun setCallback(callback: Callback?): DialogMenuView
 
     /**
      * 设置列表数据
-     *
-     * @param objects
-     * @return
      */
-    DialogMenuView setItems(Object... objects);
+    fun setItems(vararg objects: Any): DialogMenuView
 
     /**
      * 设置列表数据
-     *
-     * @param listObject
-     * @return
      */
-    DialogMenuView setItems(List<Object> listObject);
+    fun setItems(listObject: List<out Any>): DialogMenuView
 
     /**
      * 设置适配器
-     *
-     * @param adapter
-     * @return
      */
-    DialogMenuView setAdapter(BaseAdapter adapter);
+    fun setAdapter(adapter: BaseAdapter): DialogMenuView
 
-    abstract class Callback
-    {
+    abstract class Callback {
         /**
-         * item项被点击
-         *
-         * @param v
-         * @param index
-         * @param view
+         * 位置为[index]的item项被点击
          */
-        public void onClickItem(View v, int index, DialogMenuView view)
-        {
-            view.dismiss();
+        open fun onClickItem(view: View, index: Int, dialogView: DialogMenuView) {
+            dialogView.dismiss()
         }
 
         /**
          * 取消按钮被点击
-         *
-         * @param v
-         * @param view
          */
-        public void onClickCancel(View v, DialogMenuView view)
-        {
-            view.dismiss();
+        open fun onClickCancel(view: View, dialogView: DialogMenuView) {
+            dialogView.dismiss()
         }
     }
 }
