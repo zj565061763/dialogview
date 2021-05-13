@@ -27,7 +27,7 @@ interface DialogMenuView : DialogView {
     /**
      * 设置列表数据
      */
-    fun setItemList(listObject: List<out Any>): DialogMenuView
+    fun setItemList(listObject: List<Any>): DialogMenuView
 
     /**
      * 设置适配器

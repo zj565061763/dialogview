@@ -26,7 +26,7 @@ class FDialogMenuView : BaseDialogView, DialogMenuView {
     var tv_cancel: TextView? = null
     var lv_content: ListView? = null
 
-    private var _listModel: List<out Any>? = null
+    private var _listModel: List<Any>? = null
     private var _callback: DialogMenuView.Callback? = null
     private val _handler: IDialogMenuViewHandler?
 
@@ -92,7 +92,7 @@ class FDialogMenuView : BaseDialogView, DialogMenuView {
         return this
     }
 
-    override fun setItemList(listObject: List<out Any>): DialogMenuView {
+    override fun setItemList(listObject: List<Any>): DialogMenuView {
         _listModel = listObject
         _defaultAdapter.notifyDataSetChanged()
         return this
@@ -179,7 +179,7 @@ class FDialogMenuView : BaseDialogView, DialogMenuView {
         _handler?.onDetachedFromWindow(this)
     }
 
-    override fun setItems(listObject: List<out Any>): DialogMenuView {
+    override fun setItems(listObject: List<Any>): DialogMenuView {
         setItemList(listObject)
         return this
     }
