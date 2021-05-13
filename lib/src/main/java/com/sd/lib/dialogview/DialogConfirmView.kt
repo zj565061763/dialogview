@@ -75,15 +75,15 @@ interface DialogConfirmView : DialogView {
         /**
          * 取消按钮被点击
          */
-        open fun onClickCancel(v: View, view: DialogConfirmView) {
-            view.dismiss()
+        open fun onClickCancel(view: View, dialogView: DialogConfirmView) {
+            dialogView.dismiss()
         }
 
         /**
          * 确定按钮被点击
          */
-        open fun onClickConfirm(v: View, view: DialogConfirmView) {
-            view.dismiss()
+        open fun onClickConfirm(view: View, dialogView: DialogConfirmView) {
+            dialogView.dismiss()
         }
     }
 }

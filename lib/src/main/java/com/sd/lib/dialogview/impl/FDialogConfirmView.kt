@@ -1,253 +1,180 @@
-package com.sd.lib.dialogview.impl;
+package com.sd.lib.dialogview.impl
 
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.AttributeSet;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-
-import com.sd.lib.dialoger.Dialoger;
-import com.sd.lib.dialogview.DialogConfirmView;
-import com.sd.lib.dialogview.R;
-import com.sd.lib.dialogview.core.DialogViewManager;
-import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler;
+import android.content.Context
+import android.util.AttributeSet
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.TextView
+import com.sd.lib.dialoger.Dialoger
+import com.sd.lib.dialogview.DialogConfirmView
+import com.sd.lib.dialogview.LibUtils
+import com.sd.lib.dialogview.R
+import com.sd.lib.dialogview.core.DialogViewManager.dialogViewHandlerFactory
+import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler
 
 /**
  * 带标题，内容，确定按钮和取消按钮
  */
-public class FDialogConfirmView extends BaseDialogView implements DialogConfirmView
-{
-    public TextView tv_title;
+class FDialogConfirmView : BaseDialogView, DialogConfirmView {
+    var tv_title: TextView? = null
 
-    public FrameLayout fl_content;
-    public TextView tv_content;
-    public TextView tv_content_sub;
+    var fl_content: FrameLayout? = null
+    var tv_content: TextView? = null
+    var tv_content_sub: TextView? = null
 
-    public TextView tv_confirm;
-    public TextView tv_cancel;
+    var tv_confirm: TextView? = null
+    var tv_cancel: TextView? = null
 
-    private Callback mCallback;
+    private var _callback: DialogConfirmView.Callback? = null
+    private val _handler: IDialogConfirmViewHandler?
 
-    private final IDialogConfirmViewHandler mHandler;
+    @JvmOverloads
+    constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
+        var layoutId = R.layout.lib_dialogview_confirm_view
 
-    public FDialogConfirmView(Context context)
-    {
-        this(context, null);
-    }
-
-    public FDialogConfirmView(Context context, AttributeSet attrs)
-    {
-        super(context, attrs);
-        mHandler = DialogViewManager.INSTANCE.getDialogViewHandlerFactory().newConfirmViewHandler(this);
-
-        int layoutId = R.layout.lib_dialogview_confirm_view;
-        if (mHandler != null)
-        {
-            final int id = mHandler.getContentViewResId(this);
-            if (id != 0)
-                layoutId = id;
+        _handler = dialogViewHandlerFactory.newConfirmViewHandler(this)
+        _handler?.let {
+            val id = it.getContentViewResId(this)
+            if (id != 0) {
+                layoutId = id
+            }
         }
 
-        setContentView(layoutId);
+        setContentView(layoutId)
 
-        if (getLayoutParams() == null)
-        {
-            setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        if (layoutParams == null) {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            )
         }
     }
 
-    @Override
-    protected void onContentViewChanged()
-    {
-        super.onContentViewChanged();
-        tv_title = findViewById(R.id.tv_title);
-        fl_content = findViewById(R.id.fl_content);
-        tv_content = findViewById(R.id.tv_content);
-        tv_content_sub = findViewById(R.id.tv_content_sub);
-        tv_confirm = findViewById(R.id.tv_confirm);
-        tv_cancel = findViewById(R.id.tv_cancel);
+    override fun onContentViewChanged() {
+        super.onContentViewChanged()
+        tv_title = findViewById(R.id.tv_title)
+        fl_content = findViewById(R.id.fl_content)
+        tv_content = findViewById(R.id.tv_content)
+        tv_content_sub = findViewById(R.id.tv_content_sub)
+        tv_confirm = findViewById(R.id.tv_confirm)
+        tv_cancel = findViewById(R.id.tv_cancel)
 
-        tv_confirm.setOnClickListener(this);
-        tv_cancel.setOnClickListener(this);
+        tv_confirm?.setOnClickListener(this)
+        tv_cancel?.setOnClickListener(this)
 
-        if (mHandler != null)
-            mHandler.onContentViewChanged(this);
+        _handler?.onContentViewChanged(this)
     }
 
-    @Override
-    protected void initDialog(Dialoger dialog)
-    {
-        super.initDialog(dialog);
-        final int defaultPadding = (int) (getContext().getResources().getDisplayMetrics().widthPixels * 0.1f);
-        dialog.setPadding(defaultPadding, 0, defaultPadding, 0);
-        dialog.setGravity(Gravity.CENTER);
+    override fun initDialog(dialog: Dialoger) {
+        super.initDialog(dialog)
+        val defaultPadding = (context.resources.displayMetrics.widthPixels * 0.1f).toInt()
+        dialog.setPadding(defaultPadding, 0, defaultPadding, 0)
+        dialog.gravity = Gravity.CENTER
     }
 
-    @Override
-    public DialogConfirmView setCustomView(int layoutId)
-    {
-        fl_content.removeAllViews();
-        LayoutInflater.from(getContext()).inflate(layoutId, fl_content, true);
-        return this;
+    override fun setCallback(callback: DialogConfirmView.Callback?): DialogConfirmView {
+        _callback = callback
+        return this
     }
 
-    @Override
-    public DialogConfirmView setCustomView(View view)
-    {
-        fl_content.removeAllViews();
-        fl_content.addView(view);
-        return this;
+    override fun setTextTitle(text: String?): DialogConfirmView {
+        LibUtils.setTextAndVisibility(text, tv_title)
+        return this
     }
 
-    @Override
-    public DialogConfirmView setCallback(Callback callback)
-    {
-        mCallback = callback;
-        return this;
+    override fun setTextContent(text: String?): DialogConfirmView {
+        LibUtils.setTextAndVisibility(text, tv_content)
+        return this
     }
 
-    @Override
-    public DialogConfirmView setTextTitle(String text)
-    {
-        if (TextUtils.isEmpty(text))
-        {
-            tv_title.setVisibility(View.GONE);
-        } else
-        {
-            tv_title.setVisibility(View.VISIBLE);
-            tv_title.setText(text);
+    override fun setTextContentSub(text: String?): DialogConfirmView {
+        LibUtils.setTextAndVisibility(text, tv_content_sub)
+        return this
+    }
+
+    override fun setTextConfirm(text: String?): DialogConfirmView {
+        LibUtils.setTextAndVisibility(text, tv_confirm)
+        return this
+    }
+
+    override fun setTextCancel(text: String?): DialogConfirmView {
+        LibUtils.setTextAndVisibility(text, tv_cancel)
+        return this
+    }
+
+    override fun setTextColorTitle(color: Int): DialogConfirmView {
+        tv_title?.setTextColor(color)
+        return this
+    }
+
+    override fun setTextColorContent(color: Int): DialogConfirmView {
+        tv_content?.setTextColor(color)
+        return this
+    }
+
+    override fun setTextColorContentSub(color: Int): DialogConfirmView {
+        tv_content_sub?.setTextColor(color)
+        return this
+    }
+
+    override fun setTextColorConfirm(color: Int): DialogConfirmView {
+        tv_confirm?.setTextColor(color)
+        return this
+    }
+
+    override fun setTextColorCancel(color: Int): DialogConfirmView {
+        tv_cancel?.setTextColor(color)
+        return this
+    }
+
+    override fun setCustomView(layoutId: Int): DialogConfirmView {
+        fl_content?.let {
+            it?.removeAllViews()
+            LayoutInflater.from(context).inflate(layoutId, it, true)
         }
-        return this;
+        return this
     }
 
-    @Override
-    public DialogConfirmView setTextContent(String text)
-    {
-        if (TextUtils.isEmpty(text))
-        {
-            tv_content.setVisibility(View.GONE);
-        } else
-        {
-            tv_content.setVisibility(View.VISIBLE);
-            tv_content.setText(text);
+    override fun setCustomView(view: View?): DialogConfirmView {
+        fl_content?.let {
+            it.removeAllViews()
+            it.addView(view)
         }
-        return this;
+        return this
     }
 
-    @Override
-    public DialogConfirmView setTextContentSub(String text)
-    {
-        if (TextUtils.isEmpty(text))
-        {
-            tv_content_sub.setVisibility(View.GONE);
-        } else
-        {
-            tv_content_sub.setVisibility(View.VISIBLE);
-            tv_content_sub.setText(text);
-        }
-        return this;
-    }
-
-    @Override
-    public DialogConfirmView setTextConfirm(String text)
-    {
-        if (TextUtils.isEmpty(text))
-        {
-            tv_confirm.setVisibility(View.GONE);
-        } else
-        {
-            tv_confirm.setVisibility(View.VISIBLE);
-            tv_confirm.setText(text);
-        }
-        return this;
-    }
-
-    @Override
-    public DialogConfirmView setTextCancel(String text)
-    {
-        if (TextUtils.isEmpty(text))
-        {
-            tv_cancel.setVisibility(View.GONE);
-        } else
-        {
-            tv_cancel.setVisibility(View.VISIBLE);
-            tv_cancel.setText(text);
-        }
-        return this;
-    }
-
-    @Override
-    public DialogConfirmView setTextColorTitle(int color)
-    {
-        tv_title.setTextColor(color);
-        return this;
-    }
-
-    @Override
-    public DialogConfirmView setTextColorContent(int color)
-    {
-        tv_content.setTextColor(color);
-        return this;
-    }
-
-    @Override
-    public DialogConfirmView setTextColorContentSub(int color)
-    {
-        tv_content_sub.setTextColor(color);
-        return this;
-    }
-
-    @Override
-    public DialogConfirmView setTextColorConfirm(int color)
-    {
-        tv_confirm.setTextColor(color);
-        return this;
-    }
-
-    @Override
-    public DialogConfirmView setTextColorCancel(int color)
-    {
-        tv_cancel.setTextColor(color);
-        return this;
-    }
-
-    @Override
-    public void onClick(View v)
-    {
-        super.onClick(v);
-        if (v == tv_confirm)
-        {
-            if (mCallback != null)
-                mCallback.onClickConfirm(v, this);
-            else
-                dismiss();
-        } else if (v == tv_cancel)
-        {
-            if (mCallback != null)
-                mCallback.onClickCancel(v, this);
-            else
-                dismiss();
+    override fun onClick(v: View?) {
+        super.onClick(v)
+        when (v) {
+            tv_confirm -> {
+                val callback = _callback
+                if (callback != null) {
+                    callback.onClickConfirm(v!!, this)
+                } else {
+                    dismiss()
+                }
+            }
+            tv_cancel -> {
+                val callback = _callback
+                if (callback != null) {
+                    callback.onClickCancel(v!!, this)
+                } else {
+                    dismiss()
+                }
+            }
         }
     }
 
-    @Override
-    protected void onAttachedToWindow()
-    {
-        super.onAttachedToWindow();
-        if (mHandler != null)
-            mHandler.onAttachedToWindow(this);
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        _handler?.onAttachedToWindow(this)
     }
 
-    @Override
-    protected void onDetachedFromWindow()
-    {
-        super.onDetachedFromWindow();
-        if (mHandler != null)
-            mHandler.onDetachedFromWindow(this);
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        _handler?.onDetachedFromWindow(this)
     }
 }
