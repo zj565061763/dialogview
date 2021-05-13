@@ -141,7 +141,7 @@ class FDialogConfirmView : BaseDialogView, DialogConfirmView {
 
     override fun setCustomView(layoutId: Int): DialogConfirmView {
         fl_content?.let {
-            it?.removeAllViews()
+            it.removeAllViews()
             LayoutInflater.from(context).inflate(layoutId, it, true)
         }
         return this
