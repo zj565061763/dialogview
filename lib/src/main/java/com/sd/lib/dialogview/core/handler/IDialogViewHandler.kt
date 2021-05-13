@@ -1,25 +1,19 @@
-package com.sd.lib.dialogview.core.handler;
+package com.sd.lib.dialogview.core.handler
 
-import com.sd.lib.dialogview.DialogView;
+import com.sd.lib.dialogview.DialogView
 
-public interface IDialogViewHandler<T extends DialogView>
-{
+interface IDialogViewHandler<T : DialogView> {
     /**
      * 返回内容布局id
-     *
-     * @param dialogView
-     * @return
      */
-    int getContentViewResId(T dialogView);
+    fun getContentViewResId(dialogView: T): Int
 
     /**
      * 内容view变化
-     *
-     * @param dialogView
      */
-    void onContentViewChanged(T dialogView);
+    fun onContentViewChanged(dialogView: T)
 
-    void onAttachedToWindow(T dialogView);
+    fun onAttachedToWindow(dialogView: T)
 
-    void onDetachedFromWindow(T dialogView);
+    fun onDetachedFromWindow(dialogView: T)
 }
