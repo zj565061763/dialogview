@@ -38,8 +38,7 @@ class FDialogProgressView : BaseDialogView, DialogProgressView {
 
         setContentView(layoutId)
 
-        val params = layoutParams
-        if (params == null) {
+        if (layoutParams == null) {
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
