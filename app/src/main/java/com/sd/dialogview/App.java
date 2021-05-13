@@ -5,11 +5,9 @@ import android.app.Application;
 import com.sd.dialogview.handler.AppDialogViewHandlerFactory;
 import com.sd.lib.dialogview.core.DialogViewManager;
 
-public class App extends Application
-{
+public class App extends Application {
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
         DialogViewManager.INSTANCE.setDialogViewHandlerFactory(new AppDialogViewHandlerFactory());
     }
