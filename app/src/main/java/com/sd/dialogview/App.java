@@ -11,6 +11,6 @@ public class App extends Application
     public void onCreate()
     {
         super.onCreate();
-        DialogViewManager.getInstance().setDialogViewHandlerFactory(new AppDialogViewHandlerFactory());
+        DialogViewManager.INSTANCE.setDialogViewHandlerFactory(new AppDialogViewHandlerFactory());
     }
 }

@@ -44,7 +44,7 @@ public class FDialogMenuView extends BaseDialogView implements DialogMenuView
     public FDialogMenuView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        mHandler = DialogViewManager.getInstance().getDialogViewHandlerFactory().newMenuViewHandler(this);
+        mHandler = DialogViewManager.INSTANCE.getDialogViewHandlerFactory().newMenuViewHandler(this);
 
         int layoutId = R.layout.lib_dialogview_menu_view;
         if (mHandler != null)

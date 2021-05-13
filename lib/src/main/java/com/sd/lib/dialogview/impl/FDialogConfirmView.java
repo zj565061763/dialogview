@@ -42,7 +42,7 @@ public class FDialogConfirmView extends BaseDialogView implements DialogConfirmV
     public FDialogConfirmView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        mHandler = DialogViewManager.getInstance().getDialogViewHandlerFactory().newConfirmViewHandler(this);
+        mHandler = DialogViewManager.INSTANCE.getDialogViewHandlerFactory().newConfirmViewHandler(this);
 
         int layoutId = R.layout.lib_dialogview_confirm_view;
         if (mHandler != null)
