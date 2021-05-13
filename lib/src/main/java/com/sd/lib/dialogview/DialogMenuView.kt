@@ -32,7 +32,7 @@ interface DialogMenuView : DialogView {
     /**
      * 设置适配器
      */
-    fun setAdapter(adapter: BaseAdapter): DialogMenuView
+    fun setAdapter(adapter: BaseAdapter?): DialogMenuView
 
     @Deprecated(message = "用setItemList替代")
     fun setItems(listObject: List<Any>): DialogMenuView

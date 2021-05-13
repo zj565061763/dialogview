@@ -60,7 +60,7 @@ class FDialogMenuView : BaseDialogView, DialogMenuView {
         lv_content = findViewById(R.id.lv_content)
 
         tv_cancel?.setOnClickListener(this)
-        lv_content?.adapter = adapter
+        setAdapter(_defaultAdapter)
 
         _handler?.onContentViewChanged(this)
     }
@@ -94,13 +94,13 @@ class FDialogMenuView : BaseDialogView, DialogMenuView {
 
     override fun setItemList(listObject: List<out Any>): DialogMenuView {
         _listModel = listObject
-        adapter.notifyDataSetChanged()
+        _defaultAdapter.notifyDataSetChanged()
         return this
     }
 
-    override fun setAdapter(adapter: BaseAdapter): DialogMenuView {
+    override fun setAdapter(adapter: BaseAdapter?): DialogMenuView {
         lv_content?.let {
-            it.adapter = adapter
+            it.adapter = adapter ?: _defaultAdapter
             it.onItemClickListener = OnItemClickListener { parent, view, position, id ->
                 val callback = _callback
                 if (callback != null) {
@@ -113,10 +113,12 @@ class FDialogMenuView : BaseDialogView, DialogMenuView {
         return this
     }
 
-    protected val adapter = object : BaseAdapter() {
+    /**
+     * 默认适配器
+     */
+    private val _defaultAdapter = object : BaseAdapter() {
         override fun getCount(): Int {
-            val list = _listModel ?: return 0
-            return list.size
+            return _listModel?.size ?: 0
         }
 
         override fun getItem(position: Int): Any {
@@ -135,6 +137,7 @@ class FDialogMenuView : BaseDialogView, DialogMenuView {
 
             val textView = view.findViewById<TextView>(R.id.tv_content)
             val model = getModel(position)
+
             if (textView != null && model != null) {
                 textView.text = if (model is DialogMenuView.Item) {
                     model.getItemDisplayContent()
