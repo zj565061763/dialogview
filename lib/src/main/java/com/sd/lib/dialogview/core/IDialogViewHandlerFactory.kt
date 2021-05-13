@@ -1,17 +1,16 @@
-package com.sd.lib.dialogview.core;
+package com.sd.lib.dialogview.core
 
-import com.sd.lib.dialogview.DialogConfirmView;
-import com.sd.lib.dialogview.DialogMenuView;
-import com.sd.lib.dialogview.DialogProgressView;
-import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler;
-import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler;
-import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler;
+import com.sd.lib.dialogview.DialogConfirmView
+import com.sd.lib.dialogview.DialogMenuView
+import com.sd.lib.dialogview.DialogProgressView
+import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler
+import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler
+import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler
 
-public interface IDialogViewHandlerFactory
-{
-    IDialogProgressViewHandler newProgressViewHandler(DialogProgressView dialogView);
+interface IDialogViewHandlerFactory {
+    fun newProgressViewHandler(dialogView: DialogProgressView): IDialogProgressViewHandler?
 
-    IDialogConfirmViewHandler newConfirmViewHandler(DialogConfirmView dialogView);
+    fun newConfirmViewHandler(dialogView: DialogConfirmView): IDialogConfirmViewHandler?
 
-    IDialogMenuViewHandler newMenuViewHandler(DialogMenuView dialogView);
+    fun newMenuViewHandler(dialogView: DialogMenuView): IDialogMenuViewHandler?
 }
