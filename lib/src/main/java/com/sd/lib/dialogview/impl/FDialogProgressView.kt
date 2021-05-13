@@ -18,7 +18,10 @@ import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler
  * 带环形进度条，和信息提示
  */
 class FDialogProgressView : BaseDialogView, DialogProgressView {
+    @JvmField
     var tv_msg: TextView? = null
+
+    @JvmField
     var pb_progress: ProgressBar? = null
 
     private var _consumeTouchEvent = false

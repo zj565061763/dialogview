@@ -22,8 +22,13 @@ import java.util.*
  * 带取消按钮的菜单
  */
 class FDialogMenuView : BaseDialogView, DialogMenuView {
+    @JvmField
     var tv_title: TextView? = null
+
+    @JvmField
     var tv_cancel: TextView? = null
+
+    @JvmField
     var lv_content: ListView? = null
 
     private var _listModel: List<Any>? = null
