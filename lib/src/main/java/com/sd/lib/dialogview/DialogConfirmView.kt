@@ -1,135 +1,89 @@
-package com.sd.lib.dialogview;
+package com.sd.lib.dialogview
 
-import android.view.View;
+import android.view.View
 
-public interface DialogConfirmView extends DialogView
-{
-    /**
-     * 设置自定义View，替换掉中间内容部分的布局
-     *
-     * @param layoutId
-     * @return
-     */
-    DialogConfirmView setCustomView(int layoutId);
-
-    /**
-     * 设置自定义View，替换掉中间内容部分的布局
-     *
-     * @param view
-     * @return
-     */
-    DialogConfirmView setCustomView(View view);
-
+interface DialogConfirmView : DialogView {
     /**
      * 设置回调
-     *
-     * @param callback
-     * @return
      */
-    DialogConfirmView setCallback(Callback callback);
+    fun setCallback(callback: Callback?): DialogConfirmView
 
     /**
      * 设置标题文字
-     *
-     * @param text
-     * @return
      */
-    DialogConfirmView setTextTitle(String text);
+    fun setTextTitle(text: String?): DialogConfirmView
 
     /**
      * 设置内容文字
-     *
-     * @param text
-     * @return
      */
-    DialogConfirmView setTextContent(String text);
+    fun setTextContent(text: String?): DialogConfirmView
 
     /**
      * 设置副内容文字
-     *
-     * @param text
-     * @return
      */
-    DialogConfirmView setTextContentSub(String text);
+    fun setTextContentSub(text: String?): DialogConfirmView
 
     /**
      * 设置取消按钮文字
-     *
-     * @param text
-     * @return
      */
-    DialogConfirmView setTextCancel(String text);
+    fun setTextCancel(text: String?): DialogConfirmView
 
     /**
      * 设置确定按钮文字
-     *
-     * @param text
-     * @return
      */
-    DialogConfirmView setTextConfirm(String text);
+    fun setTextConfirm(text: String?): DialogConfirmView
 
     /**
      * 设置标题文字颜色
-     *
-     * @param color
-     * @return
      */
-    DialogConfirmView setTextColorTitle(int color);
+    fun setTextColorTitle(color: Int): DialogConfirmView
 
     /**
      * 设置内容文字颜色
-     *
-     * @param color
-     * @return
      */
-    DialogConfirmView setTextColorContent(int color);
+    fun setTextColorContent(color: Int): DialogConfirmView
 
     /**
      * 设置副内容文字颜色
-     *
-     * @param color
-     * @return
      */
-    DialogConfirmView setTextColorContentSub(int color);
+    fun setTextColorContentSub(color: Int): DialogConfirmView
 
     /**
      * 设置取消文字颜色
-     *
-     * @param color
-     * @return
      */
-    DialogConfirmView setTextColorCancel(int color);
+    fun setTextColorCancel(color: Int): DialogConfirmView
 
     /**
      * 设置确认文字颜色
-     *
-     * @param color
-     * @return
      */
-    DialogConfirmView setTextColorConfirm(int color);
+    fun setTextColorConfirm(color: Int): DialogConfirmView
 
-    abstract class Callback
-    {
+    /**
+     * 设置自定义View，替换掉中间内容部分的布局
+     */
+    fun setCustomView(layoutId: Int): DialogConfirmView
+
+    /**
+     * 设置自定义View，替换掉中间内容部分的布局
+     */
+    fun setCustomView(view: View?): DialogConfirmView
+
+    /**
+     * 回调对象
+     */
+    abstract class Callback {
         /**
          * 取消按钮被点击
-         *
-         * @param v
-         * @param view
          */
-        public void onClickCancel(View v, DialogConfirmView view)
-        {
-            view.dismiss();
+        open fun onClickCancel(v: View, view: DialogConfirmView) {
+            view.dismiss()
         }
 
         /**
          * 确定按钮被点击
-         *
-         * @param v
-         * @param view
          */
-        public void onClickConfirm(View v, DialogConfirmView view)
-        {
-            view.dismiss();
+        open fun onClickConfirm(v: View, view: DialogConfirmView) {
+            view.dismiss()
         }
     }
 }
