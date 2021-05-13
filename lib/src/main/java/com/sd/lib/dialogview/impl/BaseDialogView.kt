@@ -11,7 +11,7 @@ import com.sd.lib.dialoger.Dialoger
 import com.sd.lib.dialoger.impl.FDialoger
 import com.sd.lib.dialogview.DialogView
 
-open class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
+abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
     private val _dialogLazy = lazy {
         FDialoger(context as Activity).apply {
             this.contentView = this@BaseDialogView
@@ -47,7 +47,7 @@ open class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
     /**
      * 内容View变化
      */
-    protected open fun onContentViewChanged() {}
+    protected abstract fun onContentViewChanged()
 
     /**
      * 初始化[Dialoger]对象

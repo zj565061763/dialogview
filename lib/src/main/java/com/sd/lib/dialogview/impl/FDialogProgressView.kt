@@ -50,7 +50,6 @@ open class FDialogProgressView : BaseDialogView, DialogProgressView {
     }
 
     override fun onContentViewChanged() {
-        super.onContentViewChanged()
         tv_msg = findViewById(R.id.tv_msg)
         pb_progress = findViewById(R.id.pb_progress)
         _handler?.onContentViewChanged(this)

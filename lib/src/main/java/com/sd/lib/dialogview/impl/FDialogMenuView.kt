@@ -59,7 +59,6 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
     }
 
     override fun onContentViewChanged() {
-        super.onContentViewChanged()
         tv_title = findViewById(R.id.tv_title)
         tv_cancel = findViewById(R.id.tv_cancel)
         lv_content = findViewById(R.id.lv_content)

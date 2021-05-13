@@ -63,7 +63,6 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
     }
 
     override fun onContentViewChanged() {
-        super.onContentViewChanged()
         tv_title = findViewById(R.id.tv_title)
         fl_content = findViewById(R.id.fl_content)
         tv_content = findViewById(R.id.tv_content)
