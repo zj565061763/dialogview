@@ -1,213 +1,183 @@
-package com.sd.lib.dialogview.impl;
+package com.sd.lib.dialogview.impl
 
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.AttributeSet;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import com.sd.lib.dialoger.Dialoger;
-import com.sd.lib.dialogview.DialogMenuView;
-import com.sd.lib.dialogview.R;
-import com.sd.lib.dialogview.core.DialogViewManager;
-import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler;
-
-import java.util.Arrays;
-import java.util.List;
+import android.content.Context
+import android.util.AttributeSet
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.BaseAdapter
+import android.widget.ListView
+import android.widget.TextView
+import com.sd.lib.dialoger.Dialoger
+import com.sd.lib.dialogview.DialogMenuView
+import com.sd.lib.dialogview.LibUtils
+import com.sd.lib.dialogview.R
+import com.sd.lib.dialogview.core.DialogViewManager.dialogViewHandlerFactory
+import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler
+import java.util.*
 
 /**
  * 带取消按钮的菜单
  */
-public class FDialogMenuView extends BaseDialogView implements DialogMenuView {
-    public TextView tv_title;
-    public TextView tv_cancel;
-    public ListView lv_content;
+class FDialogMenuView : BaseDialogView, DialogMenuView {
+    var tv_title: TextView? = null
+    var tv_cancel: TextView? = null
+    var lv_content: ListView? = null
 
-    private List<? extends Object> mListModel;
+    private var _listModel: List<out Any>? = null
+    private var _callback: DialogMenuView.Callback? = null
+    private val _handler: IDialogMenuViewHandler?
 
-    private Callback mCallback;
-    private final IDialogMenuViewHandler mHandler;
+    @JvmOverloads
+    constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
+        var layoutId = R.layout.lib_dialogview_menu_view
 
-    public FDialogMenuView(Context context) {
-        this(context, null);
-    }
-
-    public FDialogMenuView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        mHandler = DialogViewManager.INSTANCE.getDialogViewHandlerFactory().newMenuViewHandler(this);
-
-        int layoutId = R.layout.lib_dialogview_menu_view;
-        if (mHandler != null) {
-            final int id = mHandler.getContentViewResId(this);
-            if (id != 0)
-                layoutId = id;
-        }
-
-        setContentView(layoutId);
-
-        setTextTitle(null);
-        if (getLayoutParams() == null) {
-            setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-        }
-    }
-
-    @Override
-    protected void onContentViewChanged() {
-        super.onContentViewChanged();
-        tv_title = findViewById(R.id.tv_title);
-        tv_cancel = findViewById(R.id.tv_cancel);
-        lv_content = findViewById(R.id.lv_content);
-
-        tv_cancel.setOnClickListener(this);
-
-        if (mHandler != null)
-            mHandler.onContentViewChanged(this);
-    }
-
-    @Override
-    protected void initDialog(Dialoger dialog) {
-        super.initDialog(dialog);
-        dialog.setPadding(0, 0, 0, 0);
-        dialog.setGravity(Gravity.BOTTOM);
-        dialog.setCanceledOnTouchOutside(true);
-    }
-
-    @Override
-    public DialogMenuView setTextTitle(String text) {
-        if (TextUtils.isEmpty(text)) {
-            tv_title.setVisibility(View.GONE);
-        } else {
-            tv_title.setVisibility(View.VISIBLE);
-            tv_title.setText(text);
-        }
-        return this;
-    }
-
-    @Override
-    public DialogMenuView setTextCancel(String text) {
-        if (TextUtils.isEmpty(text)) {
-            tv_cancel.setVisibility(View.GONE);
-        } else {
-            tv_cancel.setVisibility(View.VISIBLE);
-            tv_cancel.setText(text);
-        }
-        return this;
-    }
-
-    @Override
-    public DialogMenuView setCallback(Callback callback) {
-        mCallback = callback;
-        return this;
-    }
-
-    @Override
-    public DialogMenuView setItems(Object... objects) {
-        List<Object> listObject = null;
-        if (objects != null) {
-            listObject = Arrays.asList(objects);
-        }
-        setItems(listObject);
-        return this;
-    }
-
-    @Override
-    public DialogMenuView setItems(List<? extends Object> listObject) {
-        mListModel = listObject;
-        setAdapter(getAdapter());
-        return this;
-    }
-
-    @Override
-    public DialogMenuView setAdapter(BaseAdapter adapter) {
-        lv_content.setAdapter(adapter);
-        lv_content.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mCallback != null)
-                    mCallback.onClickItem(view, (int) id, FDialogMenuView.this);
-                else
-                    dismiss();
+        _handler = dialogViewHandlerFactory.newMenuViewHandler(this)
+        _handler?.let {
+            val id = it.getContentViewResId(this)
+            if (id != 0) {
+                layoutId = id
             }
-        });
-        return this;
+        }
+
+        setContentView(layoutId)
+
+        setTextTitle(null)
+        if (layoutParams == null) {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
     }
 
-    protected BaseAdapter getAdapter() {
-        return mInternalAdapter;
+    override fun onContentViewChanged() {
+        super.onContentViewChanged()
+        tv_title = findViewById(R.id.tv_title)
+        tv_cancel = findViewById(R.id.tv_cancel)
+        lv_content = findViewById(R.id.lv_content)
+
+        tv_cancel?.setOnClickListener(this)
+        lv_content?.adapter = adapter
+
+        _handler?.onContentViewChanged(this)
     }
 
-    private BaseAdapter mInternalAdapter = new BaseAdapter() {
-        @Override
-        public int getCount() {
-            if (mListModel != null && !mListModel.isEmpty()) {
-                return mListModel.size();
+    override fun initDialog(dialog: Dialoger) {
+        super.initDialog(dialog)
+        dialog.setPadding(0, 0, 0, 0)
+        dialog.gravity = Gravity.BOTTOM
+        dialog.setCanceledOnTouchOutside(true)
+    }
+
+    override fun setCallback(callback: DialogMenuView.Callback?): DialogMenuView {
+        _callback = callback
+        return this
+    }
+
+    override fun setTextTitle(text: String?): DialogMenuView {
+        LibUtils.setTextAndVisibility(text, tv_title)
+        return this
+    }
+
+    override fun setTextCancel(text: String?): DialogMenuView {
+        LibUtils.setTextAndVisibility(text, tv_cancel)
+        return this
+    }
+
+    override fun setItems(vararg objects: Any): DialogMenuView {
+        setItemList(objects.toList())
+        return this
+    }
+
+    override fun setItemList(listObject: List<out Any>): DialogMenuView {
+        _listModel = listObject
+        adapter.notifyDataSetChanged()
+        return this
+    }
+
+    override fun setAdapter(adapter: BaseAdapter): DialogMenuView {
+        lv_content?.let {
+            it.adapter = adapter
+            it.onItemClickListener = OnItemClickListener { parent, view, position, id ->
+                val callback = _callback
+                if (callback != null) {
+                    callback.onClickItem(view, id.toInt(), this@FDialogMenuView)
+                } else {
+                    dismiss()
+                }
             }
-            return 0;
+        }
+        return this
+    }
+
+    protected val adapter = object : BaseAdapter() {
+        override fun getCount(): Int {
+            val list = _listModel ?: return 0
+            return list.size
         }
 
-        @Override
-        public Object getItem(int position) {
-            return getModel(position);
+        override fun getItem(position: Int): Any {
+            return getModel(position)!!
         }
 
-        @Override
-        public long getItemId(int position) {
-            return position;
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
         }
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.lib_dialogview_menu_item_view, parent, false);
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            var view = convertView
+            if (view == null) {
+                view = LayoutInflater.from(context).inflate(R.layout.lib_dialogview_menu_item_view, parent, false)!!
             }
-            TextView textView = convertView.findViewById(R.id.tv_content);
-            Object object = getItem(position);
-            if (object != null) {
-                textView.setText(String.valueOf(object));
+
+            val textView = view.findViewById<TextView>(R.id.tv_content)
+            val model = getModel(position)
+            if (textView != null && model != null) {
+                textView.text = if (model is DialogMenuView.Item) {
+                    model.getItemDisplayContent()
+                } else {
+                    model.toString()
+                }
             }
-            return convertView;
-        }
-    };
 
-    private Object getModel(int position) {
-        if (mListModel != null && !mListModel.isEmpty()
-                && position >= 0
-                && position < mListModel.size()) {
-            return mListModel.get(position);
-        }
-        return null;
-    }
-
-    @Override
-    public void onClick(View v) {
-        super.onClick(v);
-        if (v == tv_cancel) {
-            if (mCallback != null)
-                mCallback.onClickCancel(v, this);
-            else
-                dismiss();
+            return view
         }
     }
 
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        if (mHandler != null)
-            mHandler.onAttachedToWindow(this);
+    private fun getModel(position: Int): Any? {
+        val list = _listModel ?: return null
+        return list.getOrNull(position)
     }
 
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        if (mHandler != null)
-            mHandler.onDetachedFromWindow(this);
+    override fun onClick(v: View?) {
+        super.onClick(v)
+        when (v) {
+            tv_cancel -> {
+                val callback = _callback
+                if (callback != null) {
+                    callback.onClickCancel(v!!, this)
+                } else {
+                    dismiss()
+                }
+            }
+        }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        _handler?.onAttachedToWindow(this)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        _handler?.onDetachedFromWindow(this)
+    }
+
+    override fun setItems(listObject: List<out Any>): DialogMenuView {
+        setItemList(listObject)
+        return this
     }
 }

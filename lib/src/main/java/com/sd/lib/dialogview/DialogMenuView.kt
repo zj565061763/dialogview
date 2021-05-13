@@ -5,6 +5,11 @@ import android.widget.BaseAdapter
 
 interface DialogMenuView : DialogView {
     /**
+     * 设置回调
+     */
+    fun setCallback(callback: Callback?): DialogMenuView
+
+    /**
      * 设置标题文字
      */
     fun setTextTitle(text: String?): DialogMenuView
@@ -15,11 +20,6 @@ interface DialogMenuView : DialogView {
     fun setTextCancel(text: String?): DialogMenuView
 
     /**
-     * 设置回调
-     */
-    fun setCallback(callback: Callback?): DialogMenuView
-
-    /**
      * 设置列表数据
      */
     fun setItems(vararg objects: Any): DialogMenuView
@@ -27,12 +27,15 @@ interface DialogMenuView : DialogView {
     /**
      * 设置列表数据
      */
-    fun setItems(listObject: List<out Any>): DialogMenuView
+    fun setItemList(listObject: List<out Any>): DialogMenuView
 
     /**
      * 设置适配器
      */
     fun setAdapter(adapter: BaseAdapter): DialogMenuView
+
+    @Deprecated(message = "用setItemList替代")
+    fun setItems(listObject: List<Any>): DialogMenuView
 
     abstract class Callback {
         /**
