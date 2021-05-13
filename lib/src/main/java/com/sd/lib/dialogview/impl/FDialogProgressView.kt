@@ -1,7 +1,6 @@
 package com.sd.lib.dialogview.impl
 
 import android.content.Context
-import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.MotionEvent
@@ -10,6 +9,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.sd.lib.dialoger.Dialoger
 import com.sd.lib.dialogview.DialogProgressView
+import com.sd.lib.dialogview.LibUtils
 import com.sd.lib.dialogview.R
 import com.sd.lib.dialogview.core.DialogViewManager
 import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler
@@ -65,14 +65,7 @@ class FDialogProgressView : BaseDialogView, DialogProgressView {
     }
 
     override fun setTextMsg(text: String?): DialogProgressView {
-        tv_msg?.let {
-            if (TextUtils.isEmpty(text)) {
-                it.visibility = GONE
-            } else {
-                it.text = text
-                it.visibility = VISIBLE
-            }
-        }
+        LibUtils.setTextAndVisibility(text, tv_msg)
         _handler?.setTextMsg(this, text)
         return this
     }
