@@ -1,8 +1,13 @@
-package com.sd.lib.dialogview;
+package com.sd.lib.dialogview
 
-public interface DialogProgressView extends DialogView
-{
-    DialogProgressView setConsumeTouchEvent(boolean consume);
+interface DialogProgressView : DialogView {
+    /**
+     * 设置是否拦截触摸事件
+     */
+    fun setConsumeTouchEvent(consume: Boolean): DialogProgressView
 
-    DialogProgressView setTextMsg(String text);
+    /**
+     * 设置显示的文字
+     */
+    fun setTextMsg(text: String?): DialogProgressView
 }
