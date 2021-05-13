@@ -1,15 +1,20 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
-group = 'com.github.zj565061763'
+def libGroupId = "com.sd.lib.android"
+def libArtifactId = "dialogview"
+def libVersionCode = 20200921
+def libVersionName = "1.2.0-beta4"
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 20200921
-        versionName "1.2.0-beta4"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode libVersionCode
+        versionName libVersionName
     }
 
     buildTypes {
@@ -30,29 +35,24 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 }
 
-tasks.withType(Javadoc) {
-    options {
-        encoding 'UTF-8'
-        charSet 'UTF-8'
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = libGroupId
+                artifactId = libArtifactId
+                version = libVersionName
+
+                // 上传源码
+                artifact generateSourcesJar
+            }
+        }
     }
-}
-
-task sourcesJar(type: Jar) {
-    getArchiveClassifier().set('sources')
-    from android.sourceSets.main.java.sourceFiles
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    getArchiveClassifier().set('javadoc')
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
 }
