@@ -18,7 +18,7 @@ import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler
 /**
  * 带标题，内容，确定按钮和取消按钮
  */
-class FDialogConfirmView : BaseDialogView, DialogConfirmView {
+open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
     @JvmField
     var tv_title: TextView? = null
 
