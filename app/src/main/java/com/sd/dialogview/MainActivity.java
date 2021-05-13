@@ -1,7 +1,6 @@
 package com.sd.dialogview;
 
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,44 +30,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final DialogConfirmView confirmView = new FDialogConfirmView(this);
                 confirmView.setCallback(new DialogConfirmView.Callback() {
                     @Override
-                    public void onClickCancel(View v, DialogConfirmView view) {
-                        Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
-                        super.onClickCancel(v, view);
+                    public void onClickCancel(View view, DialogConfirmView dialogView) {
+                        super.onClickCancel(view, dialogView);
+                        Toast.makeText(MainActivity.this, "onClickCancel", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
-                    public void onClickConfirm(View v, DialogConfirmView view) {
-                        Toast.makeText(MainActivity.this, "confirm", Toast.LENGTH_SHORT).show();
-                        super.onClickConfirm(v, view);
+                    public void onClickConfirm(View view, DialogConfirmView dialogView) {
+                        super.onClickConfirm(view, dialogView);
+                        Toast.makeText(MainActivity.this, "onClickConfirm", Toast.LENGTH_SHORT).show();
                     }
                 });
 
+                // 设置缩放动画
                 confirmView.getDialoger().setAnimatorCreator(new ScaleXYCreator());
                 confirmView.getDialoger().show();
                 break;
             case R.id.btn_menu:
-
                 final DialogMenuView menuView = new FDialogMenuView(this);
-                menuView.setItems("0", "1", "2").setCallback(new DialogMenuView.Callback() {
+                menuView.setItems("a", "b", "c").setCallback(new DialogMenuView.Callback() {
                     @Override
                     public void onClickItem(View v, int index, DialogMenuView view) {
-                        Toast.makeText(MainActivity.this, String.valueOf(index), Toast.LENGTH_SHORT).show();
                         super.onClickItem(v, index, view);
+                        Toast.makeText(MainActivity.this, "onClickItem:" + index, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onClickCancel(View v, DialogMenuView view) {
-                        Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
                         super.onClickCancel(v, view);
+                        Toast.makeText(MainActivity.this, "onClickCancel", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                menuView.getDialoger().setPadding(0, 0, 0, 0);
-                menuView.getDialoger().setGravity(Gravity.BOTTOM);
                 menuView.getDialoger().show();
                 break;
             case R.id.btn_progress:
-
                 final DialogProgressView progressView = new FDialogProgressView(this);
                 progressView.getDialoger().show();
                 break;
