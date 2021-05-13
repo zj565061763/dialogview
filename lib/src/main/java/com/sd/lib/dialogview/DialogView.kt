@@ -1,10 +1,9 @@
-package com.sd.lib.dialogview;
+package com.sd.lib.dialogview
 
-import com.sd.lib.dialoger.Dialoger;
+import com.sd.lib.dialoger.Dialoger
 
-public interface DialogView
-{
-    Dialoger getDialoger();
+interface DialogView {
+    val dialoger: Dialoger
 
-    void dismiss();
+    fun dismiss()
 }
