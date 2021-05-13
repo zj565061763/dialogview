@@ -49,4 +49,11 @@ interface DialogMenuView : DialogView {
             dialogView.dismiss()
         }
     }
+
+    interface Item {
+        /**
+         * 返回Item要显示的内容
+         */
+        fun getItemDisplayContent(): String
+    }
 }
