@@ -1,27 +1,23 @@
-package com.sd.dialogview.handler;
+package com.sd.dialogview.handler
 
-import com.sd.lib.dialogview.DialogConfirmView;
-import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler;
+import com.sd.lib.dialogview.DialogConfirmView
+import com.sd.lib.dialogview.core.handler.IDialogConfirmViewHandler
 
-public class AppDialogConfirmViewHandler implements IDialogConfirmViewHandler {
-    @Override
-    public int getContentViewResId(DialogConfirmView dialogView) {
-        return 0;
+class AppDialogConfirmViewHandler : IDialogConfirmViewHandler {
+    override fun getContentViewResId(dialogView: DialogConfirmView): Int {
+        return 0
     }
 
-    @Override
-    public void onContentViewChanged(DialogConfirmView dialogView) {
+    override fun onContentViewChanged(dialogView: DialogConfirmView) {
 
     }
 
-    @Override
-    public void onAttachedToWindow(DialogConfirmView dialogView) {
-        dialogView.setTextContent("hook content");
-        dialogView.setTextContentSub("hook content sub");
+    override fun onAttachedToWindow(dialogView: DialogConfirmView) {
+        dialogView.setTextContent("hook content")
+        dialogView.setTextContentSub("hook content sub")
     }
 
-    @Override
-    public void onDetachedFromWindow(DialogConfirmView dialogView) {
+    override fun onDetachedFromWindow(dialogView: DialogConfirmView) {
 
     }
 }

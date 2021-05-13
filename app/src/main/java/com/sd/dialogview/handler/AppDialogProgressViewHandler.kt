@@ -1,31 +1,26 @@
-package com.sd.dialogview.handler;
+package com.sd.dialogview.handler
 
-import com.sd.lib.dialogview.DialogProgressView;
-import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler;
+import com.sd.lib.dialogview.DialogProgressView
+import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler
 
-public class AppDialogProgressViewHandler implements IDialogProgressViewHandler {
-    @Override
-    public void setTextMsg(DialogProgressView dialogView, String text) {
-
-    }
-
-    @Override
-    public int getContentViewResId(DialogProgressView dialogView) {
-        return 0;
-    }
-
-    @Override
-    public void onContentViewChanged(DialogProgressView dialogView) {
+class AppDialogProgressViewHandler : IDialogProgressViewHandler {
+    override fun setTextMsg(dialogView: DialogProgressView, text: String?) {
 
     }
 
-    @Override
-    public void onAttachedToWindow(DialogProgressView dialogView) {
-        dialogView.setTextMsg("hook msg");
+    override fun getContentViewResId(dialogView: DialogProgressView): Int {
+        return 0
     }
 
-    @Override
-    public void onDetachedFromWindow(DialogProgressView dialogView) {
+    override fun onContentViewChanged(dialogView: DialogProgressView) {
+
+    }
+
+    override fun onAttachedToWindow(dialogView: DialogProgressView) {
+        dialogView.setTextMsg("hook msg")
+    }
+
+    override fun onDetachedFromWindow(dialogView: DialogProgressView) {
 
     }
 }

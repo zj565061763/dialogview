@@ -1,10 +1,9 @@
-package com.sd.dialogview;
+package com.sd.dialogview
 
-import android.app.Application;
+import android.app.Application
 
-public class App extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
+class App : Application() {
+    override fun onCreate() {
+        super.onCreate()
     }
 }
