@@ -11,7 +11,7 @@ def libVersionName = "1.2.0-beta4"
 android {
     compileSdkVersion 30
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 30
         versionCode libVersionCode
         versionName libVersionName
