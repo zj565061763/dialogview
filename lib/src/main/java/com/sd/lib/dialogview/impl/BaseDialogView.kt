@@ -28,9 +28,12 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
      * 设置内容View布局id
      */
     fun setContentView(layoutId: Int) {
-        removeAllViews()
-        LayoutInflater.from(context).inflate(layoutId, this, true)
-        onContentViewChanged()
+        val view = if (layoutId != 0) {
+            LayoutInflater.from(context).inflate(layoutId, this, false)
+        } else {
+            null
+        }
+        setContentView(view)
     }
 
     /**
@@ -38,7 +41,9 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
      */
     fun setContentView(view: View?) {
         removeAllViews()
-        addView(view)
+        if (view != null) {
+            addView(view)
+        }
         onContentViewChanged()
     }
 
@@ -60,10 +65,10 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
         if (_dialogLazy.isInitialized()) {
             dialoger.dismiss()
         } else {
-            val parent = parent
-            if (parent is ViewGroup) {
+            val viewParent = parent
+            if (viewParent is ViewGroup) {
                 try {
-                    parent.removeView(this)
+                    viewParent.removeView(this)
                 } catch (e: Exception) {
                 }
             }
