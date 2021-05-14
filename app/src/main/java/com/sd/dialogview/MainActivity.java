@@ -3,7 +3,6 @@ package com.sd.dialogview;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,15 +32,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final DialogConfirmView confirmView = new FDialogConfirmView(this);
                 confirmView.setCallback(new DialogConfirmView.Callback() {
                     @Override
+                    public void onClickCancel(@NotNull DialogConfirmView dialogView) {
+                        super.onClickCancel(dialogView);
+                        Log.i(TAG, "DialogConfirmView onClickCancel");
+                    }
+
+                    @Override
+                    public void onClickConfirm(@NotNull DialogConfirmView dialogView) {
+                        super.onClickConfirm(dialogView);
+                        Log.i(TAG, "DialogConfirmView onClickConfirm");
+                    }
+
+                    @Override
                     public void onClickCancel(View view, DialogConfirmView dialogView) {
                         super.onClickCancel(view, dialogView);
-                        Toast.makeText(MainActivity.this, "onClickCancel", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "DialogConfirmView onClickCancel" + " Deprecated");
                     }
 
                     @Override
                     public void onClickConfirm(View view, DialogConfirmView dialogView) {
                         super.onClickConfirm(view, dialogView);
-                        Toast.makeText(MainActivity.this, "onClickConfirm", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "DialogConfirmView onClickConfirm" + " Deprecated");
                     }
                 });
 
