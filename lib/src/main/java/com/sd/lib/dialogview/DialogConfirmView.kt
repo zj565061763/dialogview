@@ -66,7 +66,7 @@ interface DialogConfirmView : DialogView {
     /**
      * 设置自定义View，替换掉中间内容部分的布局
      */
-    fun setCustomView(view: View?): DialogConfirmView
+    fun setCustomView(view: View): DialogConfirmView
 
     /**
      * 回调对象

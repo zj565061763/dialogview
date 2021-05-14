@@ -146,7 +146,7 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
         return this
     }
 
-    override fun setCustomView(view: View?): DialogConfirmView {
+    override fun setCustomView(view: View): DialogConfirmView {
         fl_content?.let {
             it.removeAllViews()
             it.addView(view)
