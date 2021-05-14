@@ -56,25 +56,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClickItem(int index, @NotNull DialogMenuView dialogView) {
                         super.onClickItem(index, dialogView);
-                        Log.i(TAG, "onClickItem index:" + index);
+                        Log.i(TAG, "DialogMenuView onClickItem index:" + index);
                     }
 
                     @Override
                     public void onClickCancel(@NotNull DialogMenuView dialogView) {
                         super.onClickCancel(dialogView);
-                        Log.i(TAG, "onClickCancel");
+                        Log.i(TAG, "DialogMenuView onClickCancel");
                     }
 
                     @Override
                     public void onClickItem(View v, int index, DialogMenuView view) {
                         super.onClickItem(v, index, view);
-                        Log.i(TAG, "onClickItem index:" + index + " Deprecated");
+                        Log.i(TAG, "DialogMenuView onClickItem index:" + index + " Deprecated");
                     }
 
                     @Override
                     public void onClickCancel(View v, DialogMenuView view) {
                         super.onClickCancel(v, view);
-                        Log.i(TAG, "onClickCancel" + " Deprecated");
+                        Log.i(TAG, "DialogMenuView onClickCancel" + " Deprecated");
                     }
                 });
                 menuView.getDialoger().show();
