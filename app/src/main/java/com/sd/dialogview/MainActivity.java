@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_menu:
                 final DialogMenuView menuView = new FDialogMenuView(this);
-                menuView.setItems("a", "b", "c").setCallback(new DialogMenuView.Callback() {
+                menuView.setItems("a", "b", "c");
+                menuView.setCallback(new DialogMenuView.Callback() {
                     @Override
                     public void onClickItem(int index, @NotNull DialogMenuView dialogView) {
                         super.onClickItem(index, dialogView);
