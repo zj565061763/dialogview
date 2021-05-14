@@ -109,6 +109,7 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
                 val callback = _callback
                 if (callback != null) {
                     callback.onClickItem(view, id.toInt(), this@FDialogMenuView)
+                    callback.onClickItem(id.toInt(), this@FDialogMenuView)
                 } else {
                     dismiss()
                 }
@@ -166,6 +167,7 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
                 val callback = _callback
                 if (callback != null) {
                     callback.onClickCancel(v!!, this)
+                    callback.onClickCancel(this)
                 } else {
                     dismiss()
                 }

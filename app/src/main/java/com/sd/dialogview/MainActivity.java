@@ -1,6 +1,7 @@
 package com.sd.dialogview;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,6 +14,8 @@ import com.sd.lib.dialogview.DialogProgressView;
 import com.sd.lib.dialogview.impl.FDialogConfirmView;
 import com.sd.lib.dialogview.impl.FDialogMenuView;
 import com.sd.lib.dialogview.impl.FDialogProgressView;
+
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -50,15 +53,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final DialogMenuView menuView = new FDialogMenuView(this);
                 menuView.setItems("a", "b", "c").setCallback(new DialogMenuView.Callback() {
                     @Override
+                    public void onClickItem(int index, @NotNull DialogMenuView dialogView) {
+                        super.onClickItem(index, dialogView);
+                        Log.i(TAG, "onClickItem index:" + index);
+                    }
+
+                    @Override
+                    public void onClickCancel(@NotNull DialogMenuView dialogView) {
+                        super.onClickCancel(dialogView);
+                        Log.i(TAG, "onClickCancel");
+                    }
+
+                    @Override
                     public void onClickItem(View v, int index, DialogMenuView view) {
                         super.onClickItem(v, index, view);
-                        Toast.makeText(MainActivity.this, "onClickItem:" + index, Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "onClickItem index:" + index + " Deprecated");
                     }
 
                     @Override
                     public void onClickCancel(View v, DialogMenuView view) {
                         super.onClickCancel(v, view);
-                        Toast.makeText(MainActivity.this, "onClickCancel", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "onClickCancel" + " Deprecated");
                     }
                 });
                 menuView.getDialoger().show();

@@ -41,13 +41,23 @@ interface DialogMenuView : DialogView {
         /**
          * 位置为[index]的item项被点击
          */
-        open fun onClickItem(view: View, index: Int, dialogView: DialogMenuView) {
+        open fun onClickItem(index: Int, dialogView: DialogMenuView) {
             dialogView.dismiss()
         }
 
         /**
          * 取消按钮被点击
          */
+        open fun onClickCancel(dialogView: DialogMenuView) {
+            dialogView.dismiss()
+        }
+
+        @Deprecated("")
+        open fun onClickItem(view: View, index: Int, dialogView: DialogMenuView) {
+            dialogView.dismiss()
+        }
+
+        @Deprecated("")
         open fun onClickCancel(view: View, dialogView: DialogMenuView) {
             dialogView.dismiss()
         }
