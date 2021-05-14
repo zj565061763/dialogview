@@ -32,8 +32,8 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
     var lv_content: ListView? = null
 
     private var _listModel: List<Any>? = null
-    private var _callback: DialogMenuView.Callback? = null
     private val _handler: IDialogMenuViewHandler?
+    private var _callback: DialogMenuView.Callback? = null
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
