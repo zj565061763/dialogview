@@ -37,8 +37,8 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
     @JvmField
     var tv_cancel: TextView? = null
 
-    private var _callback: DialogConfirmView.Callback? = null
     private val _handler: IDialogConfirmViewHandler?
+    private var _callback: DialogConfirmView.Callback? = null
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
