@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import com.sd.lib.dialog.IDialog
 import com.sd.lib.dialoger.Dialoger
 import com.sd.lib.dialogview.DialogConfirmView
 import com.sd.lib.dialogview.LibUtils
@@ -78,6 +79,13 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
 
     override fun initDialog(dialog: Dialoger) {
         super.initDialog(dialog)
+        val defaultPadding = (context.resources.displayMetrics.widthPixels * 0.1f).toInt()
+        dialog.setPadding(defaultPadding, 0, defaultPadding, 0)
+        dialog.gravity = Gravity.CENTER
+    }
+
+    override fun initDialogv(dialog: IDialog) {
+        super.initDialogv(dialog)
         val defaultPadding = (context.resources.displayMetrics.widthPixels * 0.1f).toInt()
         dialog.setPadding(defaultPadding, 0, defaultPadding, 0)
         dialog.gravity = Gravity.CENTER

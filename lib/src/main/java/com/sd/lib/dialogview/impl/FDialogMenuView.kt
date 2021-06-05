@@ -10,6 +10,7 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
+import com.sd.lib.dialog.IDialog
 import com.sd.lib.dialoger.Dialoger
 import com.sd.lib.dialogview.DialogMenuView
 import com.sd.lib.dialogview.LibUtils
@@ -71,6 +72,13 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
 
     override fun initDialog(dialog: Dialoger) {
         super.initDialog(dialog)
+        dialog.setPadding(0, 0, 0, 0)
+        dialog.gravity = Gravity.BOTTOM
+        dialog.setCanceledOnTouchOutside(true)
+    }
+
+    override fun initDialogv(dialog: IDialog) {
+        super.initDialogv(dialog)
         dialog.setPadding(0, 0, 0, 0)
         dialog.gravity = Gravity.BOTTOM
         dialog.setCanceledOnTouchOutside(true)

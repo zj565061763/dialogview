@@ -44,7 +44,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.cardview:cardview:1.0.0'
+
     api 'com.github.zj565061763:dialoger:latest.release'
+    api 'com.github.zj565061763:dialogv:latest.release'
 }
 
 task generateSourcesJar(type: Jar) {
