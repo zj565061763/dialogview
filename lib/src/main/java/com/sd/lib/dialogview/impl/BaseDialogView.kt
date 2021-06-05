@@ -68,6 +68,7 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
     /**
      * 初始化[Dialoger]对象
      */
+    @Deprecated("see initDialogv")
     protected open fun initDialog(dialog: Dialoger) {
         dialog.setCanceledOnTouchOutside(false)
     }
