@@ -8,6 +8,7 @@
 
     <!--          color          -->
 
+    <color name="lib_dialogview_view_confirm_background">#FFFFFF</color>
     <color name="lib_dialogview_view_confirm_text_title">#333333</color>
     <color name="lib_dialogview_view_confirm_text_content">#999999</color>
     <color name="lib_dialogview_view_confirm_text_content_sub">#cccccc</color>
