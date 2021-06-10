@@ -1,4 +1,4 @@
-package com.sd.dialogview
+package com.sd.demo.dialogview
 
 import android.app.Application
 

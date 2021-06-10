@@ -6,7 +6,7 @@ plugins {
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.sd.dialogview"
+        applicationId "com.sd.demo.dialogview"
         minSdkVersion 18
         targetSdkVersion 30
         versionCode 1

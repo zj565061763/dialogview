@@ -1,4 +1,4 @@
-package com.sd.dialogview.handler
+package com.sd.demo.dialogview.handler
 
 import com.sd.lib.dialogview.DialogProgressView
 import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler
