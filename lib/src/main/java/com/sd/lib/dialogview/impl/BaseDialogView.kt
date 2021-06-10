@@ -58,7 +58,7 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
         onContentViewChanged()
     }
 
-    override fun onClick(v: View?) {}
+    override fun onClick(v: View) {}
 
     /**
      * 内容View变化

@@ -168,7 +168,7 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
         return list.getOrNull(position)
     }
 
-    override fun onClick(v: View?) {
+    override fun onClick(v: View) {
         super.onClick(v)
         when (v) {
             tv_cancel -> {

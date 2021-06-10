@@ -162,7 +162,7 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
         return this
     }
 
-    override fun onClick(v: View?) {
+    override fun onClick(v: View) {
         super.onClick(v)
         when (v) {
             tv_confirm -> {
