@@ -14,23 +14,24 @@ import com.sd.lib.dialoger.impl.FDialoger
 import com.sd.lib.dialogview.DialogView
 
 abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
-    private val _dialogerLazy = lazy {
-        FDialoger(context as Activity).apply {
-            this.contentView = this@BaseDialogView
-            initDialog(this)
+    private var _dialoger: Dialoger? = null
+    private var _dialogv: IDialog? = null
+
+    override val dialoger: Dialoger by lazy {
+        FDialoger(context as Activity).also {
+            _dialoger = it
+            it.setContentView(this@BaseDialogView)
+            initDialog(it)
         }
     }
 
-    private val _dialogvLazy = lazy {
-        FDialog(context as Activity).apply {
-            this.setContentView(this@BaseDialogView)
-            initDialog(this)
+    override val dialogv: IDialog by lazy {
+        FDialog(context as Activity).also {
+            _dialogv = it
+            it.setContentView(this@BaseDialogView)
+            initDialog(it)
         }
     }
-
-    override val dialoger: Dialoger by _dialogerLazy
-
-    override val dialogv: IDialog by _dialogvLazy
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs)
@@ -81,10 +82,9 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
     }
 
     override fun dismiss() {
-        if (_dialogerLazy.isInitialized()) {
-            dialoger.dismiss()
-        } else if (_dialogvLazy.isInitialized()) {
-            dialogv.dismiss()
+        if (_dialoger != null || _dialogv != null) {
+            _dialoger?.dismiss()
+            _dialogv?.dismiss()
         } else {
             val viewParent = parent
             if (viewParent is ViewGroup) {
