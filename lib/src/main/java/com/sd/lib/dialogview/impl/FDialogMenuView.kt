@@ -24,9 +24,6 @@ import java.util.*
  */
 open class FDialogMenuView : BaseDialogView, DialogMenuView {
     @JvmField
-    var view_root: View? = null
-
-    @JvmField
     var tv_title: TextView? = null
 
     @JvmField
@@ -62,7 +59,6 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
     }
 
     override fun onContentViewChanged() {
-        view_root = findViewById(R.id.view_root)
         tv_title = findViewById(R.id.tv_title)
         tv_cancel = findViewById(R.id.tv_cancel)
         lv_content = findViewById(R.id.lv_content)
