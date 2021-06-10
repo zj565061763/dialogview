@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sd.lib.dialog.animator.ScaleXYCreator;
 import com.sd.lib.dialogview.DialogConfirmView;
 import com.sd.lib.dialogview.DialogMenuView;
 import com.sd.lib.dialogview.impl.FDialogConfirmView;
@@ -44,10 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
                 if (NEW_API) {
-                    confirmView.getDialogv().setAnimatorCreator(new ScaleXYCreator());
                     confirmView.getDialogv().show();
                 } else {
-                    confirmView.getDialoger().setAnimatorCreator(new com.sd.lib.dialoger.animator.ScaleXYCreator());
                     confirmView.getDialoger().show();
                 }
                 break;
