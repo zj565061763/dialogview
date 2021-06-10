@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.sd.lib.dialog.animator.ScaleXYCreator;
 import com.sd.lib.dialogview.DialogConfirmView;
 import com.sd.lib.dialogview.DialogMenuView;
-import com.sd.lib.dialogview.DialogProgressView;
 import com.sd.lib.dialogview.impl.FDialogConfirmView;
 import com.sd.lib.dialogview.impl.FDialogMenuView;
 import com.sd.lib.dialogview.impl.FDialogProgressView;
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_confirm:
-                final DialogConfirmView confirmView = new FDialogConfirmView(this);
+                final FDialogConfirmView confirmView = new FDialogConfirmView(this);
                 confirmView.setCallback(new DialogConfirmView.Callback() {
                     @Override
                     public void onClickCancel(@NotNull DialogConfirmView dialogView) {
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 confirmView.getDialogv().show();
                 break;
             case R.id.btn_menu:
-                final DialogMenuView menuView = new FDialogMenuView(this);
+                final FDialogMenuView menuView = new FDialogMenuView(this);
                 menuView.setItems("a", "b", "c");
                 menuView.setCallback(new DialogMenuView.Callback() {
                     @Override
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 menuView.getDialogv().show();
                 break;
             case R.id.btn_progress:
-                final DialogProgressView progressView = new FDialogProgressView(this);
+                final FDialogProgressView progressView = new FDialogProgressView(this);
                 progressView.getDialogv().show();
                 break;
         }
