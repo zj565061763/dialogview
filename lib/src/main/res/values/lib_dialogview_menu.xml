@@ -6,6 +6,7 @@
 
     <!--          color          -->
 
+    <color name="lib_dialogview_view_menu_background">#FFFFFF</color>
     <color name="lib_dialogview_view_menu_text_title">#999999</color>
     <color name="lib_dialogview_view_menu_text_cancel">#666666</color>
     <color name="lib_dialogview_view_menu_text_item">#333333</color>
