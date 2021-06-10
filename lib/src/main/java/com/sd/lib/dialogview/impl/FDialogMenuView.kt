@@ -77,8 +77,8 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
         dialog.setCanceledOnTouchOutside(true)
     }
 
-    override fun initDialogv(dialog: IDialog) {
-        super.initDialogv(dialog)
+    override fun initDialog(dialog: IDialog) {
+        super.initDialog(dialog)
         dialog.setPadding(0, 0, 0, 0)
         dialog.gravity = Gravity.BOTTOM
         dialog.setCanceledOnTouchOutside(true)

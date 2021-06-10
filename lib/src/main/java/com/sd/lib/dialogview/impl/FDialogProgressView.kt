@@ -62,8 +62,8 @@ open class FDialogProgressView : BaseDialogView, DialogProgressView {
         dialog.gravity = Gravity.CENTER
     }
 
-    override fun initDialogv(dialog: IDialog) {
-        super.initDialogv(dialog)
+    override fun initDialog(dialog: IDialog) {
+        super.initDialog(dialog)
         dialog.setPadding(0, 0, 0, 0)
         dialog.gravity = Gravity.CENTER
     }

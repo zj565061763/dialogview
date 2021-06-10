@@ -24,7 +24,7 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
     private val _dialogvLazy = lazy {
         FDialog(context as Activity).apply {
             this.setContentView(this@BaseDialogView)
-            initDialogv(this)
+            initDialog(this)
         }
     }
 
@@ -73,7 +73,7 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
         dialog.setCanceledOnTouchOutside(false)
     }
 
-    protected open fun initDialogv(dialog: IDialog) {
+    protected open fun initDialog(dialog: IDialog) {
         dialog.setCanceledOnTouchOutside(false)
     }
 
