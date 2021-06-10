@@ -16,7 +16,8 @@ import com.sd.lib.dialogview.impl.FDialogProgressView;
 import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final boolean NEW_API = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.i(TAG, "DialogConfirmView onClickConfirm");
                     }
                 });
-
-                // 设置缩放动画
-                confirmView.getDialogv().setAnimatorCreator(new ScaleXYCreator());
-                confirmView.getDialogv().show();
+                if (NEW_API) {
+                    confirmView.getDialogv().setAnimatorCreator(new ScaleXYCreator());
+                    confirmView.getDialogv().show();
+                } else {
+                    confirmView.getDialoger().setAnimatorCreator(new com.sd.lib.dialoger.animator.ScaleXYCreator());
+                    confirmView.getDialoger().show();
+                }
                 break;
             case R.id.btn_menu:
                 final FDialogMenuView menuView = new FDialogMenuView(this);
@@ -63,11 +67,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.i(TAG, "DialogMenuView onClickCancel");
                     }
                 });
-                menuView.getDialogv().show();
+                if (NEW_API) {
+                    menuView.getDialogv().show();
+                } else {
+                    menuView.getDialoger().show();
+                }
                 break;
             case R.id.btn_progress:
                 final FDialogProgressView progressView = new FDialogProgressView(this);
-                progressView.getDialogv().show();
+                if (NEW_API) {
+                    progressView.getDialogv().show();
+                } else {
+                    progressView.getDialoger().show();
+                }
                 break;
         }
     }
