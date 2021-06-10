@@ -50,7 +50,6 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
 
         setContentView(layoutId)
 
-        setTextTitle(null)
         if (layoutParams == null) {
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
