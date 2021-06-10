@@ -31,6 +31,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final FDialogConfirmView confirmView = new FDialogConfirmView(this);
                 confirmView.setCallback(new DialogConfirmView.Callback() {
                     @Override
+                    public void onClickCancel(@NotNull View view, @NotNull DialogConfirmView dialogView) {
+                        super.onClickCancel(view, dialogView);
+                        Log.i(TAG, "DialogConfirmView onClickCancel Deprecated");
+                    }
+
+                    @Override
+                    public void onClickConfirm(@NotNull View view, @NotNull DialogConfirmView dialogView) {
+                        super.onClickConfirm(view, dialogView);
+                        Log.i(TAG, "DialogConfirmView onClickConfirm Deprecated");
+                    }
+
+                    @Override
                     public void onClickCancel(@NotNull DialogConfirmView dialogView) {
                         super.onClickCancel(dialogView);
                         Log.i(TAG, "DialogConfirmView onClickCancel");
@@ -52,6 +64,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final FDialogMenuView menuView = new FDialogMenuView(this);
                 menuView.setItems("a", "b", "c");
                 menuView.setCallback(new DialogMenuView.Callback() {
+                    @Override
+                    public void onClickItem(@NotNull View view, int index, @NotNull DialogMenuView dialogView) {
+                        super.onClickItem(view, index, dialogView);
+                        Log.i(TAG, "DialogMenuView onClickItem index:" + index + " Deprecated");
+                    }
+
+                    @Override
+                    public void onClickCancel(@NotNull View view, @NotNull DialogMenuView dialogView) {
+                        super.onClickCancel(view, dialogView);
+                        Log.i(TAG, "DialogMenuView onClickCancel Deprecated");
+                    }
+
                     @Override
                     public void onClickItem(int index, @NotNull DialogMenuView dialogView) {
                         super.onClickItem(index, dialogView);
