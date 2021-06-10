@@ -174,7 +174,7 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
             tv_cancel -> {
                 val callback = _callback
                 if (callback != null) {
-                    callback.onClickCancel(v!!, this)
+                    callback.onClickCancel(v, this)
                     callback.onClickCancel(this)
                 } else {
                     dismiss()
