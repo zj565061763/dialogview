@@ -14,9 +14,11 @@ import com.sd.lib.dialoger.impl.FDialoger
 import com.sd.lib.dialogview.DialogView
 
 abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
+    @Deprecated("")
     private var _dialoger: Dialoger? = null
     private var _dialogv: IDialog? = null
 
+    @Deprecated("")
     override val dialoger: Dialoger by lazy {
         FDialoger(context as Activity).also {
             _dialoger = it
