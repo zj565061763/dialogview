@@ -168,7 +168,7 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
             tv_confirm -> {
                 val callback = _callback
                 if (callback != null) {
-                    callback.onClickConfirm(v!!, this)
+                    callback.onClickConfirm(v, this)
                     callback.onClickConfirm(this)
                 } else {
                     dismiss()
@@ -177,7 +177,7 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
             tv_cancel -> {
                 val callback = _callback
                 if (callback != null) {
-                    callback.onClickCancel(v!!, this)
+                    callback.onClickCancel(v, this)
                     callback.onClickCancel(this)
                 } else {
                     dismiss()
