@@ -80,7 +80,7 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
     override fun initDialog(dialog: Dialoger) {
         super.initDialog(dialog)
         val defaultPadding = (context.resources.displayMetrics.widthPixels * 0.1f).toInt()
-        dialog.setPadding(defaultPadding, defaultPadding, defaultPadding, defaultPadding)
+        dialog.setPadding(defaultPadding, 0, defaultPadding, 0)
         dialog.gravity = Gravity.CENTER
     }
 
