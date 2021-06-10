@@ -14,7 +14,7 @@ import com.sd.lib.dialoger.impl.FDialoger
 import com.sd.lib.dialogview.DialogView
 
 abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
-    private val _dialogLazy = lazy {
+    private val _dialogerLazy = lazy {
         FDialoger(context as Activity).apply {
             this.contentView = this@BaseDialogView
             initDialog(this)
@@ -28,7 +28,7 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
         }
     }
 
-    override val dialoger: Dialoger by _dialogLazy
+    override val dialoger: Dialoger by _dialogerLazy
 
     override val dialogv: IDialog by _dialogvLazy
 
@@ -78,7 +78,7 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
     }
 
     override fun dismiss() {
-        if (_dialogLazy.isInitialized()) {
+        if (_dialogerLazy.isInitialized()) {
             dialoger.dismiss()
         } else if (_dialogvLazy.isInitialized()) {
             dialogv.dismiss()
