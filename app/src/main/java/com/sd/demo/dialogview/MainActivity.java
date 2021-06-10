@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btn_confirm:
                 final FDialogConfirmView confirmView = new FDialogConfirmView(this);
+                confirmView.setTextContent("content");
+                confirmView.setTextContentSub("sub content");
                 confirmView.setCallback(new DialogConfirmView.Callback() {
                     @Override
                     public void onClickCancel(@NotNull View view, @NotNull DialogConfirmView dialogView) {
