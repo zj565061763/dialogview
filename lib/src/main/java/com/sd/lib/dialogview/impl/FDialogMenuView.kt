@@ -11,13 +11,11 @@ import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
 import com.sd.lib.dialog.IDialog
-import com.sd.lib.dialoger.Dialoger
 import com.sd.lib.dialogview.DialogMenuView
 import com.sd.lib.dialogview.LibUtils
 import com.sd.lib.dialogview.R
 import com.sd.lib.dialogview.core.DialogViewManager.dialogViewHandlerFactory
 import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler
-import java.util.*
 
 /**
  * 带取消按钮的菜单
@@ -69,13 +67,6 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
         _handler?.onContentViewChanged(this)
     }
 
-    override fun initDialog(dialog: Dialoger) {
-        super.initDialog(dialog)
-        dialog.setPadding(0, 0, 0, 0)
-        dialog.gravity = Gravity.BOTTOM
-        dialog.setCanceledOnTouchOutside(true)
-    }
-
     override fun initDialog(dialog: IDialog) {
         super.initDialog(dialog)
         dialog.setPadding(0, 0, 0, 0)
@@ -115,7 +106,6 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
             it.onItemClickListener = OnItemClickListener { parent, view, position, id ->
                 val callback = _callback
                 if (callback != null) {
-                    callback.onClickItem(view, id.toInt(), this@FDialogMenuView)
                     callback.onClickItem(id.toInt(), this@FDialogMenuView)
                 } else {
                     dismiss()
@@ -173,7 +163,6 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
             tv_cancel -> {
                 val callback = _callback
                 if (callback != null) {
-                    callback.onClickCancel(v, this)
                     callback.onClickCancel(this)
                 } else {
                     dismiss()

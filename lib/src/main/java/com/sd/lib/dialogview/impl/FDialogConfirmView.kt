@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.sd.lib.dialog.IDialog
-import com.sd.lib.dialoger.Dialoger
 import com.sd.lib.dialogview.DialogConfirmView
 import com.sd.lib.dialogview.LibUtils
 import com.sd.lib.dialogview.R
@@ -75,13 +74,6 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
         tv_cancel?.setOnClickListener(this)
 
         _handler?.onContentViewChanged(this)
-    }
-
-    override fun initDialog(dialog: Dialoger) {
-        super.initDialog(dialog)
-        val defaultPadding = (context.resources.displayMetrics.widthPixels * 0.1f).toInt()
-        dialog.setPadding(defaultPadding, 0, defaultPadding, 0)
-        dialog.gravity = Gravity.CENTER
     }
 
     override fun initDialog(dialog: IDialog) {
@@ -168,7 +160,6 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
             tv_confirm -> {
                 val callback = _callback
                 if (callback != null) {
-                    callback.onClickConfirm(v, this)
                     callback.onClickConfirm(this)
                 } else {
                     dismiss()
@@ -177,7 +168,6 @@ open class FDialogConfirmView : BaseDialogView, DialogConfirmView {
             tv_cancel -> {
                 val callback = _callback
                 if (callback != null) {
-                    callback.onClickCancel(v, this)
                     callback.onClickCancel(this)
                 } else {
                     dismiss()

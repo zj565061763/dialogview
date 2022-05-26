@@ -9,27 +9,14 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.sd.lib.dialog.IDialog
 import com.sd.lib.dialog.impl.FDialog
-import com.sd.lib.dialoger.Dialoger
-import com.sd.lib.dialoger.impl.FDialoger
 import com.sd.lib.dialogview.DialogView
 
 abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
-    @Deprecated("")
-    private var _dialoger: Dialoger? = null
-    private var _dialogv: IDialog? = null
+    private var _dialog: IDialog? = null
 
-    @Deprecated("")
-    override val dialoger: Dialoger by lazy {
-        FDialoger(context as Activity).also {
-            _dialoger = it
-            it.setContentView(this@BaseDialogView)
-            initDialog(it)
-        }
-    }
-
-    override val dialogv: IDialog by lazy {
+    override val dialog: IDialog by lazy {
         FDialog(context as Activity).also {
-            _dialogv = it
+            _dialog = it
             it.setContentView(this@BaseDialogView)
             initDialog(it)
         }
@@ -69,14 +56,6 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
     protected abstract fun onContentViewChanged()
 
     /**
-     * 初始化[Dialoger]
-     */
-    @Deprecated("")
-    protected open fun initDialog(dialog: Dialoger) {
-        dialog.setCanceledOnTouchOutside(false)
-    }
-
-    /**
      * 初始化[IDialog]
      */
     protected open fun initDialog(dialog: IDialog) {
@@ -84,9 +63,8 @@ abstract class BaseDialogView : FrameLayout, DialogView, View.OnClickListener {
     }
 
     override fun dismiss() {
-        if (_dialoger != null || _dialogv != null) {
-            _dialoger?.dismiss()
-            _dialogv?.dismiss()
+        if (_dialog != null) {
+            _dialog?.dismiss()
         } else {
             val viewParent = parent
             if (viewParent is ViewGroup) {

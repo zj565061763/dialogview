@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.sd.lib.dialog.IDialog
-import com.sd.lib.dialoger.Dialoger
 import com.sd.lib.dialogview.DialogProgressView
 import com.sd.lib.dialogview.LibUtils
 import com.sd.lib.dialogview.R
@@ -54,12 +53,6 @@ open class FDialogProgressView : BaseDialogView, DialogProgressView {
         tv_msg = findViewById(R.id.tv_msg)
         pb_progress = findViewById(R.id.pb_progress)
         _handler?.onContentViewChanged(this)
-    }
-
-    override fun initDialog(dialog: Dialoger) {
-        super.initDialog(dialog)
-        dialog.setPadding(0, 0, 0, 0)
-        dialog.gravity = Gravity.CENTER
     }
 
     override fun initDialog(dialog: IDialog) {

@@ -85,15 +85,5 @@ interface DialogConfirmView : DialogView {
         open fun onClickConfirm(dialogView: DialogConfirmView) {
             dialogView.dismiss()
         }
-
-        @Deprecated("")
-        open fun onClickCancel(view: View, dialogView: DialogConfirmView) {
-            dialogView.dismiss()
-        }
-
-        @Deprecated("")
-        open fun onClickConfirm(view: View, dialogView: DialogConfirmView) {
-            dialogView.dismiss()
-        }
     }
 }
