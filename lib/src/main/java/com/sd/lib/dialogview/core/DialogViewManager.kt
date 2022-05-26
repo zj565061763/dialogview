@@ -8,7 +8,7 @@ import com.sd.lib.dialogview.core.handler.IDialogMenuViewHandler
 import com.sd.lib.dialogview.core.handler.IDialogProgressViewHandler
 
 object DialogViewManager {
-    var dialogViewHandlerFactory: IDialogViewHandlerFactory = object : IDialogViewHandlerFactory {
+    var dialogViewHandlerFactory = object : IDialogViewHandlerFactory {
         override fun newProgressViewHandler(dialogView: DialogProgressView): IDialogProgressViewHandler? {
             return null
         }

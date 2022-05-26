@@ -180,9 +180,4 @@ open class FDialogMenuView : BaseDialogView, DialogMenuView {
         super.onDetachedFromWindow()
         _handler?.onDetachedFromWindow(this)
     }
-
-    override fun setItems(listObject: List<Any>): DialogMenuView {
-        setItemList(listObject)
-        return this
-    }
 }

@@ -33,9 +33,6 @@ interface DialogMenuView : DialogView {
      */
     fun setAdapter(adapter: BaseAdapter?): DialogMenuView
 
-    @Deprecated(message = "用setItemList替代")
-    fun setItems(listObject: List<Any>): DialogMenuView
-
     abstract class Callback {
         /**
          * 位置为[index]的item项被点击

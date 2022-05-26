@@ -9,10 +9,10 @@ def libArtifactId = "dialogview"
 def libVersionName = "1.2.0"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 30
+        targetSdkVersion 32
     }
 
     buildTypes {
