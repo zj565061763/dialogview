@@ -6,16 +6,13 @@ plugins {
 
 def libGroupId = "com.sd.lib.android"
 def libArtifactId = "dialogview"
-def libVersionCode = 20210611
-def libVersionName = "1.2.0"
+def libVersionName = "1.2.1"
 
 android {
     compileSdkVersion 30
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion 30
-        versionCode libVersionCode
-        versionName libVersionName
     }
 
     buildTypes {
@@ -46,7 +43,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     api 'com.github.zj565061763:dialoger:latest.release'
-    api 'com.github.zj565061763:dialogv:latest.release'
+    api 'com.github.zj565061763:dialogv:1.0.0-beta03'
 }
 
 task generateSourcesJar(type: Jar) {
